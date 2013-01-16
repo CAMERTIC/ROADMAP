@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard | Roadmap Convention - All My Tasks</title>
+<link rel="stylesheet" href="css/style.default.css" type="text/css" />
+<link rel="stylesheet" href="css/style.greenline.css" type="text/css" />
+<script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="js/custom/general.js"></script>
+<script type="text/javascript" src="js/custom/tables.js"></script>
+<!--[if IE 9]>
+    <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
+<![endif]-->
+<!--[if IE 8]>
+    <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
+<![endif]-->
+<!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+</head>
+
+<body class="withvernav">
+
+<div class="bodywrapper">
+    <div class="topheader">
+        <div class="left">
+            <h1 class="logo">CAM<span>IRON</span></h1>
+            <span class="slogan">Roadmap <br /> Convention</span>
+            
+            <!--<div class="search">
+            	<form action="" method="post">
+                	<input type="text" name="keyword" id="keyword" value="Enter keyword(s)" />
+                    <button class="submitbutton"></button>
+                </form>
+            </div>search-->
+            
+            <br clear="all" />
+            
+        </div><!--left-->
+        
+        <div class="right">
+        	<div class="notification">
+                <a class="count" href="ajax/notifications.html"><span>9</span></a>
+        	</div>
+            <div class="userinfo">
+            	<img src="images/thumbs/avatar.png" alt="" />
+                <span>Juan Dela Cruz</span>
+            </div><!--userinfo-->
+            
+            <div class="userinfodrop">            	
+				<div class="avatar">
+                	<a href=""><img src="images/thumbs/avatarbig.png" alt="" /></a>
+                   
+                </div><!--avatar-->
+				<div class="userdata">
+                	<h4>Juan Dela Cruz</h4>
+                    <span class="email">youremail@yourdomain.com</span>
+                    <ul>
+                    	<li><a href="editprofile.html">Edit Profile</a></li>
+                        <li><a href="accountsettings.html">Account Settings</a></li>
+                        <li><a href="help.html">Help</a></li>
+                        <li><a href="index.html">Sign Out</a></li>
+                    </ul>
+                </div><!--userdata-->
+            </div><!--userinfodrop-->
+        </div><!--right-->
+    </div><!--topheader-->
+    
+    
+    <div class="header">
+    	<ul class="headermenu">
+        	<li class="current"><a href="dashboard.html"><span class="icon icon-flatscreen"></span>Dashboard</a></li>
+            <li><a href="manageblog.html"><span class="icon icon-pencil"></span>My Tasks</a></li>
+            <li><a href="messages.html"><span class="icon icon-message"></span>Messages</a></li>
+            <li><a href="reports.html"><span class="icon icon-chart"></span>Reports</a></li>
+        </ul>
+        
+        <div class="headerwidget">
+        	<div class="earnings">
+            	<div class="one_half">
+                	<h4>Today's Date</h4>
+                    <h2>15/01/2013</h2>
+                </div><!--one_half-->
+                <div class="one_half last alignright">
+                	<h4>Time</h4>
+                    <h2>03:35</h2>
+                </div><!--one_half last-->
+            </div><!--earnings-->
+        </div><!--headerwidget-->
+        
+    </div><!--header-->
+    
+    <div class="vernav2 iconmenu">
+    	<ul>
+        	<li><a href="#formsub" class="editor">MY TASKS</a>
+            	<span class="arrow"></span>
+            	<ul id="formsub">
+               		<li><a href="all.html">ALL</a></li>
+                    <li><a href="wizard.html">Pending</a></li>
+                    <li><a href="editor.html">Delayed</a></li>
+                </ul>
+            </li>
+           <!-- <li><a href="filemanager.html" class="gallery">File Manager</a></li>
+            <li><a href="elements.html" class="elements">Elements</a></li>
+            <li><a href="widgets.html" class="widgets">Widgets</a></li>
+            <li><a href="calendar.html" class="calendar">Calendar</a></li>
+            <li><a href="support.html" class="support">Customer Support</a></li>
+            <li><a href="typography.html" class="typo">Typography</a></li>
+            <li class="current"><a href="tables.html" class="tables">Tables</a></li>
+            <li><a href="buttons.html" class="buttons">Buttons &amp; Icons</a></li>
+            <li><a href="#error" class="error">Error Pages</a>
+            	<span class="arrow"></span>
+            	<ul id="error">
+               		<li><a href="notfound.html">Page Not Found</a></li>
+                    <li><a href="forbidden.html">Forbidden Page</a></li>
+                    <li><a href="internal.html">Internal Server Error</a></li>
+                    <li><a href="offline.html">Offline</a></li>
+                </ul>
+            </li>
+            <li><a href="#addons" class="addons">Addons</a>
+            	<span class="arrow"></span>
+            	<ul id="addons">
+               		<li><a href="newsfeed.html">News Feed</a></li>
+                    <li><a href="profile.html">Profile Page</a></li>
+                    <li><a href="productlist.html">Product List</a></li>
+                    <li><a href="photo.html">Photo/Video Sharing</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="invoice.html">Invoice</a></li>
+                </ul>
+            </li>-->
+        </ul>
+        <a class="togglemenu"></a>
+        <br /><br />
+    </div><!--leftmenu-->
+        
+    <div class="centercontent tables">
+    
+        <div class="pageheader notab">
+            <h1 class="pagetitle">My Tasks</h1>
+            <span class="pagedesc">There are all tasks you are responsible of</span>
+            
+        </div><!--pageheader-->
+        
+        <div id="contentwrapper" class="contentwrapper">
+                                
+                <div class="contenttitle2">
+                	<h3>Table with Quick Edit/View</h3>
+                </div><!--contenttitle-->
+                
+                <table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
+                    <colgroup>
+                        <col class="con0" />
+                        <col class="con1" />
+                        <col class="con0" />
+                        <col class="con1" />
+                        <col class="con0" />
+                        <col class="con1" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="head0">Rendering engine</th>
+                            <th class="head1">Browser</th>
+                            <th class="head0">Platform(s)</th>
+                            <th class="head1">Engine version</th>
+                            <th class="head0">CSS grade</th>
+                            <th class="head1">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th class="head0">Rendering engine</th>
+                            <th class="head1">Browser</th>
+                            <th class="head0">Platform(s)</th>
+                            <th class="head1">Engine version</th>
+                            <th class="head0">CSS grade</th>
+                            <th class="head1">&nbsp;</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td class="con0">Trident</td>
+                            <td class="con1">Internet Explorer 4.0</td>
+                            <td class="con0">Win 95+</td>
+                            <td class="center">4</td>
+                            <td class="center">X</td>
+                            <td class="center"><a href="ajax/blog/quickedit.html" class="toggle">Quick View</a></td>
+                        </tr>
+                        <tr>
+                            <td>Trident</td>
+                            <td>Internet Explorer 5.0</td>
+                            <td>Win 95+</td>
+                            <td class="center">5</td>
+                            <td class="center">C</td>
+                            <td class="center"><a href="ajax/blog/quickedit.html" class="toggle">Quick View</a></td>
+                        </tr>
+                        <tr>
+                            <td>Trident</td>
+                            <td>Internet  Explorer 5.5</td>
+                            <td>Win 95+</td>
+                            <td class="center">5.5</td>
+                            <td class="center">A</td>
+                            <td class="center"><a href="ajax/blog/quickedit.html" class="toggle">Quick View</a></td>
+                        </tr>
+                        <tr>
+                            <td>Trident</td>
+                            <td>Internet Explorer 6</td>
+                            <td>Win 98+</td>
+                            <td class="center">6</td>
+                            <td class="center">A</td>
+                            <td class="center"><a href="ajax/blog/quickedit.html" class="toggle">Quick View</a></td>
+                        </tr>
+                        <tr>
+                            <td>Trident</td>
+                            <td>Internet Explorer 7</td>
+                            <td>Win XP SP2+</td>
+                            <td class="center">7</td>
+                            <td class="center">A</td>
+                            <td class="center"><a href="ajax/blog/quickedit.html" class="toggle">Quick View</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <br /><br />
+        
+        </div><!--contentwrapper-->
+        
+	</div><!-- centercontent -->
+    
+    
+</div><!--bodywrapper-->
+
+</body>
+</html>
