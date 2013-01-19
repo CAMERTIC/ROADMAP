@@ -87,14 +87,18 @@ abstract class entity extends bd {
 	}
 	
 	/** Methode de sauvegarde d'un nouvel enregistrement */
-	protected function newRecord($post) {
+	public function newRecord($post) {
 		foreach($post as $index => $valeur) {
 			$this->$index = $valeur;
 			$this->data[$index] = $valeur;
 		}
 		$query = $this->buildInsertQuery($this->data, $this->table);
 		//var_dump($query); die;
-		$this->insert($query);
+		if($this->insert($query)) {
+			
+		} else {
+			throw new Exception('Error while saving the record!');
+		}
 	}
 	
 	/** Methode de mise a jour d'un enregistrement */

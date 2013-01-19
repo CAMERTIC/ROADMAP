@@ -25,8 +25,8 @@
 
 .shortcuts li a:hover { border-color: #78ce07; }
 .topheader .left h1.logo { color: #78ce07; }
-.header { border-bottom-color: #78ce07; }
-.headermenu li.current a { background-image: url(../images/greenline/arrow-active.png); }
+.header { border-bottom-color: #81910f; }
+.headermenu li.current a { /* background-image: url(../images/greenline/arrow-active.png); */ }
 .notitab li.current a { background-color: #78ce07; }
 .notitab { border-bottom-color: #78ce07; }
 .notitab li a:hover { color: #78ce07; }

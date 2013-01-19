@@ -22,6 +22,23 @@ function getView() {
 		$path = realpath('.'.DS.'views'.DS.$_GET['view'].'.php');
 		if(@include_once($path)) {}
 		else { die('Fichier de vue introuvable'); }
+	} else {
+		$path = realpath('.'.DS.'views'.DS.'dashboard.php');
+		if(@include_once($path)) {}
+		else { die('Fichier de vue introuvable'); }
+	}
+}
+
+function getAdminView() {
+	if(isset($_GET['view'])) {
+		$path = $_SERVER['DOCUMENT_ROOT'].DS.'views'.DS.$_GET['view'].'.php';
+		$path = realpath('.'.DS.'views'.DS.$_GET['view'].'.php');
+		if(@include_once($path)) {}
+		else { die('Fichier de vue introuvable'); }
+	} else {
+		$path = realpath('.'.DS.'views'.DS.'dashboard-admin.php');
+		if(@include_once($path)) {}
+		else { die('Fichier de vue introuvable'); }
 	}
 }
 
@@ -51,7 +68,7 @@ function getLayout() {
 		$file = $_GET['layout'];
 		global $viewFolder;
 		global $layoutFolder;
-		$filelayout = $viewFolder .'/'.$layoutFolder.$file .'.'. 'php';
+		$filelayout = $viewFolder . DS .$layoutFolder.$file .'.'. 'php';
 		$camertic = new CamerticConfig;
 		$folderlayout = $_SERVER['DOCUMENT_ROOT'] . $camertic->appfolder . '/' . $viewFolder .'/'.$layoutFolder.$file ;
 		//var_dump($folderlayout);

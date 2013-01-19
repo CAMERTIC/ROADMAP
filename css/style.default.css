@@ -100,9 +100,9 @@ body { background: #eee !important; }
 /***** 4. LOGIN PAGE *****/
 /*************************/
 
-.loginpage { background: #81910f url(../images/patternbg.png); }
+.loginpage { background: #fff url(../images/patternbg.png); }
 .loginbox { 
-	width: 350px; padding: 5px; background: #fff; margin: 7% auto 0 auto; -moz-border-radius: 2px; -webkit-border-radius: 2px;
+	width: 350px; padding: 5px; background: #81910f; margin: 7% auto 0 auto; -moz-border-radius: 2px; -webkit-border-radius: 2px;
 	border-radius: 2px; -moz-box-shadow: 0 0 2px rgba(0,0,0,0.3); -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.3); 
 	box-shadow: 0 0 2px rgba(0,0,0,0.3);
 }
@@ -125,11 +125,11 @@ body { background: #eee !important; }
 	box-shadow: 0 1px 2px rgba(0,0,0,0.4); margin: 20px 0;
 }
 .loginbox .usernameinner { 
-	margin-left: 45px; border-left: 1px solid #ddd; background: #fff; padding-right: 20px; 
+	margin-left: 45px; border-left: 1px solid #81910f; background: #fff; padding-right: 20px; 
 	-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; 
 }
 .loginbox .username input { 
-	padding: 15px 10px; border: 0; font-size: 14px; width: 100%; box-shadow: none; color: #666; 
+	padding: 15px 10px; border: 0; font-size: 14px; width: 100%; box-shadow: none; color: #81910f; 
 	font-family: 'RobotoCondensed', Arial, Helvetica, sans-serif; -moz-border-radius: 0 2px 2px 0; -webkit-border-radius: 0 2px 2px 0;
 	border-radius: 0 2px 2px 0;
 }
@@ -138,9 +138,9 @@ body { background: #eee !important; }
 	border-radius: 2px; -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4); -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4); 
 	box-shadow: 0 1px 2px rgba(0,0,0,0.4); margin: 20px 0; overflow: hidden;
 }
-.loginbox .passwordinner { margin-left: 45px; border-left: 1px solid #ddd; background: #fff; }
+.loginbox .passwordinner { margin-left: 45px; border-left: 1px solid #81910f; background: #fff; }
 .loginbox .password input { 
-	padding: 15px 10px; border: 0; font-size: 14px; width: 330px; box-shadow: none; color: #666; 
+	padding: 15px 10px; border: 0; font-size: 14px; width: 330px; box-shadow: none; color: #81910f; 
 	font-family: 'RobotoCondensed', Arial, Helvetica, sans-serif;
 }
 
@@ -300,7 +300,9 @@ body { background: #eee !important; }
 
 
 .header { 
-	background: #485b79 url(../images/default/headerbg.png); min-height: 50px; overflow: hidden; border-bottom: 5px solid #fb9337; 
+	/* background: #81910f url(../images/default/headerbg.png); */ 
+	background-color : #000;
+	min-height: 50px; overflow: hidden; border-bottom: 5px solid #fb9337; 
 	-moz-box-shadow: inset 0 1px 0 #50627f; -webkit-box-shadow: inset 0 1px 0 #50627f; box-shadow: inset 0 1px 0 #50627f;
 	position: relative;
 }
@@ -321,14 +323,17 @@ body { background: #eee !important; }
 .headermenu li a span.icon-message { background: url(../images/icons/message.white.png) no-repeat center center; }
 .headermenu li a span.icon-chart { background: url(../images/icons/chart.white.png) no-repeat center center; }
 .headermenu li a:hover { 
-	background: url(../images/default/bghover.png) no-repeat center bottom; -moz-box-shadow: inset 0 1px 0 #4f627e; 
+	/* background: url(../images/default/bghover.png) no-repeat center bottom; -moz-box-shadow: inset 0 1px 0 #4f627e;  */
+	background-color : #81910F;
 	-webkit-box-shadow: inset 0 1px 0 #4f627e; box-shadow: inset 0 1px 0 #4f627e;
 }
 
 .headermenu li.current { border-left: 0; border-right: 1px solid #394962;  }
 .headermenu li.current a { 
-	background: url(../images/default/arrow-active.png) no-repeat center bottom; -moz-box-shadow: inset 0 1px 0 #4f627e; 
-	-webkit-box-shadow: inset 0 1px 0 #4f627e; box-shadow: inset 0 1px 0 #4f627e; }
+	background:  -moz-box-shadow: inset 0 1px 0 #4f627e; 
+	-webkit-box-shadow: inset 0 1px 0 #4f627e; box-shadow: inset 0 1px 0 #4f627e;
+	background-color: #81910F;
+	}
 .headermenu li.current a span { opacity: 1; } 
 
 .headerwidget { position: absolute; top: 10px; right: 10px; }
@@ -926,7 +931,7 @@ input.hasDatepicker {
 /************************************/
 
 
-form input[type=text] { 
+form input[type=text] , form input[type=password]{ 
 	padding: 8px 5px; border: 1px solid #ccc; width: 85%; -moz-border-radius: 2px; -webkit-border-radius: 2px; 
 	border-radius: 2px; background: #fcfcfc; vertical-align: middle; -moz-box-shadow: inset 0 1px 3px #ddd; 
 	-webkit-box-shadow: inset 0 1px 3px #ddd; box-shadow: inset 0 1px 3px #ddd; color: #666;
@@ -945,7 +950,7 @@ form input[type=submit] {
 	-moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; cursor: pointer; -moz-border-radius: 2px; -webkit-border-radius: 2px;
 	border-radius: 2px;
 }
-form input[type=submit]:hover { background: #485B79; border: 1px solid #3f526f; }
+form input[type=submit]:hover { background: #81910F; border: 1px solid #3f526f; }
 form input[type=reset] {
 	width: auto; margin: 0; font-weight: bold; color: #666; border: 1px solid #ccc; background: #eee; padding: 7px 10px;	
 	-moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; margin-left: 5px; -moz-border-radius: 2px; -webkit-border-radius: 2px;
@@ -961,7 +966,7 @@ form textarea:focus, form select:focus {
 }
 
 form button { border: 1px solid #f0882c; background: #fb9337; color: #fff; cursor: pointer; padding: 7px 10px; font-weight: bold; }
-form button.submit:hover { background: #485B79; border: 1px solid #3f526f; color: #fff; }
+form button.submit:hover { background: #81910F; border: 1px solid #3f526f; color: #fff; }
 form button:active { 
 	-moz-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3); -webkit-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3); 
 	box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
@@ -2503,4 +2508,8 @@ blockquote.bq2 {
 	/* PHOTO SHARING */
 	.photopreview a img { width: 300px; }
 		
+}
+
+.hidden {
+	display : none;
 }

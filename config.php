@@ -10,6 +10,13 @@ class CamerticConfig {
 	var $host = '';
 	var $dbname = 'camiron';
 	var $port = 3306;
+	var $ldap = true; // Member connection method for Active Directory
+	////////////////////////////////////////////////////////////////// If LDAP method = true
+	var $ldapServer = '';
+	var $ldapDomain = '';
+	var $ldapTLD = '';
+	//////////////////////////////////////////////////////////////////
+	
 	var $rootUrl = 'http://';
 	var $appfolder = 'CAMIRON-ROADMAP/';
 	var $traceSQL = false; // Indique si on doit faire des tracing des requetes sql
