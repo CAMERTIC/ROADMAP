@@ -135,11 +135,13 @@ var_dump($datecompliancedue);
 	<tbody>
 	<?php
 		$i = 0;
-		for($i = 6; $i <= 10; $i++) { ?>
+		for($i = 6; $i <= 10; $i++) {
+			
+		?>
 		<tr>
 		<?php foreach($sheetData[$i] as $k => $s) { ?>
 			<td><?php
-			if($s == '')
+			if($s == '' && $k != 'J')
 				if($sheetData[$i-1][$k] == '')
 					echo $sheetData[$i-2][$k];
 				else
@@ -150,7 +152,8 @@ var_dump($datecompliancedue);
 			?></td>
 		<?php } ?>
 		</tr>
-		<?php } ?>
+		<?php if(!isset($sheetData[$i+1])) break;
+		} ?>
 	</tbody>
 </table>
 
