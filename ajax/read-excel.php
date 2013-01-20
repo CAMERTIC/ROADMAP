@@ -117,22 +117,16 @@ var_dump($sheetData);
 <div class="contenttitle2">
 	<h3>Content of the sheet</h3>
 </div><!--contenttitle-->
-<table cellpadding="0" cellspacing="0" border="0" class="stdtable">
-	<colgroup>
-		<col class="con0" />
-		<col class="con1" />
-		<col class="con0" />
-		<col class="con1" />
-		<col class="con0" />
-	</colgroup>
+<table cellpadding="0" cellspacing="0" border="0" class="stdtable" style="width : 170%">
+	
 	<thead>
 		<tr><?php
 		foreach($sheetData[4] as $k => $head) { 
 			if($k == 'I') {
-				echo '<th colspan="2" class="head0">' . $head . '</th>';
+				echo '<th colspan="2" style="width : 200px" class="head0">' . $head . '</th>';
 			} elseif($k == 'J') {
 			} else {
-				echo '<th class="head0">' . $head . '</th>';
+				echo '<th style="width : 150px" class="head0">' . $head . '</th>';
 			 }
 		}?>
 		</tr>
@@ -141,7 +135,7 @@ var_dump($sheetData);
 	<tbody>
 	<?php
 		$i = 0;
-		for($i = 4; $i <= 10; $i++) { ?>
+		for($i = 6; $i <= 10; $i++) { ?>
 		<tr>
 		<?php foreach($sheetData[$i] as $k => $s) { ?>
 			<td><?php echo $s ?></td>
