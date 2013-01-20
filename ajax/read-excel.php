@@ -112,18 +112,18 @@ var_dump($datecompliancedue);
 // foreach($actions[1] as $a){
 	// echo " - " . $a . "/ date : <br />";
 // }
-var_dump($sheetData);
+//var_dump($sheetData);
 ?>
 <div class="contenttitle2">
 	<h3>Content of the sheet</h3>
 </div><!--contenttitle-->
-<table cellpadding="0" cellspacing="0" border="0" class="stdtable" style="width : 170%">
+<table cellpadding="0" cellspacing="0" border="0" class="stdtable" style="width : 200%">
 	
 	<thead>
 		<tr><?php
 		foreach($sheetData[4] as $k => $head) { 
 			if($k == 'I') {
-				echo '<th colspan="2" style="width : 200px" class="head0">' . $head . '</th>';
+				echo '<th colspan="2" style="width : 200px" class="head0">' . $head . '<br />Camiron / State' . '</th>';
 			} elseif($k == 'J') {
 			} else {
 				echo '<th style="width : 150px" class="head0">' . $head . '</th>';
@@ -138,7 +138,16 @@ var_dump($sheetData);
 		for($i = 6; $i <= 10; $i++) { ?>
 		<tr>
 		<?php foreach($sheetData[$i] as $k => $s) { ?>
-			<td><?php echo $s ?></td>
+			<td><?php
+			if($s == '')
+				if($sheetData[$i-1][$k] == '')
+					echo $sheetData[$i-2][$k];
+				else
+					echo $sheetData[$i-1][$k];
+			else
+				echo $s 
+			
+			?></td>
 		<?php } ?>
 		</tr>
 		<?php } ?>
