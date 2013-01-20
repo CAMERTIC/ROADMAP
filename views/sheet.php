@@ -1,10 +1,11 @@
 <div class="centercontent">
 	 <div class="pageheader">
-            <h1 class="pagetitle">Forms</h1>
+            <h1 class="pagetitle">Load tasks from files</h1>
             <span class="pagedesc">The content below are loaded using inline data</span>
             
             <ul class="hornav">
-                <li class="current"><a href="#basicform">Basic</a></li>
+                <li class="current"><a href="#basicform">Load</a></li>
+                <li><a href="#files">Files</a></li>
                 <li><a href="#validation">Validation</a></li>
             </ul>
         </div><!--pageheader-->
@@ -19,70 +20,81 @@
 						<p>
 							<label>Sheet to load</label>
 							<span class="field">
-							<input type="file" name="fileToUpload" id="fileToUpload" />
+							<input type="file" name="file_upload" id="file_upload" />
 							</span>
 						</p>
-						<input type="hidden" name="MAX_FILE_SIZE" value="26522144" />
 						<p class="stdformbutton">
 							<input type="Submit" value="Submit" id="buttonForm" />
 						</p>
 						
                     </form>
-					<p><img id="loading" src="./images/loadingAnimation.gif" /></p>
-					<div id="result"><?php var_dump($_SERVER['DOCUMENT_ROOT'].'upload/foto_upload_script.php'); ?></div>
-					<p id="message" class="error"></p>
+					
                     <br />
 
-    </div><!--subcontent-->
+		</div><!--subcontent-->
+		<div id="files" class="subcontent" style="display: none">
+                                
+                    <div class="notibar msgsuccess hidden">
+                        <a class="close"></a>
+                        <p>This is a success message.</p>
+                    </div><!-- notification msgsuccess -->
+					<form id="Form1" class="stdform stdform2" method="post" action="">
+					<?php 
+					$targetFolder = 'CAMIRON-ROADMAP/uploads/';
+					$targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
+					//var_dump(realpath('./uploads/'));
+					$entries = scandir("./uploads");
+					$filelist = array();
+					foreach($entries as $entry) {
+						if($entry != '.' & $entry != '..')
+						$filelist[] = $entry;
+					}
+					//var_dump($targetPath);
+				//	var_dump($filelist);
+					?>
+					<?php 
+						foreach($filelist as $f) { ?>
+					<p>
+						<span class="field" style="margin-left:20px;padding:5px 5px 5px 10px;">
+						<a href="./ajax/read-excel.php?file=<?php echo $f; ?>" class=""><?php echo $f; ?></a>
+						</span>
+					</p>
+					
+					<?php } ?>	
+					</form>			
+                    <br />
+		</div><!--subcontent-->
 </div>
 </div>
 <script type="text/javascript">
-jQuery("#loading").hide();
-	var options = { 
-		beforeSubmit:  showRequest,  
-		success:       showResponse, 
-		url:       './views/upload4jquery.php',  
-		dataType:  'json'
-	}; 
-	jQuery('#Form1').submit(function() {
-		alert('1');
-		jQuery('#message').html(''); 
-		alert('2');
-		//alert(options);
-		jQuery(this).ajaxSubmit(options); 
-		//alert(options);
-		return false; 
-	});  
- 
-function showRequest(formData, jqForm, options) { 
-	alert('showRequest');
-	var fileToUploadValue = jQuery('#fileToUpload').fieldValue();
-	if (!fileToUploadValue[0]) { 
-		jQuery('#message').html('Please select a file.'); 
-		return false; 
-	}
-	jQuery("#loading").show();
-	alert('showRequest');
-	return true; 
-} 
-
- 
-function showResponse(data, statusText)  {
-	//alert('showResponse');
-	//alert(statusText);
-	jQuery("#loading").hide();
-	if (statusText == 'success') {
-		var msg = data.error.replace("##", "<br />");
-		if (data.img != '') {
-			jQuery('#result').html('<img src="/files/photo/' + data.img + '" />');
-			jQuery('#message').html(msg + '<br /><a href="php_ajax_upload_example.php">Click here</a> to upload another file.'); 
-			jQuery('#basicform').html('');
-		} else {
-			jQuery('#message').html(msg); 
+jQuery(function() {
+    jQuery('#file_upload').uploadify({
+        'swf'      : './views/uploadify.swf',
+        'uploader' : './views/uploadify.php',
+		'onUploadSuccess' : function(file, data, response) {
+			// alert(file);
+			// alert(data);
+			// alert(response);
 		}
-	} else {
-		jQuery('#message').html('Unknown error!'); 
-	}
-} 
-
+        // Put your options here
+    });
+});
+jQuery('.stdform a').click(function(){
+		var t = jQuery(this);
+		var url = t.attr('href');
+		jQuery('#files').hide();
+		alert(url);
+		// if(!jQuery('.noticontent').is(':visible')) {
+			// jQuery.post(url,function(data){
+				// t.parent().append('<div class="noticontent">'+data+'</div>');
+			// });
+			//this will hide user info drop down when visible
+			// jQuery('.userinfo').removeClass('active');
+			// jQuery('.userinfodrop').hide();
+		// } else {
+			// t.parent().removeClass('active');
+			// jQuery('.noticontent').hide();
+		// }
+		return false;
+	});
 </script>	

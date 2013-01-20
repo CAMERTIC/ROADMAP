@@ -25,8 +25,10 @@ $C = new CamerticConfig;
 <?php 
 	if(isset($_GET['view'])) { 
 		if($_GET['view'] == 'sheet') { ?>
-			<script type="text/javascript" src="js/jquery.js"></script>
-			<script type="text/javascript" src="js/plugins/jquery.form.js"></script>
+			<link rel="stylesheet" type="text/css" href="css/uploadify.css" />
+			<script type="text/javascript" src="js/plugins/jquery-1.7.2.min.js"></script>
+			<script type="text/javascript" src="js/plugins/jquery.uploadify-3.1.min.js"></script>
+			<script type="text/javascript" src="js/plugins/jquery.uploadify.min.js"></script>
 			
 <?php 	} else { ?>
 	<script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
