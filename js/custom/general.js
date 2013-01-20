@@ -144,14 +144,46 @@ jQuery(document).ready(function(){
 		jQuery(this).parent().addClass('current');	// set as current menu
 		
 		var url = jQuery(this).attr('href');
+		//alert(jQuery(url).length);
+		if(url == '#basicform') {
+			//alert('basic');
+			jQuery('.contentwrapper .subcontent').hide();
+			jQuery('#basicform').show();
+			return false;
+		}
+		if(url == '#files') {
+			//alert('files');
+			jQuery('.contentwrapper .subcontent').hide();
+			
+			jQuery.post('./ajax/getFiles.php', function(data){
+				jQuery('#files').html(data);
+				
+				jQuery('.field a').click(function(){
+					var t = jQuery(this);
+					var xlsfile = t.attr('href');
+					//alert(xlsfile);
+					jQuery.post(xlsfile, function(data){
+						jQuery('#validation').html(data);
+						//jQuery('.contentwrapper .subcontent').hide();
+						jQuery('#files').hide();
+						jQuery('.hornav li').removeClass('current');
+						jQuery('.hornav li:last').addClass('current');
+					});
+					jQuery('#validation').show();
+					jQuery('.stdtable input:checkbox').uniform();	//restyling checkbox
+					return false;
+				});
+			});
+			jQuery('#files').show();
+			jQuery('.stdtable input:checkbox').uniform();	//restyling checkbox
+			return false;
+		}
+		
 		if(jQuery(url).length > 0) {
 			jQuery('.contentwrapper .subcontent').hide();
 			jQuery(url).show();
 		} else {
-			jQuery.post(url, function(data){
-				jQuery('#contentwrapper').html(data);
-				jQuery('.stdtable input:checkbox').uniform();	//restyling checkbox
-			});
+			
 		}
 		return false;
 	});
