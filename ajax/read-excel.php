@@ -106,13 +106,49 @@ var_dump($datecompliance);
 echo "Due Date<br />";
 var_dump($datecompliancedue);
 
-echo "Condition 1<br />";
-echo $conditions[1] . "<br />";
-echo "Required actions : <br />";
-foreach($actions[1] as $a){
-	echo " - " . $a . "/ date : <br />";
-}
-//var_dump($sheetData);
-
-
+// echo "Condition 1<br />";
+// echo $conditions[1] . "<br />";
+// echo "Required actions : <br />";
+// foreach($actions[1] as $a){
+	// echo " - " . $a . "/ date : <br />";
+// }
+var_dump($sheetData);
 ?>
+<div class="contenttitle2">
+	<h3>Content of the sheet</h3>
+</div><!--contenttitle-->
+<table cellpadding="0" cellspacing="0" border="0" class="stdtable">
+	<colgroup>
+		<col class="con0" />
+		<col class="con1" />
+		<col class="con0" />
+		<col class="con1" />
+		<col class="con0" />
+	</colgroup>
+	<thead>
+		<tr><?php
+		foreach($sheetData[4] as $k => $head) { 
+			if($k == 'I') {
+				echo '<th colspan="2" class="head0">' . $head . '</th>';
+			} elseif($k == 'J') {
+			} else {
+				echo '<th class="head0">' . $head . '</th>';
+			 }
+		}?>
+		</tr>
+	</thead>
+	
+	<tbody>
+	<?php
+		$i = 0;
+		for($i = 4; $i <= 10; $i++) { ?>
+		<tr>
+		<?php foreach($sheetData[$i] as $k => $s) { ?>
+			<td><?php echo $s ?></td>
+		<?php } ?>
+		</tr>
+		<?php } ?>
+	</tbody>
+</table>
+
+<br />
