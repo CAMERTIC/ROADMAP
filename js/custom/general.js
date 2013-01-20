@@ -183,9 +183,10 @@ jQuery(document).ready(function(){
 			"Scala",
 			"Scheme"
 		];
-	jQuery('#keyword').autocomplete({
-		source: availableTags
-	});
+		// mis en commentaire pour upload
+	// jQuery('#keyword').autocomplete({
+		// source: availableTags 
+	// });
 	
 	
 	///// SEARCH BOX ON FOCUS /////
@@ -331,32 +332,33 @@ jQuery(document).ready(function(){
 
 	
 	///// CHANGE THEME /////
-	jQuery('.changetheme a').click(function(){
-		var c = jQuery(this).attr('class');
-		if(jQuery('#addonstyle').length == 0) {
-			if(c != 'default') {
-				jQuery('head').append('<link id="addonstyle" rel="stylesheet" href="css/style.'+c+'.css" type="text/css" />');
-				jQuery.cookie("addonstyle", c, { path: '/' });
-			}
-		} else {
-			if(c != 'default') {
-				jQuery('#addonstyle').attr('href','css/style.'+c+'.css');
-				jQuery.cookie("addonstyle", c, { path: '/' });
-			} else {
-				jQuery('#addonstyle').remove();	
-				jQuery.cookie("addonstyle", null);
-			}
-		}
-	});
+	// commented for upload
+	// jQuery('.changetheme a').click(function(){
+		// var c = jQuery(this).attr('class');
+		// if(jQuery('#addonstyle').length == 0) {
+			// if(c != 'default') {
+				// jQuery('head').append('<link id="addonstyle" rel="stylesheet" href="css/style.'+c+'.css" type="text/css" />');
+				// jQuery.cookie("addonstyle", c, { path: '/' });
+			// }
+		// } else {
+			// if(c != 'default') {
+				// jQuery('#addonstyle').attr('href','css/style.'+c+'.css');
+				// jQuery.cookie("addonstyle", c, { path: '/' });
+			// } else {
+				// jQuery('#addonstyle').remove();	
+				// jQuery.cookie("addonstyle", null);
+			// }
+		// }
+	// });
 	
 	///// LOAD ADDON STYLE WHEN IT'S ALREADY SET /////
-	if(jQuery.cookie('addonstyle')) {
-		var c = jQuery.cookie('addonstyle');
-		if(c != '') {
-			jQuery('head').append('<link id="addonstyle" rel="stylesheet" href="css/style.'+c+'.css" type="text/css" />');
-			jQuery.cookie("addonstyle", c, { path: '/' });
-		}
-	}
+	// if(jQuery.cookie('addonstyle')) {
+		// var c = jQuery.cookie('addonstyle');
+		// if(c != '') {
+			// jQuery('head').append('<link id="addonstyle" rel="stylesheet" href="css/style.'+c+'.css" type="text/css" />');
+			// jQuery.cookie("addonstyle", c, { path: '/' });
+		// }
+	// }
 	
 	
 

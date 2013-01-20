@@ -21,23 +21,34 @@ $C = new CamerticConfig;
 <title>Dashboard | Roadmap Convention</title>
 <link rel="stylesheet" href="css/style.default.css" type="text/css" />
 <link rel="stylesheet" href="css/style.greenline.css" type="text/css" />
-<script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.flot.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.flot.resize.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.slimscroll.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.validate.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.tagsinput.min.js"></script>
 
-<script type="text/javascript" src="js/plugins/charCount.js"></script>
-<script type="text/javascript" src="js/plugins/ui.spinner.min.js"></script>
-<script type="text/javascript" src="js/plugins/chosen.jquery.min.js"></script>
+<?php 
+	if(isset($_GET['view'])) { 
+		if($_GET['view'] == 'sheet') { ?>
+			<script type="text/javascript" src="js/jquery.js"></script>
+			<script type="text/javascript" src="js/plugins/jquery.form.js"></script>
+			
+<?php 	} else { ?>
+	<script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery.flot.min.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery.flot.resize.min.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery.slimscroll.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery.tagsinput.min.js"></script>
+
+	<script type="text/javascript" src="js/plugins/charCount.js"></script>
+	<script type="text/javascript" src="js/plugins/ui.spinner.min.js"></script>
+	<script type="text/javascript" src="js/plugins/chosen.jquery.min.js"></script>
+	
+	<script type="text/javascript" src="js/custom/dashboard.js"></script>
+	<script type="text/javascript" src="js/custom/forms.js"></script><?php } 
+	} else { ?>
+	
+<?php } ?>
 <script type="text/javascript" src="js/custom/general.js"></script>
-<script type="text/javascript" src="js/custom/dashboard.js"></script>
-<script type="text/javascript" src="js/custom/forms.js"></script>
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/plugins/excanvas.min.js"></script><![endif]-->
 <!--[if IE 9]>
     <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>

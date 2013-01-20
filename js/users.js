@@ -23,7 +23,7 @@ function addUser() {
 	//alert('hello'); return false;
 	var password = jQuery('#password').val();
 	var user = jQuery('#user').val();
-	if(jQuery('#password').val() == ''){
+	if(jQuery('#pw').val() == ''){
 		alert('Please give the password');
 		return false;
 	}
