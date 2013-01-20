@@ -62,6 +62,31 @@ $C = new CamerticConfig;
 <!--[if lt IE 9]>
 	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 <![endif]-->
+<style>
+a.task{
+    color:#81910F;             
+}
+a.task:hover,a.task:focus{
+    box-shadow:0 1px 0 rgba(255,255,255,.4);
+}
+a.task span{
+    position:absolute;                
+	margin-top:23px;
+    margin-left:-35px;
+	color:#09c;
+    background:rgba(0,0,0,.9);
+    padding:15px;
+    border-radius:3px;
+    box-shadow:0 0 2px rgba(0,0,0,.5);
+	transform:scale(0) rotate(-12deg);
+	transition:all .25s;
+	opacity:0;
+}
+a.task:hover span, a.task:focus span{
+    transform:scale(1) rotate(0); 
+	opacity:1;	
+}
+</style>
 </head>
 
 <body class="withvernav">

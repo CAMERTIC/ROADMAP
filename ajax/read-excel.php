@@ -27,7 +27,7 @@ $objPHPExcel = $objReader->load("test1.xlsx"); */
 $targetFolder = 'CAMIRON-ROADMAP/uploads/';
 $targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
 $file = $targetPath . $_GET['file'];
-var_dump($file);// die;
+//var_dump($file);// die;
 $objReader->setLoadSheetsOnly( array("Feuil1", "My special sheet") );
 $objPHPExcel = $objReader->load($file);
 
@@ -36,75 +36,75 @@ $objPHPExcel = $objReader->load($file);
 $sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 
 // getting conditions
-$conditions = array();
-$i = 1;
-foreach($sheetData as $k => $s) {
-	if($k > 5) {
+// $conditions = array();
+// $i = 1;
+// foreach($sheetData as $k => $s) {
+	// if($k > 5) {
 	
-		if($s['A'] != '' && !is_null($s['A'])) {
-			$conditions[$i] = $s['A'];
-			$conditions["comment_c$i"] = $objPHPExcel->getActiveSheet()->getComment("A$k")->getText()->getPlainText();$i++;
-		}
-	}
+		// if($s['A'] != '' && !is_null($s['A'])) {
+			// $conditions[$i] = $s['A'];
+			// $conditions["comment_c$i"] = $objPHPExcel->getActiveSheet()->getComment("A$k")->getText()->getPlainText();$i++;
+		// }
+	// }
 	
-}
+// }
 
 // getting actions
-$actions = array();
-$i = 1;
-foreach($sheetData as $k => $s) {
-	if($k > 5) {
-		if($k > 6 && $s['A'] != '')
-			$i++;
+// $actions = array();
+// $i = 1;
+// foreach($sheetData as $k => $s) {
+	// if($k > 5) {
+		// if($k > 6 && $s['A'] != '')
+			// $i++;
 		
-		$actions[$i][] = $s['B'];
-	}
-}
+		// $actions[$i][] = $s['B'];
+	// }
+// }
 
 // getting date
-$datecompliance = array();
-$i = 1;
-$lastvalue = "";
-foreach($sheetData as $k => $s) {
-	if($k > 5) {
-		if($k > 6 && $s['A'] != ''){
-			$i++;
-		}
-		if($s['C'] == '')
-			$datecompliance[$i][] = $lastvalue;
-		else {
-			$lastvalue = $datecompliance[$i][] = $s['C'];
-		}
-	}
-}
+// $datecompliance = array();
+// $i = 1;
+// $lastvalue = "";
+// foreach($sheetData as $k => $s) {
+	// if($k > 5) {
+		// if($k > 6 && $s['A'] != ''){
+			// $i++;
+		// }
+		// if($s['C'] == '')
+			// $datecompliance[$i][] = $lastvalue;
+		// else {
+			// $lastvalue = $datecompliance[$i][] = $s['C'];
+		// }
+	// }
+// }
 
 // getting datedu
-$datecompliancedue = array();
-$i = 1;
-$lastvalue = "";
-foreach($sheetData as $k => $s) {
-	if($k > 5) {
-		if($k > 6 && $s['A'] != '') {
-			$lastvalue = '';
-			$i++;
-		}
-		if($s['F'] == '')
-			$datecompliancedue[$i][] = $lastvalue;
-		else {
-			$lastvalue = $datecompliancedue[$i][] = $s['F'];
+// $datecompliancedue = array();
+// $i = 1;
+// $lastvalue = "";
+// foreach($sheetData as $k => $s) {
+	// if($k > 5) {
+		// if($k > 6 && $s['A'] != '') {
+			// $lastvalue = '';
+			// $i++;
+		// }
+		// if($s['F'] == '')
+			// $datecompliancedue[$i][] = $lastvalue;
+		// else {
+			// $lastvalue = $datecompliancedue[$i][] = $s['F'];
 			
-		}
-	}
-}
+		// }
+	// }
+// }
 
-echo "Conditions<br />";
-var_dump($conditions);
-echo "Required Actions or Task<br />";
-var_dump($actions);
-echo "Date Compliance<br />";
-var_dump($datecompliance);
-echo "Due Date<br />";
-var_dump($datecompliancedue);
+// echo "Conditions<br />";
+// var_dump($conditions);
+// echo "Required Actions or Task<br />";
+// var_dump($actions);
+// echo "Date Compliance<br />";
+// var_dump($datecompliance);
+// echo "Due Date<br />";
+// var_dump($datecompliancedue);
 
 // echo "Condition 1<br />";
 // echo $conditions[1] . "<br />";
@@ -146,8 +146,17 @@ var_dump($datecompliancedue);
 					echo $sheetData[$i-2][$k];
 				else
 					echo $sheetData[$i-1][$k];
-			else
-				echo $s 
+			else {
+				$cmt = $objPHPExcel->getActiveSheet()->getComment("$k$i")->getText()->getPlainText();
+				if($cmt != '') {
+					echo '<a href="#" class="task">' . $s;
+					echo "<span>$cmt</span>";
+					echo '</a>';
+				} else {
+					echo $s;
+				}
+			}
+			//if()
 			
 			?></td>
 		<?php } ?>

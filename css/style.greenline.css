@@ -34,7 +34,7 @@
 .msgbutton a:hover { background-color: #78ce07; }
 .actlist li a:hover { color: #78ce07; }
 .userdata ul li a:hover { background-color: #78ce07; }
-.hornav li.current a { color: #78ce07; }
+.hornav li.current a { color: #81910F; }
 .contenttitle2, .widgetbox .title { border-bottom-color: #78ce07; }
 .toplist li .desc { color: #78ce07; }
 .ui-state-active a { color: #78ce07; }
@@ -63,7 +63,7 @@ form button { background-color: #78ce07; border-color: #6cbc05; }
 .wizard .tabbedmenu li a.done span.h2, .wizard .tabbedmenu li a.done span{ color: #78ce07; }
 .verwizard .verticalmenu a.selected { background-color: #78ce07; }
 .editornav li.current a { color: #78ce07; }
-form input[type="submit"] { background-color: #78ce07; border-color: #6cbc05; }
+form input[type="submit"] { background-color: #81910F; border-color: #6cbc05; }
 .filemgr_menu li a.newfilebutton { background-color: #78ce07; border-color: #6cbc05; }
 .listfile li.selected a { background: #eaf3fc; border-color: #78ce07; }
 .ui-slider-vertical .ui-slider-range, .ui-slider-horizontal .ui-slider-range { background-color: #78ce07; }
