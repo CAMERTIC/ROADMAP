@@ -1142,7 +1142,7 @@ form label.error { float: none; color: #f00; font-size: 11px; display: block; te
 .quickform .quickformbutton button.update:active { 
 	-moz-box-shadow: inset 1px 1px 3px #1a2434; -webkit-box-shadow: inset 1px 1px 3px #1a2434; box-shadow: inset 1px 1px 3px #1a2434;
 }
-.quickform .monthselect { width: 80px; display: inline-block; vertical-align: middle; }
+.quickform .monthselect { /* width: 80px; */ display: inline-block; vertical-align: middle; }
 .quickform .loading { margin: 0 10px; font-style: italic; color: #999; font-size: 11px; display: none; }
 .quickform .loading img { vertical-align: middle; margin-right: 5px; }
 

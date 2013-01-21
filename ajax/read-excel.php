@@ -114,9 +114,10 @@ $sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 // }
 //var_dump($sheetData);
 ?>
-<div class="contenttitle2">
-	<h3>Content of the sheet</h3>
-</div><!--contenttitle-->
+
+<button class="stdbtn btn_lime" onclick="loadSheet('<?php echo $file; ?>')">Click to Load to Database</button><br />
+<p id="response" style="display:none"><img src="./images/loadingAnimation.gif" id="loading" /></p>
+<br />
 <table cellpadding="0" cellspacing="0" border="0" class="stdtable" style="width : 200%">
 	
 	<thead>
@@ -135,14 +136,14 @@ $sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 	<tbody>
 	<?php
 		$i = 0;
-		for($i = 6; $i <= 10; $i++) {
+		for($i = 6; $i <= count($sheetData)+5; $i++) {
 			
 		?>
 		<tr>
 		<?php foreach($sheetData[$i] as $k => $s) { ?>
 			<td><?php
 			if($s == '' && $k != 'J')
-				if($sheetData[$i-1][$k] == '')
+				if($sheetData[$i-1][$k] == '' && $i > 6)
 					echo $sheetData[$i-2][$k];
 				else
 					echo $sheetData[$i-1][$k];

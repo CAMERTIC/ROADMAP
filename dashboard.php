@@ -3,14 +3,14 @@
 global $user;
 require_once 'config.php';
 $C = new CamerticConfig;
-// $app = new premiumAutocar;
-// $user = new utilisateur();
+$app = new camiron;
+$user = new rc_users();
 
 // Check session
-// if(!$app->checkAdminSession()) {
-	// header('location:index.html');
-	// die();
-// }
+if(!$app->checkSession()) {
+	header('location:index.php');
+	die();
+}
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -90,7 +90,7 @@ $C = new CamerticConfig;
                     	<li><a href="editprofile.html">View Profile</a></li>
                         <li><a href="accountsettings.html">Account Settings</a></li>
                         <li><a href="help.html">Support</a></li>
-                        <li><a href="index.html">Sign Out</a></li>
+                        <li><a href="#" onclick="logout();">Sign Out</a></li>
                     </ul>
                 </div><!--userdata-->
             </div><!--userinfodrop-->
@@ -124,6 +124,7 @@ $C = new CamerticConfig;
     
     
 </div><!--bodywrapper-->
+<script type="text/javascript" src="js/logout.js"></script>
 
 </body>
 </html>

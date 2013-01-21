@@ -1,6 +1,6 @@
 <?php
 
-define("DS", DIRECTORY_SEPARATOR);
+//define("DS", DIRECTORY_SEPARATOR);
 define("AJAX_F", "_ajax/"); // DOSSIER DE SCRIPT SAJAX
 
 global $viewFolder;
@@ -238,17 +238,7 @@ function diffJour($d1, $d2) {
 	return $interval->format('%R%a');
 } 
 
-// function translateMois($m) {
-	// switch($m) {
-		// case 'January': return 'Janvier'; break;
-		// case 'Tuesday': return 'Mardi'; break;
-		// case 'Wednesday': return 'Mercredi'; break;
-		// case 'Thursday': return 'Jeudi'; break;
-		// case 'Friday': return 'Vendredi'; break;
-		// case 'Saturday': return 'Samedi'; break;
-		// case 'Sunday': return 'Dimanche'; break;
-	// }
-// }
+
 
 // function translateJrSemaine($j) {
 	// switch($j) {
@@ -265,6 +255,14 @@ function diffJour($d1, $d2) {
 function todayDate() {
 	setlocale(LC_ALL, 'fr_FR');
 	return date("D j F Y");
+}
+
+function getMysqlToCamironDate($date1) {
+	$tab = array();
+	$date2 = '';
+	$tab = explode('-', $date1);
+	$date2 = date('F', strtotime("$tab[0]-$tab[1]-$tab[2]")) . ' ' . $tab[2] . ', ' . $tab[0];
+	return $date2;
 }
 
 function dateMysql($date1, $date2 = null) {

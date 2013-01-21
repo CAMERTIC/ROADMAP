@@ -5,7 +5,7 @@ function logout() {
 		url: ajax+"deconnexion.php",
 		cache: false,
 		success: function(html){
-			window.location.reload();
+			window.location = './index.php';
 		},
 		statusCode: {
 			404: function() {

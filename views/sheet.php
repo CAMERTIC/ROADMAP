@@ -61,5 +61,24 @@ jQuery(function() {
         // Put your options here
     });
 });
-
+var ajax = 'ajax/';
+function loadSheet(file) {
+	jQuery("#response").show();
+	jQuery.ajax({
+		type: "POST",
+		data: "file="+file,
+		url: ajax+"load-excel.php",
+		cache: false,
+		success: function(html){
+			if(html==""){
+				jQuery('#response').hide();
+				jQuery('#response').html('<div class="notibar msgsuccess hidden"><a class="close"></a><p>This is a success message.</p></div>');
+				jQuery('#response').show();
+				setTimeout(function() {
+					jQuery('#response').fadeOut("slow");
+				}, 2000);	
+			}
+		}
+	});
+}
 </script>	

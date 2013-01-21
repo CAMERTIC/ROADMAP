@@ -3,14 +3,14 @@
 global $user;
 require_once 'config.php';
 $C = new CamerticConfig;
-// $app = new premiumAutocar;
-// $user = new utilisateur();
+$app = new camiron;
+$user = new rc_users();
 
 // Check session
-// if(!$app->checkAdminSession()) {
-	// header('location:index.html');
-	// die();
-// }
+if(!$app->checkSession()) {
+	header('location:index.php');
+	die();
+}
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -24,14 +24,17 @@ $C = new CamerticConfig;
 
 <?php 
 	if(isset($_GET['view'])) { 
-		if($_GET['view'] == 'sheet') { ?>
+		if($_GET['view'] == 'sheet' || $_GET['view'] == 'tasks') { ?>
 			<link rel="stylesheet" type="text/css" href="css/uploadify.css" />
 			<script type="text/javascript" src="js/plugins/jquery-1.7.2.min.js"></script>
+			<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+			<script type="text/javascript" src="js/plugins/jquery.slimscroll.js"></script>
 			<script type="text/javascript" src="js/plugins/jquery.uploadify-3.1.min.js"></script>
 			<script type="text/javascript" src="js/plugins/jquery.uploadify.min.js"></script>
-			
+			<script type="text/javascript" src="js/custom/dashboard.js"></script>
+			<script type="text/javascript" src="js/custom/tables.js"></script>
 <?php 	} else { ?>
-	<script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
 	<script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
 	
@@ -73,8 +76,8 @@ a.task span{
     position:absolute;                
 	margin-top:23px;
     margin-left:-35px;
-	color:#09c;
-    background:rgba(0,0,0,.9);
+	color:#000;
+    background:rgb(187, 187, 187);
     padding:15px;
     border-radius:3px;
     box-shadow:0 0 2px rgba(0,0,0,.5);
@@ -97,14 +100,7 @@ a.task:hover span, a.task:focus span{
             <div class="logo" style="float:left; margin-left:29px"><img src="images/logo.png" height="45" width="" alt="CAMIRON" /></div>
             <span class="slogan">Roadmap Convention</span>
             
-            <!--<div class="search">
-            	<form action="" method="post">
-                	<input type="text" name="keyword" id="keyword" value="Enter keyword(s)" />
-                    <button class="submitbutton"></button>
-                </form>
-            </div>search-->
-            
-            <br clear="all" />
+           <br clear="all" />
             
         </div><!--left-->
         
@@ -133,9 +129,9 @@ a.task:hover span, a.task:focus span{
                 	<h4>Admin</h4>
                     <span class="email">juan@camiron.com</span>
                     <ul>
-                    	<li><a href="editprofile.html">View Profile</a></li>
-                        <li><a href="accountsettings.html">Account Settings</a></li>
-                        <li><a href="help.html">Support</a></li>
+                    	<li><a href="#">View Profile</a></li>
+                        <li><a href="#">Account Settings</a></li>
+                        <li><a href="#">Support</a></li>
                         <li><a href="#" onclick="logout();">Sign Out</a></li>
                     </ul>
                 </div><!--userdata-->

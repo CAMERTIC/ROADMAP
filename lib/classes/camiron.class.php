@@ -15,6 +15,7 @@ class camiron extends bd {
 	public $title = 'Camiron';
 	public $urlIndex = 'dashboard.php';
 	
+	
 	public function __construct() {
 		//GLOBAL $app, $user;
 		parent::__construct();
@@ -26,12 +27,20 @@ class camiron extends bd {
 		$this->checkSession();
 	}
 	
-	public function envoyerDemande($POST) {
-		
+	public function getGroup() {
+		return $_SESSION['u']['idgroupe'];
+	}
+	
+	public function sendToDash() {
+		switch($this->getGroup()) {
+			case 1 : header('location:dashboard.php'); break;
+			case 3 : header('location:dashboard-admin.php'); break; 
+			case 2 : header('location:dashboard-overview.php'); break;
+		}
 	}
 	
 	public function checkSession() {
-		if(!isset($_SESSION['fiche_id']))
+		if(!isset($_SESSION['u']['utilisateur']))
 			return false;
 		else return true;
 	}
