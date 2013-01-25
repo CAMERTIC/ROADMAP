@@ -27,6 +27,29 @@ class camiron extends bd {
 		$this->checkSession();
 	}
 	
+	public function LoadDictionary() {
+		global $dic;
+		global $mots;
+		global $definitions;
+		//var_dump($dic); die;
+		$patterns = array();
+		$replacements = array();
+		foreach($dic as $word => $definition) {
+			$patterns[] = "/$word/";
+			$replacements[] = '<a href="#" title="Click to see definition" onClick="jQuery.colorbox({html : \'<br />Definition : <br />'. $definition	.'<br /><br />\'}); return false" class="dic">'.$word.'</a>';
+		}
+		$mots = $patterns;
+		$definitions = $replacements;
+	}
+	
+	public function replaceDefinitions($phrase) {
+		global $mots;
+		global $definitions;
+		// echo "<pre>"; var_dump($mots); 
+		// echo "<pre>"; var_dump($definitions); die;
+		return preg_replace($mots, $definitions, $phrase);
+	}
+	
 	public function getGroup() {
 		return $_SESSION['u']['idgroupe'];
 	}
@@ -35,7 +58,8 @@ class camiron extends bd {
 		switch($this->getGroup()) {
 			case 1 : header('location:dashboard.php'); break;
 			case 3 : header('location:dashboard-admin.php'); break; 
-			case 2 : header('location:dashboard-overview.php'); break;
+			case 2 : header('location:dashboard.php'); break; 
+			//case 2 : header('location:dashboard-overview.php'); break;
 		}
 	}
 	

@@ -1,26 +1,26 @@
 <?php
-function CamironDateToMysqlDate($date) {
-	$data = explode(",", $date);
-	$y = $data[1];
-	$data = explode(" ", $data[0]);
-	$d = $data[1];
-	switch($data[0]) {
-		case 'January' : $m = '01'; break;
-		case 'February' : $m = '02'; break;
-		case 'March' : $m = '03'; break;
-		case 'April' : $m = '04'; break;
-		case 'May' : $m = '05'; break;
-		case 'June' : $m = '06'; break;
-		case 'July' : $m = '07'; break;
-		case 'August' : $m = '08'; break;
-		case 'September' : $m = '09'; break;
-		case 'October' : $m = '10'; break;
-		case 'November' : $m = '11'; break;
-		case 'Demcember' : $m = '12'; break;
-		default : 'January';
-	}
-	return "$y-$m-$d";
-}
+// function CamironDateToMysqlDate($date) {
+	// $data = explode(",", $date);
+	// $y = $data[1];
+	// $data = explode(" ", $data[0]);
+	// $d = $data[1];
+	// switch($data[0]) {
+		// case 'January' : $m = '01'; break;
+		// case 'February' : $m = '02'; break;
+		// case 'March' : $m = '03'; break;
+		// case 'April' : $m = '04'; break;
+		// case 'May' : $m = '05'; break;
+		// case 'June' : $m = '06'; break;
+		// case 'July' : $m = '07'; break;
+		// case 'August' : $m = '08'; break;
+		// case 'September' : $m = '09'; break;
+		// case 'October' : $m = '10'; break;
+		// case 'November' : $m = '11'; break;
+		// case 'Demcember' : $m = '12'; break;
+		// default : 'January';
+	// }
+	// return "$y-$m-$d";
+// }
 include 'Classes/PHPExcel.php';
 
 $objReader = new PHPExcel_Reader_Excel2007();
@@ -54,12 +54,12 @@ for($i = 6; $i <= count($sheetData)+5; $i++) {
 		
 		$valeur = '';
 		$valeur_c = '';
-		if($s == '' && $k != 'J')
+		if($s == '' && $k != 'J') {
 			if($sheetData[$i-1][$k] == '' && $i > 6)
 				$valeur = $sheetData[$i-2][$k];
 			else
 				$valeur = $sheetData[$i-1][$k];
-		else {
+		} else {
 			$cmt = $objPHPExcel->getActiveSheet()->getComment("$k$i")->getText()->getPlainText();
 			if($cmt != '') {
 				$valeur_c = $cmt;
@@ -68,7 +68,8 @@ for($i = 6; $i <= count($sheetData)+5; $i++) {
 			}
 			$valeur = $s;
 		}
-	
+		if($valeur == '') $valeur = $sheetData[$i-1][$k];
+		
 		if($k == 'A') $task['cond_cat_title'] = $valeur;
 		if($k == 'A') $task['cond_cat_title_c'] = $valeur_c;
 		if($k == 'B') $task['required_action'] = $valeur;
@@ -87,7 +88,7 @@ for($i = 6; $i <= count($sheetData)+5; $i++) {
 		if($k == 'F') $task['due_date_c'] = $valeur_c;
 		if($k == 'G') $task['authority_accountable'] = $valeur;
 		if($k == 'G') $task['authority_accountable_c'] = $valeur_c;
-		if($k == 'H') $task['status'] = $valeur;
+		if($k == 'H') $task['status'] = '';
 		if($k == 'H') $task['status_c'] = $valeur_c;
 		if($k == 'I') $task['input_camiron'] = $valeur;
 		if($k == 'I') $task['input_camiron_c'] = $valeur_c;
@@ -98,6 +99,9 @@ for($i = 6; $i <= count($sheetData)+5; $i++) {
 
 		if($k == 'L') $task['risk_sanction'] = $valeur;
 		if($k == 'L') $task['risk_sanction_c'] = $valeur_c;
+		$task['type'] = $_POST['type'];
+		if($task['type']=='contructions')
+			$task['sector'] == $cond_cat_title;
 	} 
 	//var_dump($task);
 	try {

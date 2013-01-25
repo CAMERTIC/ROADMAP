@@ -1,6 +1,9 @@
 <?php
-	$user_ldap = new ldap_users();
+	$user_ldap = new ldap_user();
 	$users = $user_ldap->getAllRecords();
+	
+	$team = new team();
+	$teams = $team->getAllRecords();
 	//var_dump($users);
 ?>
 <div class="centercontent">
@@ -21,7 +24,7 @@
 								<select name="login" id="login">
 									<option value="">Choose One</option>
 								<?php foreach($users as $u) { ?>
-									<option value="<?php echo $u->username ?>"><?php echo $u->firstname . " " . $u->lastname; ?></option>
+									<option value="<?php echo $u->login ?>"><?php echo $u->firstname . " " . $u->lastname; ?></option>
 								<?php } ?>
 								</select>
 							</span>
@@ -33,23 +36,23 @@
                         </p>
                         
                         <p>
-                        	<label>Group</label>
+                        	<label>Role</label>
                             <span class="field">
 								<select name="gp" id="gp">
 									<option value="">Choose One</option>
-									<option value="1">Manager</option>
-									<option value="2">User</option>
+									<option value="2">Manager</option>
+									<option value="1">User</option>
 								</select>
 							</span>
                         </p>
                         
                         <p id="">
-                        	<label>Select a manager</label>
+                        	<label>Select a Team</label>
                             <span class="field">
-								<select name="manager" id="manager">
+								<select name="team" id="team">
 									<option value="">Choose One</option>
-								<?php foreach($users as $u) { ?>
-									<option value="<?php echo $u->username ?>"><?php echo $u->firstname . " " . $u->lastname; ?></option>
+								<?php foreach($teams as $u) { ?>
+									<option value="<?php echo $u->id ?>"><?php echo $u->name; ?></option>
 								<?php } ?>
 								</select>
 							</span>

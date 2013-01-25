@@ -7,16 +7,14 @@
 <div class="centercontent tables">
     
         <div class="pageheader notab">
-            <h1 class="pagetitle">My Tasks</h1>
-            <span class="pagedesc">There are all tasks you are responsible of</span>
+            <h1 class="pagetitle">Team Tasks</h1>
+            <span class="pagedesc">There are all tasks of your team</span>
             
         </div><!--pageheader-->
-        <div class="overviewhead">
-			
+         <div class="overviewhead">
 			<div class="overviewselect">
 				<select id="overviewselect3" name="status">
 					<option value="">Status</option>
-					<option <?php if(isset($_GET['status']))if($_GET['status']=='pending') echo "SELECTED"; ?> value="pending">Pending</option>
 					<option <?php if(isset($_GET['status']))if($_GET['status']=='in progress') echo "SELECTED"; ?> value="in progress">In progress</option>
 					<option <?php if(isset($_GET['status']))if($_GET['status']=='on hold') echo "SELECTED"; ?> value="on hold">On hold</option>
 					<option <?php if(isset($_GET['status']))if($_GET['status']=='closed') echo "SELECTED"; ?> value="closed">Closed</option>
@@ -25,16 +23,15 @@
 			<h3>Apply Filters: &nbsp;</h3>
 		</div><!--overviewhead-->
         <div id="contentwrapper" class="contentwrapper">                                
-		
-		
+			
             <div class="contenttitle2">
-				<h3>All My Tasks in Conditions</h3>
+				<h3>All Team Tasks in Conditions</h3>
 			</div>
 			<?php
 				if(isset($_GET['status']))
-					$tasks = $t->getMyConditionsTasks($_GET['status']);
+					$tasks = $t->getMyTeamConditionsTasks($_GET['status']);
 				else
-					$tasks = $t->getMyConditionsTasks();
+					$tasks = $t->getMyTeamConditionsTasks();
 			?>
                 <table style="width:200%" cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
                     <colgroup>
@@ -102,13 +99,14 @@
               
                 <br /><br />
 			<div class="contenttitle2">
-				<h3>All My Tasks in Construction phase</h3>
+				<h3>All Team Tasks in Construction phase</h3>
 			</div>
 			<?php
 				if(isset($_GET['status']))
-					$tasks = $t->getMyConstructionsTasks($_GET['status']);
+					$tasks = $t->getMyTeamConstructionsTasks($_GET['status']);
 				else
-					$tasks = $t->getMyConstructionsTasks();
+					$tasks = $t->getMyTeamConstructionsTasks();
+				
 			?>
                 <table style="width:200%" cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
                     <colgroup>
@@ -176,13 +174,13 @@
 				<br /><br />
 			
 			<div class="contenttitle2">
-				<h3>All My Tasks in Exploitation phase</h3>
+				<h3>All Team Tasks in Exploitation phase</h3>
 			</div>
 			<?php
 				if(isset($_GET['status']))
-					$tasks = $t->getMyExploitationsTasks($_GET['status']);
-				else	
-					$tasks = $t->getMyExploitationsTasks();
+					$tasks = $t->getMyTeamExploitationsTasks($_GET['status']);
+				else
+					$tasks = $t->getMyTeamExploitationsTasks();
 			?>
                 <table style="width:200%" cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
                     <colgroup>
@@ -227,7 +225,7 @@
                     <tbody>
                         <?php foreach($tasks as $ts) { ?>
                         <tr id="<?php echo $ts->id; ?>">
-                             <td class="con0"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . $app->replaceDefinitions($ts->cond_cat_title) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo $app->replaceDefinitions($ts->cond_cat_title); ?> </td>
+                              <td class="con0"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . $app->replaceDefinitions($ts->cond_cat_title) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo $app->replaceDefinitions($ts->cond_cat_title); ?> </td>
                             <td class="center"><?php if($ts->required_action_c != '') echo '<span class="task">' . $ts->required_action . "<span>$ts->required_action_c</span></span>" ; else echo $app->replaceDefinitions($ts->required_action); ?></td>
                             <td class="con1" width="5%"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline . "<span>$ts->deadline_c</span></span>" ; else echo getMysqlToCamironDate($ts->deadline); ?></td>
                             <td class="con1"><?php if($ts->party_accountable_c != '') echo '<span class="task">' . $ts->party_accountable . "<span>$ts->party_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->party_accountable); ?></td>

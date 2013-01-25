@@ -1,7 +1,8 @@
 <?php
 	$user_ldap = new rc_users();
 	$users = $user_ldap->getAllRecords();
-	//var_dump($users);
+	// echo "<pre>";
+	// var_dump($users);
 ?>
 
 <div class="centercontent tables">
@@ -37,8 +38,9 @@
                             <th class="head0">Login</th>
                             <th class="head1">Last login</th>
                             <th class="head0">User group</th>
-                            <th class="head1">Manager</th>
-                            <th class="head0"></th>
+                            <th class="head1">Team</th>
+                            <th class="head0">Manager</th>
+                            <th class="head1"></th>
                         </tr>
                     </thead>
                    
@@ -52,7 +54,8 @@
                             <td><?php echo $u->login ?></td>
                             <td><?php echo $u->last_login ?></td>
                             <td><?php echo $u->gp ?></td>
-                            <td class="center"><?php echo $u->manager ?></td>
+                            <td class="center"><?php echo $u->team ?></td>
+                            <td class="center"><?php  ?></td>
                             <td class="center"></td>
                         </tr>
 					<?php } ?>

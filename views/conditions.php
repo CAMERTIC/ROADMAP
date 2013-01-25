@@ -1,32 +1,45 @@
 <?php
 	$t = new tasks();
 	$cmt = new comment();
-	if(isset($_GET['type']) || isset($_GET['person_in_charge']) || isset($_GET['status'])) {
-		$tasks = $t->getAllTasks($_GET);
+
+	if((isset($_GET['filter']) || isset($_GET['person_in_charge']))) {
+		if(isset($_GET['person_in_charge']))
+			$tasks = $t->getAllConditions($_GET['filter'], $_GET['person_in_charge']);
+		else
+			$tasks = $t->getAllConditions($_GET['filter']);
 	} else 
-		$tasks = $t->getAllRecords();
+		$tasks = $t->getAllConditions();
 	
 	$u = new rc_users;
 	$users = $u->getAllRecords();
-	global $app;
 	//var_dump($tasks);
 ?>
 <div class="centercontent tables">
     
         <div class="pageheader notab">
-            <h1 class="pagetitle">Tasks</h1>
-            <span class="pagedesc">There are all tasks</span>
+            <h1 class="pagetitle">Conditions</h1>
+            <span class="pagedesc">There are all tasks of condition type</span>
             
         </div><!--pageheader-->
-        
+        <div class="overviewhead">
+			
+			<div class="overviewselect">
+				<select id="overviewselect3" name="person_in_charge">
+					<option <?php if(isset($_GET['person_in_charge']))if($_GET['person_in_charge']=='me') echo "SELECTED"; ?> value="me">My Actions</option>
+					<option <?php if(isset($_GET['person_in_charge']))if($_GET['person_in_charge']=='team') echo "SELECTED"; ?> value="team">Team Actions</option>
+					<option <?php if(isset($_GET['person_in_charge'])) { if($_GET['person_in_charge']=='all' || $_GET['person_in_charge'] == '') echo "SELECTED"; } else echo "SELECTED"; ?> value="all">All Actions</option>
+				</select>
+			</div>
+			<h3>Apply Filters: &nbsp;</h3>
+		</div><!--overviewhead-->
         <div id="contentwrapper" class="contentwrapper">                                
 			<div class="contenttitle2">
 				<h3>
 					<?php if(isset($_GET['filter'])) {
 						switch($_GET['filter']) {
-							case '6' :  echo 'Tasks within 6 months of date compliance'; break;
-							case '12' :  echo 'Tasks within 12 months of date compliance'; break;
-							case '18' :  echo 'Tasks within 18 months of date compliance'; break;
+							case '6' :  echo 'Conditions Tasks within 6 months of date compliance'; break;
+							case '12' :  echo 'Conditions Tasks within 12 months of date compliance'; break;
+							case '18' :  echo 'Conditions Tasks within 18 months of date compliance'; break;
 							default  :  echo 'All Tasks'; break;
 						}
 						}
@@ -36,34 +49,6 @@
 				</h3>
 			</div><!--contenttitle-->
             
-			<div class="overviewhead">
-				<div class="overviewselect">
-					<select id="overviewselect" name="overviewselect">
-						<option value="">Type</option>
-						<option value="conditions" <?php if(isset($_GET['type']))if($_GET['type']=='conditions') echo "SELECTED"; ?>>Conditions</option>
-						<option value="constructions" <?php if(isset($_GET['type']))if($_GET['type']=='constructions') echo "SELECTED"; ?>>Constructions</option>
-						<option value="exploitations" <?php if(isset($_GET['type']))if($_GET['type']=='exploitations') echo "SELECTED"; ?>>Exploitation</option>
-					</select>
-				</div>
-				<div class="overviewselect">
-					<select id="overviewselect2" name="person_in_charge">
-						<option value="">Person in Charge</option>
-					<?php foreach($users as $u) { ?>
-						<option <?php if(isset($_GET['person_in_charge']))if($_GET['person_in_charge']==$u->login) echo "SELECTED"; ?> value="<?php echo $u->login; ?>"><?php echo $u->login; ?></option>
-					<?php } ?>
-					</select>
-				</div>
-				<div class="overviewselect">
-					<select id="overviewselect3" name="status">
-						<option value="">Status</option>
-						<option <?php if(isset($_GET['status']))if($_GET['status']=='in progress') echo "SELECTED"; ?> value="in progress">In progress</option>
-						<option <?php if(isset($_GET['status']))if($_GET['status']=='on hold') echo "SELECTED"; ?> value="on hold">On hold</option>
-						<option <?php if(isset($_GET['status']))if($_GET['status']=='closed') echo "SELECTED"; ?> value="closed">Closed</option>
-					</select>
-				</div>
-				<h3>Apply Filters: &nbsp;</h3>
-			</div><!--overviewhead-->
-			
 			<br clear="all" />
                 <table style="width:200%" cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
                     <colgroup>
@@ -121,7 +106,11 @@
                             <td class="center"><?php if($ts->output_c != '') echo '<span class="task">' . $ts->output . "<span>$ts->output_c</span></span>" ; else echo $app->replaceDefinitions($ts->output); ?></td>
                             <td class="center"><?php if($ts->risk_sanction_c != '') echo '<span class="task">' . $ts->risk_sanction . "<span>$ts->risk_sanction_c</span></span>" ; else echo $app->replaceDefinitions($ts->risk_sanction); ?></td>
                             <td class="center"><?php echo utf8_encode($cmt->getLastComment($ts->id)); ?></td>
-                            <td class="center"><a href="ajax/updatetask.php?id=<?php echo $ts->id; ?>" class="toggle">Update</a></td>
+							<?php if($_SESSION['u']['group'] == 3) { ?>
+								<td class="center"><a href="ajax/updatetask.php?id=<?php echo $ts->id; ?>" class="toggle">Update</a></td>
+							<?php } else { ?>
+								<td class="center"><a href="ajax/updatetaskbyuser.php?id=<?php echo $ts->id; ?>" class="toggle">Update</a></td>
+							<?php } ?>
                         </tr> 
 						<?php } ?>
                     </tbody>
@@ -133,16 +122,8 @@
         
 </div><!-- centercontent -->
 <script type="text/javascript">
-	jQuery('#overviewselect').change(function(){
-		//alert(jQuery('#overviewselect').val()); return false;
-		//if(jQuery('#overviewselect').val() != '')
-			window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&type='+jQuery('#overviewselect').val();
-	});
-	jQuery('#overviewselect2').change(function(){
-		window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&person_in_charge='+jQuery('#overviewselect2').val();
-	});
 	jQuery('#overviewselect3').change(function(){
-		window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&status='+jQuery('#overviewselect3').val();
+		window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&person_in_charge='+jQuery('#overviewselect3').val();
 	});
 </script>
    

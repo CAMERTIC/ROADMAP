@@ -1,7 +1,13 @@
 <?php 
 @session_start();
 global $user;
+global $dic;
+global $mots;
+global $definitions;
+global $app;
+$dic = array();
 require_once 'config.php';
+require_once 'dictionary.php';	
 $C = new CamerticConfig;
 $app = new camiron;
 $user = new rc_users();
@@ -11,7 +17,7 @@ if(!$app->checkSession()) {
 	header('location:index.php');
 	die();
 }
-
+$app->LoadDictionary();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -55,6 +61,7 @@ if(!$app->checkSession()) {
 <?php } ?>
 <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
 <script type="text/javascript" src="js/custom/general.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.colorbox-min.js"></script>
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/plugins/excanvas.min.js"></script><![endif]-->
 <!--[if IE 9]>
     <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
@@ -66,13 +73,13 @@ if(!$app->checkSession()) {
 	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 <![endif]-->
 <style>
-a.task{
-    color:#81910F;             
+span.task{
+    /* color:#81910F; */             
 }
-a.task:hover,a.task:focus{
+span.task:hover,a.task:focus{
     box-shadow:0 1px 0 rgba(255,255,255,.4);
 }
-a.task span{
+span.task span{
     position:absolute;                
 	margin-top:23px;
     margin-left:-35px;
@@ -85,9 +92,29 @@ a.task span{
 	transition:all .25s;
 	opacity:0;
 }
-a.task:hover span, a.task:focus span{
+span.task:hover span, a.task:focus span{
     transform:scale(1) rotate(0); 
 	opacity:1;	
+}
+span.task span{
+    position:absolute;                
+	margin-top:23px;
+    margin-left:-35px;
+	color:#000;
+    background:rgb(187, 187, 187);
+    padding:15px;
+    border-radius:3px;
+    box-shadow:0 0 2px rgba(0,0,0,.5);
+	transform:scale(0) rotate(-12deg);
+	transition:all .25s;
+	opacity:0;
+}
+span.task:hover span, a.task:focus span{
+    transform:scale(1) rotate(0); 
+	opacity:1;	
+}
+a.dic {
+	text-decoration : underline;
 }
 </style>
 </head>

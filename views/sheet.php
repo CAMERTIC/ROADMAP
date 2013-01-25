@@ -64,19 +64,25 @@ jQuery(function() {
 var ajax = 'ajax/';
 function loadSheet(file) {
 	jQuery("#response").show();
+	var type = jQuery("#type").val();
+	// alert(type); 
+	// return false;
 	jQuery.ajax({
 		type: "POST",
-		data: "file="+file,
+		data: "file="+file+"&type="+type,
 		url: ajax+"load-excel.php",
 		cache: false,
 		success: function(html){
 			if(html==""){
 				jQuery('#response').hide();
-				jQuery('#response').html('<div class="notibar msgsuccess hidden"><a class="close"></a><p>This is a success message.</p></div>');
+				jQuery('#response').html('<div class="notibar msgsuccess"><a class="close"></a><p>The sheet has been successfully load to database.</p></div>');
 				jQuery('#response').show();
 				setTimeout(function() {
 					jQuery('#response').fadeOut("slow");
 				}, 2000);	
+			} else {
+				jQuery('#response').html('<div class="notibar msgerror hidden"><a class="close"></a><p>This is a success message.</p></div>');
+				//jQuery('#response').hide();
 			}
 		}
 	});

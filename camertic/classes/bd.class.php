@@ -100,7 +100,7 @@ class bd extends CamerticConfig {
 		}
 		catch(PDOException $e) {
 			printf("Erreur de connexion : %s", $e->getMessage());
-			if(!is_null($this->_con))  echo "<pre>". var_dump($this->_con->errorInfo()) . "</pre>";
+			//if(!is_null($this->_con))  echo "<pre>". var_dump($this->_con->errorInfo()) . "</pre>";
 			die;
 		}
 	}

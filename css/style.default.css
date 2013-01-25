@@ -984,7 +984,7 @@ form label.error { float: none; color: #f00; font-size: 11px; display: block; te
 .stdform p, .stdform div.par { margin: 20px 0; }
 .stdform div.par { overflow: hidden; }
 .stdform span.field, .stdform div.field { margin-left: 220px; display: block; position: relative; }
-.stdform .formwrapper { display: block; padding-top: 5px; margin-left: 220px; line-height: 25px; }
+.stdform .formwrapper { display: block; padding-top: 5px; margin-left: 120px; line-height: 25px; }
 .stdform label { float: left; width: 200px; text-align: right; padding: 5px 20px 0 0; }
 
 .stdform button.cancel { background: #eee; color: #666; border: 1px solid #ddd; }

@@ -107,7 +107,7 @@ jQuery(document).ready(function(){
 			parentRow.addClass('hiderow');					//hide this row to look like replacing the newly inserted row
 			jQuery('input,select').uniform();
 		});
-				
+		
 		return false;
 	});
 		

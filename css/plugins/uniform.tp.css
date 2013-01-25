@@ -509,6 +509,7 @@ div.selector {
   position: relative;
   padding-left: 10px;
   overflow: hidden;
+  /* display : none; */
 }
 
 div.selector span {

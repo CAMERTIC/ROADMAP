@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
 	
 	///// LOGIN FORM SUBMIT /////
 	jQuery('#connexion').click(function(){
-	
+		jQuery('#message').html('Authentification...');
 		if(jQuery('#username').val() == '' && jQuery('#password').val() == '') {
 			jQuery('#message').html('The username you entered is incorrect.');
 			jQuery('.nousername').fadeIn();
@@ -32,7 +32,7 @@ jQuery(document).ready(function(){
 						// jQuery('#message').addClass('success');
 						setTimeout(function() {
 							window.location='./index.php'
-						}, 2000);
+						}, 1000);
 					} else {
 						//alert('Faux');
 						jQuery('#message').html('The username or password is incorrect.');

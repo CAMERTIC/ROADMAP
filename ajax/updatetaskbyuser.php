@@ -13,7 +13,8 @@ $p = new tasks;
 $task = $p->getRecord($_GET['id']);
 
 $u = new rc_users;
-$users = $u->getAllRecords();
+	$users = $u->getUsers();
+
 $tab = explode('-', $task->deadline);
 $deadD = $tab[2];
 $deadM = $tab[1];
@@ -24,24 +25,47 @@ $dudM = $tab[1];
 $dudY = $tab[0];
 ?>
 <style>
+<?php if($_SESSION['u']['idgroupe'] == 2) { ?>
+.quickform p label {
+	line-height: 30px;
+    width: 80px;
+}
+.formwrapper div.selector {
+	display : none;
+}
+.stdform .formwrapper {
+	margin-left : 100px;
+}
+.quickform input.xsmall {
+  height: 12px;
+}
+<?php } else { ?>
 .quickform p label {
 	line-height: 30px;
     width: 150px;
 }
+
+<?php } ?>
 </style>
 <h4>Updating the task : <?php echo tronque($task->required_action, 50); ?></h4>
 <br />
-<form action="" method="post" class="quickform" id="task">
-	<div class="one_half" style="width:30.5%">
+<form action="" method="post" class="quickform <?php if($_SESSION['u']['idgroupe'] == 2) { ?> stdform<?php } ?>" id="task">
+	<div class="<?php if($_SESSION['u']['idgroupe'] == 2) { ?>basicform<?php } ?> one_half" >
+	                   
+	<?php if($_SESSION['u']['idgroupe'] == 2) { ?>
     	<p>
-        	<label>Person in charge</label>
-            <select id="person_in_charge" name="person_in_charge">
+        	<label>Assign to</label>
+			<span class="formwrapper hidden">
+            <select id="is_assigned_to" name="is_assigned_to" data-placeholder="Choose a user..." class="chzn-select" multiple="multiple" style="width:350px;" tabindex="4">
+				<option value=""></option> 
 				<?php foreach($users as $us) { ?>
-				<option value="<?php echo $us->login; ?>" <?php if($task->person_in_charge == $us->login) echo "SELECTED"; ?>><?php echo $us->login ?></option>
+				<option value="<?php echo $us->login; ?>" <?php if($task->is_assigned_to == $us->login) echo "SELECTED"; ?>><?php echo $us->login ?></option>
 				<?php } ?>
 			</select>
+			</span>
         </p>
-		<p>
+	
+	<p>
             <label for="date">Due Date</label>
             <span class="monthselect">
                 <select name="due_date_m" id="due_date_m" class="quickedit-date">
@@ -61,44 +85,22 @@ $dudY = $tab[0];
             <input type="text" name="due_date_j" id="due_date_j" value="<?php echo $dudD; ?>" class="xsmall" />&nbsp;
             <input type="text" name="due_date_a" id="due_date_a" value="<?php echo $dudY; ?>" class="small" />
         </p>
-		<p>
-            <label for="date">Date of compliance</label>
-            <span class="monthselect">
-                <select name="deadline_m" id="deadline_m" class="quickedit-date">
-                  <option <?php if($deadM == 1) echo "SELECTED"; ?> value="01">Jan</option>
-                  <option <?php if($deadM == 2) echo "SELECTED"; ?> value="02">Feb</option>
-                  <option <?php if($deadM == 3) echo "SELECTED"; ?> value="03">Mar</option>
-                  <option <?php if($deadM == 4) echo "SELECTED"; ?> value="04">Apr</option>
-                  <option <?php if($deadM == 5) echo "SELECTED"; ?> value="05">May</option>
-                  <option <?php if($deadM == 6) echo "SELECTED"; ?> value="06">Jun</option>
-                  <option <?php if($deadM == 7) echo "SELECTED"; ?> value="07">Jul</option>
-                  <option <?php if($deadM == 8) echo "SELECTED"; ?> value="08">Aug</option>
-                  <option <?php if($deadM == 9) echo "SELECTED"; ?> value="09">Sept</option>
-                  <option <?php if($deadM == 10) echo "SELECTED"; ?> value="10">Oct</option>
-                  <option <?php if($deadM == 11) echo "SELECTED"; ?> value="11">Nov</option>
-                  <option <?php if($deadM == 12) echo "SELECTED"; ?> value="12">Dec</option>
-                </select>
-            </span><!--monthselect-->
-            <input type="text" name="deadline_j" id="deadline_j" value="<?php echo $deadD; ?>" class="xsmall" />&nbsp;
-            <input type="text" name="deadline_a" id="deadline_a" value="<?php echo $deadY; ?>" class="small" />
-        </p>
-        
-    </div><!-- one_half last -->
-	
-	<div class="one_half last" style="width:40.5%">
+		<?php  } ?>
     	<p>
         	<label style="width:500px">Add a comment (If updated, updates will be sent by email to the person in charge selected)</label>
             <textarea id="comment" name="comment"  cols="" rows=""></textarea>
         </p>
+		<?php if($task->person_in_charge == $_SESSION['u']['utilisateur']) { ?>
         <p>
         	<label>Status</label>
             <span>
-                <input type="radio" <?php if($task->status == 'pending') echo 'checked="checked"'; ?> name="status" id="status_1" value="pending" /> Pending &nbsp; 
+                 <input type="radio" <?php if($task->status == 'pending') echo 'checked="checked"'; ?> name="status" id="status_1" value="pending" /> Pending &nbsp; 
                 <input type="radio" <?php if($task->status == 'in progress') echo 'checked="checked"'; ?> name="status" id="status_2" value="in progress" /> In progress &nbsp; 
                 <input type="radio" <?php if($task->status == 'on hold') echo 'checked="checked"'; ?> name="status" id="status_3" value="on hold" /> On hold
                 <input type="radio" <?php if($task->status == 'closed') echo 'checked="checked"'; ?> name="status" id="status_4" value="closed" /> Closed
             </span>
         </p>
+		<?php } ?>
     </div><!-- one_half last -->
     
     <br clear="all" />
@@ -117,7 +119,20 @@ $dudY = $tab[0];
 		// jQuery(this).parents('tr.togglerow').remove();
 		// return false;
 	// });
+<?php if($_SESSION['u']['idgroupe'] == 2) { ?>
+jQuery(".chzn-select").chosen();
+<?php } ?>
 jQuery('#update').click(function(){
+	//alert(jQuery("#is_assigned_to").val());
+	//return false;
+		//var status  = jQuery('#status_3').val();
+		var status  = jQuery('#status_4:checked').val();
+		if(status == 'closed'){
+			//setTimeout(function() {
+				jQuery.colorbox({html :"<?php echo ""; ?>"});
+			//}, 2000);
+			//return false;
+		}
 		jQuery('.loading').html('<img src="./images/loaders/loader3.gif" alt="" />Updating changes...');
 		jQuery('.loading').show();
 		var data = jQuery('#task').serialize();

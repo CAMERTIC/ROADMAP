@@ -115,7 +115,19 @@ $sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 //var_dump($sheetData);
 ?>
 
-<button class="stdbtn btn_lime" onclick="loadSheet('<?php echo $file; ?>')">Click to Load to Database</button><br />
+<button class="stdbtn" style="color:#fff; background-color:#81910F; background-image:none;" onclick="loadSheet('<?php echo $file; ?>', '')">
+	Click to Load to Database
+</button>
+<div class="overviewselect">
+	Select the type of document to load
+	<select id="type" name="type">
+		<option value="">Type</option>
+		<option value="conditions">Conditions</option>
+		<option value="constructions">Constructions</option>
+		<option value="exploitations">Exploitation</option>
+	</select>
+</div>
+<br />
 <p id="response" style="display:none"><img src="./images/loadingAnimation.gif" id="loading" /></p>
 <br />
 <table cellpadding="0" cellspacing="0" border="0" class="stdtable" style="width : 200%">
@@ -124,7 +136,7 @@ $sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 		<tr><?php
 		foreach($sheetData[4] as $k => $head) { 
 			if($k == 'I') {
-				echo '<th colspan="2" style="width : 200px" class="head0">' . $head . '<br />Camiron / State' . '</th>';
+				echo '<th colspan="2" class="head0">' . $head . '<br />Camiron / State' . '</th>';
 			} elseif($k == 'J') {
 			} else {
 				echo '<th style="width : 150px" class="head0">' . $head . '</th>';
@@ -150,14 +162,15 @@ $sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 			else {
 				$cmt = $objPHPExcel->getActiveSheet()->getComment("$k$i")->getText()->getPlainText();
 				if($cmt != '') {
-					echo '<a href="#" class="task">' . $s;
+					echo '<span href="#" class="task">' . $s;
 					echo "<span>$cmt</span>";
-					echo '</a>';
+					echo '</span>';
 				} else {
 					echo $s;
+					//if($s == '') echo $sheetData[$i-1][$k];
 				}
 			}
-			//if()
+			
 			
 			?></td>
 		<?php } ?>

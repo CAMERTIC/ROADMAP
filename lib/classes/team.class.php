@@ -10,10 +10,14 @@
  * @license		GNU General Public License
  */
 
-class ldap_users extends entity {
+class team extends entity {
 	
 	public function __construct() {
 		parent::__construct(__CLASS__);
+	}
+	
+	public function getAutocaristes() {
+		
 	}
 	
 	public function __destruct() {

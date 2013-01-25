@@ -65,6 +65,7 @@ class rc_users extends entity {
 			$_SESSION['u']['statut'] = 1;
 			$_SESSION['u']['idgroupe'] = $this->userDatas->gp;
 			$_SESSION['u']['utilisateur'] = $this->userDatas->login;
+			$_SESSION['u']['team'] = $this->userDatas->team;
 			$_SESSION['u']['derniere_con']= $this->userDatas->last_login;
 		}
 		else {
@@ -83,6 +84,20 @@ class rc_users extends entity {
 		$res = $this->select($req);
 		return $res;
 		
+	}
+	
+	public function getUsers() {
+		$req = "SELECT * FROM $this->table WHERE gp IN (1, 2)";
+		$res = $this->select($req);
+		return $res;
+	}
+	
+	public function getMyTeamMembers() {
+		if($_SESSION['u']['idgroupe'] == 2) {
+			$req = "SELECT * FROM $this->table WHERE manager = '". $_SESSION['u']['utilisateur'] ."'";
+			$res = $this->select($req);
+			return $res;
+		}
 	}
 	
 	public function __destruct() {

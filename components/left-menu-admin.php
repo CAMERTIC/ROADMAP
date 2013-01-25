@@ -1,10 +1,8 @@
 <ul>
-	<li><a href="#formsub" class="editor">ALL TASKS</a>
+	<li><a href="#formsub" class="editor">TASKS</a>
 		<span class="arrow"></span>
 		<ul id="formsub">
-			<li><a href="?view=tasks&filter=6">6 months</a></li>
-			<li><a href="?view=tasks&filter=12">12 months</a></li>
-			<li><a href="?view=tasks&filter=18">18 months</a></li>
+			<li><a href="?view=tasks">tasks</a></li>
 			<li><a href="?view=sheet&layout=upload">Upload Sheet</a></li>
 			<li><a href="?view=sheet&layout=create">Create new</a></li>
 		</ul>
@@ -12,25 +10,24 @@
 	<li><a href="#addons" class="addons">Conditions</a>
 		<span class="arrow"></span>
 		<ul id="addons">
-			<li><a href="?view=conditions&period=6">6 months</a></li>
-			<li><a href="?view=conditions&period=12">12 months</a></li>
-			<li><a href="?view=conditions&period=18">18 months</a></li>
+			<li><a href="?view=conditions&filter=6&">6 months</a></li>
+			<li><a href="?view=conditions&filter=12&">12 months</a></li>
+			<li><a href="?view=conditions&filter=18&">18 months</a></li>
 		</ul>
 	</li>
 	<li <?php if(isset($_GET['view'])) if($_GET['view']=='construction') { echo 'class="current"'; } ?>><a href="#error" class="error">Construction</a>
 		<span class="arrow"></span>
 		<ul id="error">
-			<li><a href="?view=construction&period=6">6 months</a></li>
-			<li><a href="?view=construction&period=12">12 months</a></li>
-			<li><a href="?view=construction&period=18">18 months</a></li>
+			<li><a href="?view=constructions&period=6">Mining Facilities</a></li>
+			<li><a href="?view=constructions&period=6">Mineral Terminal Facilities</a></li>
+			<li><a href="?view=constructions&period=6">Railway Facilities</a></li>
+			<li><a href="?view=constructions&period=6">Other Facilities</a></li>
 		</ul>
 	</li>
 	<li <?php if(isset($_GET['view'])) if($_GET['view']=='exploitation') { echo 'class="current"'; } ?>><a href="#add" class="typo">Exploitation</a>
 		<span class="arrow"></span>
 		<ul id="add">
 			<li><a href="?view=exploitation&period=6">6 months</a></li>
-			<li><a href="?view=exploitation&period=12">12 months</a></li>
-			<li><a href="?view=exploitation&period=18">18 months</a></li>
 		</ul>
 	</li>
 	<li <?php if(isset($_GET['view'])) if($_GET['view']=='users') { echo 'class="current"'; } ?>><a href="#users" class="editor">Users</a>
@@ -46,7 +43,9 @@
 		<ul id="set">
 			<li><a href="#">Mail</a></li>
 			<li><a href="#">parameters</a></li>
+			<li><a href="#">dates</a></li>
 			<li><a href="#">print reports</a></li>
+			<li><a href="#">Dictionary</a></li>
 		</ul>
 	</li>
 </ul>

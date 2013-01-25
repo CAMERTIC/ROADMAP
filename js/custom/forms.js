@@ -45,43 +45,43 @@ jQuery(document).ready(function(){
 	
 	
 	///// FORM VALIDATION /////
-	jQuery("#form1").validate({
-		rules: {
-			firstname: "required",
-			lastname: "required",
-			email: {
-				required: true,
-				email: true,
-			},
-			location: "required",
-			selection: "required"
-		},
-		messages: {
-			firstname: "Please enter your first name",
-			lastname: "Please enter your last name",
-			email: "Please enter a valid email address",
-			location: "Please enter your location"
-		}
-	});
+	// jQuery("#form1").validate({
+		// rules: {
+			// firstname: "required",
+			// lastname: "required",
+			// email: {
+				// required: true,
+				// email: true,
+			// },
+			// location: "required",
+			// selection: "required"
+		// },
+		// messages: {
+			// firstname: "Please enter your first name",
+			// lastname: "Please enter your last name",
+			// email: "Please enter a valid email address",
+			// location: "Please enter your location"
+		// }
+	// });
 	
 	
 	///// TAG INPUT /////
 	
-	jQuery('#tags').tagsInput();
+	//jQuery('#tags').tagsInput();
 
 	
 	///// SPINNER /////
 	
-	jQuery("#spinner").spinner({min: 0, max: 100, increment: 2});
+	//jQuery("#spinner").spinner({min: 0, max: 100, increment: 2});
 	
 	
 	///// CHARACTER COUNTER /////
 	
-	jQuery("#textarea2").charCount({
-		allowed: 120,		
-		warning: 20,
-		counterText: 'Characters left: '	
-	});
+	// jQuery("#textarea2").charCount({
+		// allowed: 120,		
+		// warning: 20,
+		// counterText: 'Characters left: '	
+	// });
 	
 	
 	///// SELECT WITH SEARCH /////
