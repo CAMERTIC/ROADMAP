@@ -55,10 +55,8 @@ for($i = 6; $i <= count($sheetData)+5; $i++) {
 		$valeur = '';
 		$valeur_c = '';
 		if($s == '' && $k != 'J') {
-			if($sheetData[$i-1][$k] == '' && $i > 6)
-				$valeur = $sheetData[$i-2][$k];
-			else
-				$valeur = $sheetData[$i-1][$k];
+				$sheetData[$i][$k] = $sheetData[$i-1][$k];
+				echo $sheetData[$i][$k];
 		} else {
 			$cmt = $objPHPExcel->getActiveSheet()->getComment("$k$i")->getText()->getPlainText();
 			if($cmt != '') {

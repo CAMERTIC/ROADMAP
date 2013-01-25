@@ -24,10 +24,18 @@ $objReader = new PHPExcel_Reader_Excel2007();
 
 /* $objReader->setReadDataOnly(true);
 $objPHPExcel = $objReader->load("test1.xlsx"); */
-$targetFolder = 'CAMIRON-ROADMAP/uploads/';
+$se = php_uname();
+if (preg_match("/Windows 7/i", $se)) {
+    $targetFolder = 'CAMIRON-ROADMAP/uploads/';
+} else {
+    $targetFolder = DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
+}
+
+
+//$targetFolder = DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
 $targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
 $file = $targetPath . $_GET['file'];
-//var_dump($file);// die;
+
 $objReader->setLoadSheetsOnly( array("Feuil1", "My special sheet") );
 $objPHPExcel = $objReader->load($file);
 
@@ -152,14 +160,12 @@ $sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 			
 		?>
 		<tr>
-		<?php foreach($sheetData[$i] as $k => $s) { ?>
+		<?php foreach($sheetData[$i] as $k => &$s) { ?>
 			<td><?php
-			if($s == '' && $k != 'J')
-				if($sheetData[$i-1][$k] == '' && $i > 6)
-					echo $sheetData[$i-2][$k];
-				else
-					echo $sheetData[$i-1][$k];
-			else {
+			if($s == '' && $k != 'J' && $i > 6) {
+				$sheetData[$i][$k] = $sheetData[$i-1][$k];
+				echo $sheetData[$i][$k];
+			} else {
 				$cmt = $objPHPExcel->getActiveSheet()->getComment("$k$i")->getText()->getPlainText();
 				if($cmt != '') {
 					echo '<span href="#" class="task">' . $s;

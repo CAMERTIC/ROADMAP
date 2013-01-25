@@ -93,6 +93,7 @@
                             <th class="head0">Risk/Sanction</th>
                             <th class="head1">Last comment</th>
                             <th class="head0">&nbsp;</th>
+                            <th class="head0">&nbsp;</th>
                         </tr>
                     </thead><!--
                     <tfoot>
@@ -122,6 +123,7 @@
                             <td class="center"><?php if($ts->risk_sanction_c != '') echo '<span class="task">' . $ts->risk_sanction . "<span>$ts->risk_sanction_c</span></span>" ; else echo $app->replaceDefinitions($ts->risk_sanction); ?></td>
                             <td class="center"><?php echo utf8_encode($cmt->getLastComment($ts->id)); ?></td>
                             <td class="center"><a href="ajax/updatetask.php?id=<?php echo $ts->id; ?>" class="toggle">Update</a></td>
+                            <td class="center"><a id="<?php echo $ts->id; ?>" class="btn btn3 btn_black btn_trash" href="#"></a></td>
                         </tr> 
 						<?php } ?>
                     </tbody>
@@ -143,6 +145,33 @@
 	});
 	jQuery('#overviewselect3').change(function(){
 		window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&status='+jQuery('#overviewselect3').val();
+	});
+	jQuery('.btn_trash').click(function(){
+		jQuery(this).parents('tr').remove();
+		return false;
+		// if (confirm("You want to delete energy?")) {
+		
+			// jQuery.ajax({
+			  // type: "POST",
+			  // url: ajax+"delEn.php",
+			  // data: "identificador="+id,
+			  // cache: false,
+			  // success: function(html){
+				//alert('succesfully');
+				// if(html==""){
+					// jQuery('#response').html('<span></span>Energy succesfully deleted.');
+					// jQuery('#message').fadeIn("slow");
+					// jQuery('#'+id).fadeOut("slow");
+					// setTimeout(function() {
+						// $('#'+id).remove();
+					// }, 1000);
+				// }
+			  // }
+			// });	
+		// } else {
+			//alert('Non je supprime pas');
+	// }
+		
 	});
 </script>
    
