@@ -148,7 +148,7 @@
 	});
 	jQuery('.btn_trash').click(function(){
 		
-		if (confirm("You want to delete energy?")) {
+		if (confirm("You want to delete the task?")) {
 			jQuery.ajax({
 				  type: "POST",
 				  url: "ajax/delTask.php",
@@ -161,8 +161,9 @@
 				  }
 				});	
 		} else {
-			return false;
+			
 		}
+		return false;
 	});
 </script>
    
