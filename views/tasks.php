@@ -147,31 +147,22 @@
 		window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&status='+jQuery('#overviewselect3').val();
 	});
 	jQuery('.btn_trash').click(function(){
-		jQuery(this).parents('tr').remove();
-		return false;
-		// if (confirm("You want to delete energy?")) {
 		
-			// jQuery.ajax({
-			  // type: "POST",
-			  // url: ajax+"delEn.php",
-			  // data: "identificador="+id,
-			  // cache: false,
-			  // success: function(html){
-				//alert('succesfully');
-				// if(html==""){
-					// jQuery('#response').html('<span></span>Energy succesfully deleted.');
-					// jQuery('#message').fadeIn("slow");
-					// jQuery('#'+id).fadeOut("slow");
-					// setTimeout(function() {
-						// $('#'+id).remove();
-					// }, 1000);
-				// }
-			  // }
-			// });	
-		// } else {
-			//alert('Non je supprime pas');
-	// }
-		
+		if (confirm("You want to delete energy?")) {
+			jQuery.ajax({
+				  type: "POST",
+				  url: "ajax/delTask.php",
+				  data: "id="+jQuery(this).attr('id'),
+				  cache: false,
+				  success: function(html){
+					if(html==""){
+						jQuery(this).parents('tr').remove();
+					}
+				  }
+				});	
+		} else {
+			return false;
+		}
 	});
 </script>
    

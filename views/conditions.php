@@ -12,7 +12,7 @@
 	
 	$u = new rc_users;
 	$users = $u->getAllRecords();
-	//var_dump($tasks);
+	global $app;
 ?>
 <div class="centercontent tables">
     
@@ -65,7 +65,7 @@
                     </colgroup>
                     <thead>
 					    <tr>
-                            <th class="head0">Conditions or Category</th>
+                            <th class="head0">Conditions </th>
                             <th class="head1">Required actions or operations</th>
                             <th class="head0">Date for compliance</th>
                             <th class="head1">Party accountable for compliance</th>
@@ -106,7 +106,7 @@
                             <td class="center"><?php if($ts->output_c != '') echo '<span class="task">' . $ts->output . "<span>$ts->output_c</span></span>" ; else echo $app->replaceDefinitions($ts->output); ?></td>
                             <td class="center"><?php if($ts->risk_sanction_c != '') echo '<span class="task">' . $ts->risk_sanction . "<span>$ts->risk_sanction_c</span></span>" ; else echo $app->replaceDefinitions($ts->risk_sanction); ?></td>
                             <td class="center"><?php echo utf8_encode($cmt->getLastComment($ts->id)); ?></td>
-							<?php if($_SESSION['u']['group'] == 3) { ?>
+							<?php if($_SESSION['u']['idgroupe'] == 3) { ?>
 								<td class="center"><a href="ajax/updatetask.php?id=<?php echo $ts->id; ?>" class="toggle">Update</a></td>
 							<?php } else { ?>
 								<td class="center"><a href="ajax/updatetaskbyuser.php?id=<?php echo $ts->id; ?>" class="toggle">Update</a></td>

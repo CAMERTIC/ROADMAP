@@ -30,7 +30,7 @@ $app->LoadDictionary();
 
 <?php 
 	if(isset($_GET['view'])) { 
-		if($_GET['view'] == 'sheet' || $_GET['view'] == 'tasks') { ?>
+		if($_GET['view'] == 'sheet' || $_GET['view'] == 'tasks'  || $_GET['view'] == 'conditions') { ?>
 			<link rel="stylesheet" type="text/css" href="css/uploadify.css" />
 			<script type="text/javascript" src="js/plugins/jquery-1.7.2.min.js"></script>
 			<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>

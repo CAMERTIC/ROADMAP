@@ -1,5 +1,5 @@
 <ul>
-	<li><a href="#formsub" class="editor">TASKS</a>
+	<li <?php if(isset($_GET['view'])) if($_GET['view']=='tasks' || $_GET['view']=='sheet') { echo 'class="current"'; } ?>><a href="#formsub" class="editor">TASKS</a>
 		<span class="arrow"></span>
 		<ul id="formsub">
 			<li><a href="?view=tasks">tasks</a></li>

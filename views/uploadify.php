@@ -7,6 +7,12 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 
 // Define a destination
 $targetFolder = 'CAMIRON-ROADMAP/uploads'; // Relative to the root
+$se = php_uname();
+if (preg_match("/Windows 7/i", $se)) {
+    $targetFolder = 'CAMIRON-ROADMAP/uploads/';
+} else {
+    $targetFolder = DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
+}
 
 if (!empty($_FILES)) {
 	$tempFile = $_FILES['Filedata']['tmp_name'];

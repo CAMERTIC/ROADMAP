@@ -86,6 +86,44 @@ $dudY = $tab[0];
     </div><!-- one_half last -->
 	
 	<div class="one_half last" style="width:40.5%">
+		<p>
+        	<label>Type</label>
+			<select id="type" name="type">
+				<option value="">Give a type</option>
+				<option value="conditions" <?php if($task->type=='conditions') echo "SELECTED"; ?>>Conditions</option>
+				<option value="constructions" <?php if($task->type=='constructions') echo "SELECTED"; ?>>Constructions</option>
+				<option value="exploitations" <?php if($task->type=='exploitations') echo "SELECTED"; ?>>Exploitation</option>
+			</select>
+        </p>
+		<p id="sector-construction" class="hidden">
+        	<label>Sector</label>
+			<select id="sector" name="sector">
+				<option value="">Give a sector</option>
+				<option value="conditions" <?php if($task->sector=='conditions') echo "SELECTED"; ?>>Conditions</option>
+				<option value="constructions" <?php if($task->sector=='constructions') echo "SELECTED"; ?>>Constructions</option>
+				<option value="exploitations" <?php if($task->sector=='exploitations') echo "SELECTED"; ?>>Exploitation</option>
+			</select>
+        </p>
+		<p id="sector-exploitation" class="hidden">
+        	<label>Sector</label>
+			<select id="sector" name="sector">
+				<option value="">Give a sector</option>
+				<option value="Mining Operations Compliance">Mining Operations Compliance</option>
+				<option value="Beneficiation Operations Compliance">Beneficiation Operations Compliance</option>
+				<option value="Mineral Terminal Operations Compliance">Mineral Terminal Operations Compliance</option>
+				<option value="Railway Operations Compliance">Railway Operations Compliance</option>
+				<option value="Blending Operations Compliance">Blending Operations Compliance</option>
+				<option value="Marketing and Treasury Monitoring Issues">Marketing and Treasury Monitoring Issues</option>
+				<option value="Land Issues">Land Issues</option>
+				<option value="Environmental And Security Issues Exploitation Phase 1">Environmental And Security Issues Exploitation Phase 1</option>
+				<option value="Community">Community</option>
+				<option value="Contractual Obligations Relating to the Pesonnel">Contractual Obligations Relating to the Pesonnel</option>
+				<option value="Financial and Accounting Compliance exploitation phase">Financial and Accounting Compliance exploitation phase</option>
+				<option value="Tax and Customs Compliance">Tax and Customs Compliance</option>
+				<option value="Foreign Exchange Monitoring Issues">Foreign Exchange Monitoring Issues</option>
+				<option value="Rehabilitation exploitation phase stage 1">Rehabilitation exploitation phase stage 1</option>
+			</select>
+        </p>
     	<p>
         	<label style="width:500px">Add a comment (If updated, updates will be sent by email to the person in charge selected)</label>
             <textarea id="comment" name="comment"  cols="" rows=""></textarea>
@@ -99,6 +137,7 @@ $dudY = $tab[0];
                 <input type="radio" <?php if($task->status == 'closed') echo 'checked="checked"'; ?> name="status" id="status_4" value="closed" /> Closed
             </span>
         </p>
+		
     </div><!-- one_half last -->
     
     <br clear="all" />
@@ -143,5 +182,9 @@ jQuery('#update').click(function(){
 			});
 	
 	return false;
+});
+
+jQuery('#type').change(function(){
+	
 });
 </script>	
