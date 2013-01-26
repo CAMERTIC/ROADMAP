@@ -36,7 +36,7 @@ class camiron extends bd {
 		$replacements = array();
 		foreach($dic as $word => $definition) {
 			$patterns[] = "/$word/";
-			$replacements[] = '<a href="#" title="Click to see definition" onClick="jQuery.colorbox({html : \'<br />Definition : <br />'. $definition	.'<br /><br />\'}); return false" class="dic">'.$word.'</a>';
+			$replacements[] = '<a href="#" title="Click to see definition" onClick="jQuery.colorbox({html : \'<div class=camironbox><br />&nbsp;<b><u>Dictionary</u></b><br />Definition : <br />'. $definition	.'<br /><br /></div>\'}); return false" class="dic">'.$word.'</a>';
 		}
 		$mots = $patterns;
 		$definitions = $replacements;

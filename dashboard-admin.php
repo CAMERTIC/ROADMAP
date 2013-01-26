@@ -27,6 +27,7 @@ $app->LoadDictionary();
 <title>Dashboard | Roadmap Convention</title>
 <link rel="stylesheet" href="css/style.default.css" type="text/css" />
 <link rel="stylesheet" href="css/style.greenline.css" type="text/css" />
+<link rel="stylesheet" href="css/camiron.css" type="text/css" />
 
 <?php 
 	if(isset($_GET['view'])) { 
