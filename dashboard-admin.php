@@ -137,22 +137,12 @@ a.dic {
                 <a class="count" href="ajax/notifications.html"><span>0</span></a>
         	</div>
             <div class="userinfo">
-            	<img src="images/thumbs/avatar.png" alt="" />
+            	
                 <span>Admin</span>
             </div><!--userinfo-->
             
             <div class="userinfodrop">
-            	<div class="avatar">
-                	<a href=""><img src="images/thumbs/avatarbig.png" alt="" /></a>
-                   <!-- <div class="changetheme">
-                    	Change theme: <br />
-                    	<a class="default"></a>
-                        <a class="blueline"></a>
-                        <a class="greenline"></a>
-                        <a class="contrast"></a>
-                        <a class="custombg"></a>
-                    </div>-->
-                </div><!--avatar-->
+            	
                 <div class="userdata">
                 	<h4>Admin</h4>
                     <span class="email">juan@camiron.com</span>

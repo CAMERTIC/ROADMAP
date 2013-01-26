@@ -122,24 +122,14 @@ a.dic {
                 <a class="count" href="ajax/notifications.html"><span>0</span></a>
         	</div>
             <div class="userinfo">
-            	<img src="images/thumbs/avatar.png" alt="" />
-                <span><?php echo $_SESSION['u']['utilisateur']; ?></span>
+            	
+                <span><?php echo ucfirst($_SESSION['u']['utilisateur']); ?></span>
             </div><!--userinfo-->
             
             <div class="userinfodrop">
-            	<div class="avatar">
-                	<a href=""><img src="images/thumbs/avatarbig.png" alt="" /></a>
-                   <!-- <div class="changetheme">
-                    	Change theme: <br />
-                    	<a class="default"></a>
-                        <a class="blueline"></a>
-                        <a class="greenline"></a>
-                        <a class="contrast"></a>
-                        <a class="custombg"></a>
-                    </div>-->
-                </div><!--avatar-->
+            	
                 <div class="userdata">
-                	<h4>Juan Dela Cruz</h4>
+                	<h4><?php echo ucfirst($_SESSION['u']['utilisateur']); ?></h4>
                     <span class="email">juan@camiron.com</span>
                     <ul>
                     	<li><a href="editprofile.html">View Profile</a></li>
