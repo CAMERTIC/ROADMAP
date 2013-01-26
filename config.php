@@ -3,7 +3,7 @@
 // SERVER CONFIGURATIONS
 class CamerticConfig {
 	var $user = 'root';
-	var $pass = '';
+	var $pass = '17decembre';
 
 	//var $library = 'C:\wamp\www\pagify\lib\library.php';
 	var $dbtype = 'mysql';
