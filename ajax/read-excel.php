@@ -122,8 +122,13 @@ $sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 // }
 //var_dump($sheetData);
 ?>
-
-<button class="stdbtn" style="color:#fff; background-color:#81910F; background-image:none;" onclick="loadSheet('<?php echo $file; ?>', '')">
+<script type="text/javascript">
+<?php 	$file1 = str_replace('\\', '\\\\', $file); ?>
+	var f = "<?php echo $file1; ?>";
+	f = f.replace(/\\/g, '/');
+	//alert(f);
+</script>
+<button class="stdbtn" style="color:#fff; background-color:#81910F; background-image:none;" onclick="loadSheet(f)">
 	Click to Load to Database
 </button>
 <div class="overviewselect">

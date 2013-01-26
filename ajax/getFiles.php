@@ -13,12 +13,13 @@ foreach($entries as $entry) {
 	if($entry != '.' & $entry != '..')
 	$filelist[] = $entry;
 }
+$i = 1;
 foreach($filelist as $f) { ?>
 <p>
-	<span class="field" style="margin-left:20px;padding:5px 5px 5px 10px;">
+	<span class="field" style="margin-left:20px;padding:5px 5px 5px 10px;"><?php echo $i . '. '; ?>
 	<a href="./ajax/read-excel.php?file=<?php echo $f; ?>" class=""><?php echo $f; ?></a>
 	</span>
 </p>
 
-<?php } ?>	
+<?php $i++; } ?>	
 </form>	

@@ -288,7 +288,11 @@ function CamironDateToMysqlDate($date) {
 		case 'Demcember' : $m = '12'; break;
 		default : '';
 	}
-	return "$y-$m-$d";
+	$ret = "$y-$m-$d";
+	if(strlen($ret) < 10)
+		return '';
+	else
+		return $ret;
 }
 
 function dateMysql($date1, $date2 = null) {

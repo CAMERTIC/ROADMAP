@@ -110,17 +110,21 @@
 						<?php foreach($tasks as $ts) { ?>
                         <tr id="<?php echo $ts->id; ?>">
                             <td class="con0"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . $app->replaceDefinitions($ts->cond_cat_title) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo $app->replaceDefinitions($ts->cond_cat_title); ?> </td>
-                            <td class="center"><?php if($ts->required_action_c != '') echo '<span class="task">' . $ts->required_action . "<span>$ts->required_action_c</span></span>" ; else echo $app->replaceDefinitions($ts->required_action); ?></td>
-                            <td class="con1" width="5%"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline . "<span>$ts->deadline_c</span></span>" ; else echo getMysqlToCamironDate($ts->deadline); ?></td>
-                            <td class="con1"><?php if($ts->party_accountable_c != '') echo '<span class="task">' . $ts->party_accountable . "<span>$ts->party_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->party_accountable); ?></td>
+                            <td class="center"><?php if($ts->required_action_c != '') echo '<span class="task">' . $app->replaceDefinitions($ts->required_action) . "<span>$ts->required_action_c</span></span>" ; else echo $app->replaceDefinitions($ts->required_action); ?></td>
+                            <?php if($ts->type=='conditions') { ?>
+							<td class="con1" width="5%"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline . "<span>$ts->deadline_c</span></span>" ; else echo getMysqlToCamironDate($ts->deadline); ?></td>
+                            <?php } else { ?>
+							<td class="con1" width="5%"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline_text . "<span>$ts->deadline_c</span></span>" ; else echo $ts->deadline_text; ?></td>
+							<?php } ?>
+							<td class="con1"><?php if($ts->party_accountable_c != '') echo '<span class="task">' . $app->replaceDefinitions($ts->party_accountable) . "<span>$ts->party_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->party_accountable); ?></td>
                             <td class="con0"><?php if($ts->person_in_charge_c != '') echo '<span class="task">' . $ts->person_in_charge . "<span>$ts->person_in_charge_c</span></span>" ; else echo $ts->person_in_charge; ?></td>
                             <td class="con0"><?php if($ts->due_date_c != '') echo '<span class="task">' . $ts->due_date . "<span>$ts->due_date_c</span></span>" ; else echo getMysqlToCamironDate($ts->due_date); ?></td>
                             <td class="con0"><?php if($ts->status_c != '') echo '<span class="task">' . $ts->status . "<span>$ts->status_c</span></span>" ; else echo $ts->status; ?></td>
-                            <td class="center"><?php if($ts->authority_accountable_c != '') echo '<span class="task">' . $ts->authority_accountable . "<span>$ts->authority_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->authority_accountable); ?></td>
-                            <td class="center"><?php if($ts->input_camiron_c != '') echo '<span class="task">' . $ts->input_camiron . "<span>$ts->input_camiron_c</span></span>" ; else echo $app->replaceDefinitions($ts->input_camiron); ?></td>
-                            <td class="center"><?php if($ts->input_state_c != '') echo '<span class="task">' . $ts->input_state . "<span>$ts->input_state_c</span></span>" ; else echo $app->replaceDefinitions($ts->input_state); ?></td>
-                            <td class="center"><?php if($ts->output_c != '') echo '<span class="task">' . $ts->output . "<span>$ts->output_c</span></span>" ; else echo $app->replaceDefinitions($ts->output); ?></td>
-                            <td class="center"><?php if($ts->risk_sanction_c != '') echo '<span class="task">' . $ts->risk_sanction . "<span>$ts->risk_sanction_c</span></span>" ; else echo $app->replaceDefinitions($ts->risk_sanction); ?></td>
+                            <td class="center"><?php if($ts->authority_accountable_c != '') echo '<span class="task">' . $app->replaceDefinitions($ts->authority_accountable) . "<span>$ts->authority_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->authority_accountable); ?></td>
+                            <td class="center"><?php if($ts->input_camiron_c != '') echo '<span class="task">' . $app->replaceDefinitions($ts->input_camiron) . "<span>$ts->input_camiron_c</span></span>" ; else echo $app->replaceDefinitions($ts->input_camiron); ?></td>
+                            <td class="center"><?php if($ts->input_state_c != '') echo '<span class="task">' . $app->replaceDefinitions($ts->input_state) . "<span>$ts->input_state_c</span></span>" ; else echo $app->replaceDefinitions($ts->input_state); ?></td>
+                            <td class="center"><?php if($ts->output_c != '') echo '<span class="task">' . $app->replaceDefinitions($ts->output) . "<span>$ts->output_c</span></span>" ; else echo $app->replaceDefinitions($ts->output); ?></td>
+                            <td class="center"><?php if($ts->risk_sanction_c != '') echo '<span class="task">' . $app->replaceDefinitions($ts->risk_sanction) . "<span>$ts->risk_sanction_c</span></span>" ; else echo $app->replaceDefinitions($ts->risk_sanction); ?></td>
                             <td class="center"><?php echo utf8_encode($cmt->getLastComment($ts->id)); ?></td>
                             <td class="center"><a href="ajax/updatetask.php?id=<?php echo $ts->id; ?>" class="toggle">Update</a></td>
                             <td class="center"><a id="<?php echo $ts->id; ?>" class="btn btn3 btn_black btn_trash" href="#"></a></td>
@@ -148,7 +152,7 @@
 	});
 	jQuery('.btn_trash').click(function(){
 		
-		if (confirm("You want to delete the task?")) {
+		if (confirm("You confirm you want to delete the task?")) {
 			jQuery.ajax({
 				  type: "POST",
 				  url: "ajax/delTask.php",

@@ -59,10 +59,13 @@ jQuery(function() {
 });
 var ajax = 'ajax/';
 function loadSheet(file) {
+	
 	jQuery("#response").show();
 	var type = jQuery("#type").val();
-	// alert(type); 
-	// return false;
+	if(type=='') {
+		alert('Please select the type of document to load!'); 
+	 return false;
+	 }
 	jQuery.ajax({
 		type: "POST",
 		data: "file="+file+"&type="+type,

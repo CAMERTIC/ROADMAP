@@ -108,20 +108,9 @@ $dudY = $tab[0];
         	<label>Sector</label>
 			<select id="sector" name="sector">
 				<option value="">Give a sector</option>
-				<option value="Mining Operations Compliance">Mining Operations Compliance</option>
-				<option value="Beneficiation Operations Compliance">Beneficiation Operations Compliance</option>
-				<option value="Mineral Terminal Operations Compliance">Mineral Terminal Operations Compliance</option>
-				<option value="Railway Operations Compliance">Railway Operations Compliance</option>
-				<option value="Blending Operations Compliance">Blending Operations Compliance</option>
-				<option value="Marketing and Treasury Monitoring Issues">Marketing and Treasury Monitoring Issues</option>
-				<option value="Land Issues">Land Issues</option>
-				<option value="Environmental And Security Issues Exploitation Phase 1">Environmental And Security Issues Exploitation Phase 1</option>
-				<option value="Community">Community</option>
-				<option value="Contractual Obligations Relating to the Pesonnel">Contractual Obligations Relating to the Pesonnel</option>
-				<option value="Financial and Accounting Compliance exploitation phase">Financial and Accounting Compliance exploitation phase</option>
-				<option value="Tax and Customs Compliance">Tax and Customs Compliance</option>
-				<option value="Foreign Exchange Monitoring Issues">Foreign Exchange Monitoring Issues</option>
-				<option value="Rehabilitation exploitation phase stage 1">Rehabilitation exploitation phase stage 1</option>
+				<option value="conditions" <?php if($task->sector=='conditions') echo "SELECTED"; ?>>Conditions</option>
+				<option value="constructions" <?php if($task->sector=='constructions') echo "SELECTED"; ?>>Constructions</option>
+				<option value="exploitations" <?php if($task->sector=='exploitations') echo "SELECTED"; ?>>Exploitation</option>
 			</select>
         </p>
     	<p>
