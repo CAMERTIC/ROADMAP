@@ -14,14 +14,23 @@ $task = $p->getRecord($_GET['id']);
 
 $u = new rc_users;
 $users = $u->getAllRecords();
-$tab = explode('-', $task->deadline);
-$deadD = $tab[2];
-$deadM = $tab[1];
-$deadY = $tab[0];
-$tab = explode('-', $task->due_date);
-$dudD = $tab[2];
-$dudM = $tab[1];
-$dudY = $tab[0];
+if(strlen($task->deadline) == 10) {
+	$tab = explode('-', $task->deadline);
+	$deadD = $tab[2];
+	$deadM = $tab[1];
+	$deadY = $tab[0];
+	$tab = explode('-', $task->due_date);
+	$dudD = $tab[2];
+	$dudM = $tab[1];
+	$dudY = $tab[0];
+} else {
+	$deadD = "01";
+	$deadM = "01";
+	$deadY = "2013";
+	$dudD = "01";
+	$dudM = "01";
+	$dudY = "2013";
+}
 ?>
 <style>
 .quickform p label {
@@ -82,7 +91,25 @@ $dudY = $tab[0];
             <input type="text" name="deadline_j" id="deadline_j" value="<?php echo $deadD; ?>" class="xsmall" />&nbsp;
             <input type="text" name="deadline_a" id="deadline_a" value="<?php echo $deadY; ?>" class="small" />
         </p>
-        
+        <p id="sector-construction" class="<?php if($task->type != 'constructions') echo "hidden"; ?>">
+        	<label>Sector</label>
+			<select id="sector" name="sector">
+				<option value="">Give a sector</option>
+				<option <?php if($task->type=='Mining Facilities') echo "SELECTED"; ?> value="Mining Facilities">Mining Facilities</option>
+				<option <?php if($task->type=='Railway Facilities') echo "SELECTED"; ?> value="Railway Facilities">Railway Facilities</option>
+				<option <?php if($task->type=='Mineral Terminal Facilities') echo "SELECTED"; ?> value="Mineral Terminal Facilities">Mineral Terminal Facilities</option>
+				<option <?php if($task->type=='Beneficiation Facilities') echo "SELECTED"; ?> value="Beneficiation Facilities">Beneficiation Facilities</option>
+				<option <?php if($task->type=='Other Project Facilities') echo "SELECTED"; ?> value="Other Project Facilities">Other Project Facilities</option>
+				<option <?php if($task->type=='Land Issues') echo "SELECTED"; ?> value="Land Issues">Land Issues</option>
+				<option <?php if($task->type=='Environemental and Security Issues') echo "SELECTED"; ?> value="Environemental and Security Issues">Environemental and Security Issues</option>
+				<option <?php if($task->type=='Community') echo "SELECTED"; ?> value="Community">Community</option>
+				<option <?php if($task->type=='Financial and Accounting Compliance') echo "SELECTED"; ?> value="Financial and Accounting Compliance">Financial and Accounting Compliance</option>
+				<option <?php if($task->type=='Tax and customs Compliance') echo "SELECTED"; ?> value="Tax and customs Compliance">Tax and customs Compliance</option>
+				<option <?php if($task->type=='Foreign Compliance') echo "SELECTED"; ?> value="Foreign Compliance">Foreign Compliance</option>
+				<option <?php if($task->type=='Contractual Obligations Relating to the Personnel') echo "SELECTED"; ?> value="Contractual Obligations Relating to the Personnel">Contractual Obligations Relating to the Personnel</option>
+				<option <?php if($task->type=='Global Reporting') echo "SELECTED"; ?> value="Global Reporting">Global Reporting</option>
+			</select>
+        </p>
     </div><!-- one_half last -->
 	
 	<div class="one_half last" style="width:40.5%">
@@ -95,18 +122,10 @@ $dudY = $tab[0];
 				<option value="exploitations" <?php if($task->type=='exploitations') echo "SELECTED"; ?>>Exploitation</option>
 			</select>
         </p>
-		<p id="sector-construction" class="hidden">
-        	<label>Sector</label>
-			<select id="sector" name="sector">
-				<option value="">Give a sector</option>
-				<option value="conditions" <?php if($task->sector=='conditions') echo "SELECTED"; ?>>Conditions</option>
-				<option value="constructions" <?php if($task->sector=='constructions') echo "SELECTED"; ?>>Constructions</option>
-				<option value="exploitations" <?php if($task->sector=='exploitations') echo "SELECTED"; ?>>Exploitation</option>
-			</select>
-        </p>
+		
 		<p id="sector-exploitation" class="hidden">
         	<label>Sector</label>
-			<select id="sector" name="sector">
+			<select id="" name="">
 				<option value="">Give a sector</option>
 				<option value="conditions" <?php if($task->sector=='conditions') echo "SELECTED"; ?>>Conditions</option>
 				<option value="constructions" <?php if($task->sector=='constructions') echo "SELECTED"; ?>>Constructions</option>
@@ -149,7 +168,7 @@ jQuery('#update').click(function(){
 		jQuery('.loading').html('<img src="./images/loaders/loader3.gif" alt="" />Updating changes...');
 		jQuery('.loading').show();
 		var data = jQuery('#task').serialize();
-		
+		//alert(data); 
 		  jQuery.ajax({
 			  type: "POST",
 			  url: "./ajax/updatestatustodb.php",

@@ -149,9 +149,11 @@ abstract class entity extends bd {
 	public function getAllRecords($filter = null, $limit = null) {
 		$req = "SELECT * FROM $this->table";
 		if(!is_null($filter)) {
-			$req .= " WHERE ";
-			foreach($filter as $k => $v) {
-				$req .= " $k = '$v'";
+			if(!empty($filter)) {
+				$req .= " WHERE ";
+				foreach($filter as $k => $v) {
+					$req .= " $k = '$v'";
+				}
 			}
 		}
 		$res = $this->select($req);

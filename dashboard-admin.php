@@ -7,10 +7,11 @@ global $definitions;
 global $app;
 $dic = array();
 require_once 'config.php';
-require_once 'dictionary.php';	
 $C = new CamerticConfig;
 $app = new camiron;
 $user = new rc_users();
+
+include_once 'dictionary.php';	
 
 // Check session
 if(!$app->checkSession()) {
@@ -138,13 +139,13 @@ a.dic {
         	</div>
             <div class="userinfo">
             	
-                <span>Admin</span>
+                <span><?php echo ucfirst($_SESSION['u']['utilisateur']); ?></span>
             </div><!--userinfo-->
             
             <div class="userinfodrop">
             	
                 <div class="userdata">
-                	<h4>Admin</h4>
+                	<h4><?php echo ucfirst($_SESSION['u']['utilisateur']); ?></h4>
                     <span class="email">juan@camiron.com</span>
                     <ul>
                     	<li><a href="#">View Profile</a></li>

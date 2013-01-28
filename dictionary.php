@@ -4,8 +4,25 @@
 
 global $dic;
 
-$dic['Feasibility Study'] = "See wether ze can or not apply a construction phase there";
-$dic['Project'] = "A whole planification of the app and year";
-$dic['Facilities'] = "Easy et nayorrr";
-
+$dico = new dico;
+$defs = $dico->getAllRecords();
+// echo "<pre>";
+// foreach($defs as $d)
+	// var_dump($d->definition);
+// die;
+foreach($defs as $def) {
+	//if(strlen(trim($def->expression)) < 8)
+	$dic[trim($def->expression)] = trim($def->definition);
+}
+unset($dic['Project']);
+unset($dic['Conservation Convention']);
+unset($dic['Emission Scheme']);
+ unset($dic['Project Company']);
+// unset($dic['Project Economic Model']);
+//unset($dic['Parties']);
+// unset($dic['Equity']);
+//unset($dic['Debt']);
+// unset($dic['Specification(s)']);
+// unset($dic['Treasury Agreement']);
+ unset($dic['Dispute']);
 ?>

@@ -35,8 +35,11 @@ class camiron extends bd {
 		$patterns = array();
 		$replacements = array();
 		foreach($dic as $word => $definition) {
-			$patterns[] = "/$word/";
-			$replacements[] = '<a href="#" title="Click to see definition" onClick="jQuery.colorbox({html : \'<div class=camironbox><br />&nbsp;<b><u>Dictionary</u></b><br />Definition : <br />'. $definition	.'<br /><br /></div>\'}); return false" class="dic">'.$word.'</a>';
+			$patterns[] = "/".addslashes($word)."/i";
+			//$definition  = str_replace("'", " ", $definition);
+			$replacements[] = '<a href="?view=dictionnaire&word='.$word.'" rel="prettyPhoto[ajax]" title="Click to see definition of '.$word.'" class="dic">'.$word.'</a>';
+			//$replacements[] = '<a href="" title="Click to see definition of '.$word.'" onClick="jQuery.colorbox({html : \'<div class=camironbox><br />&nbsp;<b><u>Dictionary Definition</u>'. str_replace("'", " ", $definition)	.'<br /></div>\'}); return false" class="dic">'.$word.'</a>';
+			//$replacements[] = '<a href="#" title="Click to see definition" onClick="jQuery.colorbox({html : \'<div class=camironbox><br />&nbsp;<b><u>Dictionary Definition</u></b> : <br />'. str_replace("'", " ", $definition)	.'<br /><br /></div>\'}); return false" class="dic">'.$word.'</a>';
 		}
 		$mots = $patterns;
 		$definitions = $replacements;
@@ -45,9 +48,9 @@ class camiron extends bd {
 	public function replaceDefinitions($phrase) {
 		global $mots;
 		global $definitions;
-		// echo "<pre>"; var_dump($mots); 
+		 // echo "<pre>"; var_dump($mots); 
 		// echo "<pre>"; var_dump($definitions); die;
-		return preg_replace($mots, $definitions, $phrase);
+		return preg_replace($mots, $definitions, $phrase, 1);
 	}
 	
 	public function getGroup() {

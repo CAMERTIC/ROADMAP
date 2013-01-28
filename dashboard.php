@@ -7,11 +7,11 @@ global $definitions;
 global $app;
 $dic = array();
 require_once 'config.php';
-require_once 'dictionary.php';
-
 $C = new CamerticConfig;
 $app = new camiron;
 $user = new rc_users();
+
+include_once 'dictionary.php';	
 
 // Check session
 if(!$app->checkSession()) {
@@ -19,7 +19,6 @@ if(!$app->checkSession()) {
 	die();
 }
 $app->LoadDictionary();
-//echo $app->replaceDefinitions('Feasibility');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -96,9 +95,32 @@ a.dic {
 	text-decoration : underline;
 }
 </style>
+<script>
+function startTime()
+{
+var today=new Date();
+var h=today.getHours();
+var m=today.getMinutes();
+var s=today.getSeconds();
+// add a zero in front of numbers<10
+m=checkTime(m);
+s=checkTime(s);
+document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+t=setTimeout(function(){startTime()},500);
+}
+
+function checkTime(i)
+{
+if (i<10)
+  {
+  i="0" + i;
+  }
+return i;
+}
+</script>
 </head>
 
-<body class="withvernav">
+<body class="withvernav" onload="startTime()">
 
 <div class="bodywrapper">
     <div class="topheader">
@@ -132,9 +154,8 @@ a.dic {
                 	<h4><?php echo ucfirst($_SESSION['u']['utilisateur']); ?></h4>
                     <span class="email">juan@camiron.com</span>
                     <ul>
-                    	<li><a href="editprofile.html">View Profile</a></li>
-                        <li><a href="accountsettings.html">Account Settings</a></li>
-                        <li><a href="help.html">Support</a></li>
+                    	<li><a href="?view=">Account Settings</a></li>
+                        <li><a href="?view=support">Support</a></li>
                         <li><a href="#" onclick="logout();">Sign Out</a></li>
                     </ul>
                 </div><!--userdata-->
@@ -149,11 +170,11 @@ a.dic {
         	<div class="earnings">
             	<div class="one_half">
                 	<h4>Today's Date</h4>
-                    <h2>15/01/2013</h2>
+                    <h2><?php echo date("d/m/Y"); ?></h2>
                 </div><!--one_half-->
                 <div class="one_half last alignright">
                 	<h4>Time</h4>
-                    <h2>03:35</h2>
+                    <h2 id="txt"></h2>
                 </div><!--one_half last-->
             </div><!--earnings-->
         </div><!--headerwidget-->

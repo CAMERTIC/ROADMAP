@@ -109,12 +109,12 @@
                     <tbody>
 						<?php foreach($tasks as $ts) { ?>
                         <tr id="<?php echo $ts->id; ?>">
-                            <td class="con0"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . $app->replaceDefinitions($ts->cond_cat_title) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo $app->replaceDefinitions($ts->cond_cat_title); ?> </td>
+                            <td class="con0"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . utf8_encode($app->replaceDefinitions($ts->cond_cat_title)) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo $app->replaceDefinitions($ts->cond_cat_title); ?> </td>
                             <td class="center"><?php if($ts->required_action_c != '') echo '<span class="task">' . $app->replaceDefinitions($ts->required_action) . "<span>$ts->required_action_c</span></span>" ; else echo $app->replaceDefinitions($ts->required_action); ?></td>
                             <?php if($ts->type=='conditions') { ?>
-							<td class="con1" width="5%"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline . "<span>$ts->deadline_c</span></span>" ; else echo getMysqlToCamironDate($ts->deadline); ?></td>
+								<td class="con1" width="5%"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline . "<span>$ts->deadline_c</span></span>" ; else echo getMysqlToCamironDate($ts->deadline); ?></td>
                             <?php } else { ?>
-							<td class="con1" width="5%"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline_text . "<span>$ts->deadline_c</span></span>" ; else echo $ts->deadline_text; ?></td>
+								<td class="con1" width="5%"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline_text . "<span>$ts->deadline_c</span></span>" ; else echo $ts->deadline_text; ?></td>
 							<?php } ?>
 							<td class="con1"><?php if($ts->party_accountable_c != '') echo '<span class="task">' . $app->replaceDefinitions($ts->party_accountable) . "<span>$ts->party_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->party_accountable); ?></td>
                             <td class="con0"><?php if($ts->person_in_charge_c != '') echo '<span class="task">' . $ts->person_in_charge . "<span>$ts->person_in_charge_c</span></span>" ; else echo $ts->person_in_charge; ?></td>
@@ -139,6 +139,9 @@
         
 </div><!-- centercontent -->
 <script type="text/javascript">
+	// jQuery(document).ready(function(){
+		// jQuery("area[rel^='prettyPhoto']").prettyPhoto();
+	// });
 	jQuery('#overviewselect').change(function(){
 		//alert(jQuery('#overviewselect').val()); return false;
 		//if(jQuery('#overviewselect').val() != '')

@@ -21,7 +21,7 @@ if(isset($_POST['due_date_a'])) {
 	unset($_POST['due_date_j']); 
 	unset($_POST['due_date_m']); 
 }
-//xmlrpc_decodevar_dump($_POST);
+//var_dump($_POST);
 try {
 	if(isset($_POST['is_assigned_to']))
 		$_POST['person_in_charge'] = $_POST['is_assigned_to'];

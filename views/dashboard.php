@@ -13,7 +13,7 @@
         <div id="contentwrapper" class="contentwrapper">
         
         	<div id="updates" class="subcontent">
-                    <div class="notibar announcement">
+                    <div class="notibar announcement hidden">
                         <a class="close"></a>
                         <h3>Notifications</h3>
                         <p>Your manager has a reply on the alert concerning the task on condition Delivery of an updated Feasibility Study including the Project Economic Model (articles 4.1 and 4.3. (a) (ii)).</p>
@@ -27,7 +27,7 @@
                       
                         <br clear="all" />
                         
-                        <table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablecb overviewtable2">
+                        <table cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablecb overviewtable2 hidden">
                             
                             <thead>
                                 <tr>
@@ -83,7 +83,7 @@
                         </div><!--contenttitle-->
                     
                     
-                    	<ul class="toplist">
+                    	<ul class="toplist hidden">
                         	<li>
                             	<div>
                                 	<span class="three_fourth" style="width:67.5%">
