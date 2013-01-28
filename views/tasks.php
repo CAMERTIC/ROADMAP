@@ -1,4 +1,7 @@
 <?php
+	function removeqsvar($url, $varname) {
+		return preg_replace('/([?&])'.$varname.'=[^&]+(&|$)/','$1',$url);
+	}
 	$t = new tasks();
 	$cmt = new comment();
 	if(isset($_GET['type']) || isset($_GET['person_in_charge']) || isset($_GET['status'])) {
@@ -143,15 +146,14 @@
 		// jQuery("area[rel^='prettyPhoto']").prettyPhoto();
 	// });
 	jQuery('#overviewselect').change(function(){
-		//alert(jQuery('#overviewselect').val()); return false;
-		//if(jQuery('#overviewselect').val() != '')
-			window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&type='+jQuery('#overviewselect').val();
+		//removeqsvar($_SERVER['REQUEST_URI'], 'type');
+			window.location = '<?php echo removeqsvar($_SERVER['REQUEST_URI'], 'type'); ?>&type='+jQuery('#overviewselect').val();
 	});
 	jQuery('#overviewselect2').change(function(){
-		window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&person_in_charge='+jQuery('#overviewselect2').val();
+		window.location = '<?php echo removeqsvar($_SERVER['REQUEST_URI'], 'person_in_charge'); ?>&person_in_charge='+jQuery('#overviewselect2').val();
 	});
 	jQuery('#overviewselect3').change(function(){
-		window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&status='+jQuery('#overviewselect3').val();
+		window.location = '<?php echo removeqsvar($_SERVER['REQUEST_URI'], 'status'); ?>&status='+jQuery('#overviewselect3').val();
 	});
 	jQuery('.btn_trash').click(function(){
 		

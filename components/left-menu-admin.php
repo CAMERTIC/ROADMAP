@@ -63,11 +63,19 @@
 	<li><a href="#set" class="editor">Settings</a>
 		<span class="arrow"></span>
 		<ul id="set">
-			<li><a href="#">Mail</a></li>
 			<li><a href="#">parameters</a></li>
-			<li><a href="#">dates</a></li>
-			<li><a href="#">print reports</a></li>
-			<li><a href="#">Dictionary</a></li>
+			<li><a href="?view=report-setting">Report setting</a></li>
+			<li><a href="">Date</a></li>
+			<li><a href="?view">Dictionary</a></li>
+		</ul>
+	</li>
+	<li><a href="#set" class="editor">Settings reports</a>
+		<span class="arrow"></span>
+		<ul id="set">
+			<li><a href="#">Contructions settings</a></li>
+			<li><a href="?view=report-setting">Report setting</a></li>
+			<li><a href="">Date</a></li>
+			<li><a href="?view">Dictionary</a></li>
 		</ul>
 	</li>
 </ul>
