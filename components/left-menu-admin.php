@@ -2,17 +2,17 @@
 	<li <?php if(isset($_GET['view'])) if($_GET['view']=='tasks' || $_GET['view']=='sheet') { echo 'class="current"'; } ?>><a href="#formsub" class="editor">TASKS</a>
 		<span class="arrow"></span>
 		<ul id="formsub">
-			<li <?php if(isset($_GET['view'])) if(!isset($_GET['layout'])) { echo 'class="current"'; } ?>><a href="?view=tasks">tasks</a></li>
-			<li <?php if(isset($_GET['view'])) if(isset($_GET['layout'])) if($_GET['layout']=='upload') { echo 'class="current"'; } ?>><a href="?view=sheet&layout=upload">Upload Sheet</a></li>
-			<li <?php if(isset($_GET['view'])) if(isset($_GET['layout'])) if($_GET['layout']=='create') { echo 'class="current"'; } ?>><a href="?view=sheet&layout=create">Create new</a></li>
+			<li><a href="?view=tasks">tasks</a></li>
+			<li><a href="?view=sheet&layout=upload">Upload Sheet</a></li>
+			<li><a href="?view=sheet&layout=create">Create new</a></li>
 		</ul>
 	</li>
 	<li <?php if(isset($_GET['view'])) if($_GET['view']=='conditions') { echo 'class="current"'; } ?>><a href="#addons" class="addons">Conditions</a>
 		<span class="arrow"></span>
 		<ul id="addons">
-			<li <?php if(isset($_GET['view'])) if($_GET['view']=='conditions') if(isset($_GET['filter'])) if($_GET['filter']=='6') { echo 'class="current"'; } ?>><a href="?view=conditions&filter=6">6 months</a></li>
-			<li <?php if(isset($_GET['view'])) if($_GET['view']=='conditions') if(isset($_GET['filter'])) if($_GET['filter']=='9') { echo 'class="current"'; } ?>><a href="?view=conditions&filter=9">9 months</a></li>
-			<li <?php if(isset($_GET['view'])) if($_GET['view']=='conditions') if(isset($_GET['filter'])) if($_GET['filter']=='18') { echo 'class="current"'; } ?>><a href="?view=conditions&filter=18">18 months</a></li>
+			<li><a href="?view=conditions&filter=6">6 months</a></li>
+			<li><a href="?view=conditions&filter=9">9 months</a></li>
+			<li><a href="?view=conditions&filter=18">18 months</a></li>
 		</ul>
 	</li>
 	<li <?php if(isset($_GET['view'])) if($_GET['view']=='constructions') { echo 'class="current"'; } ?>><a href="#error" class="error">Construction</a>
@@ -63,19 +63,11 @@
 	<li><a href="#set" class="editor">Settings</a>
 		<span class="arrow"></span>
 		<ul id="set">
+			<li><a href="#">Mail</a></li>
 			<li><a href="#">parameters</a></li>
-			<li><a href="?view=report-setting">Report setting</a></li>
-			<li><a href="">Date</a></li>
-			<li><a href="?view">Dictionary</a></li>
-		</ul>
-	</li>
-	<li><a href="#set" class="editor">Reports Settings </a>
-		<span class="arrow"></span>
-		<ul id="set">
-			<li><a href="#">Contructions settings</a></li>
-			<li><a href="?view=report-setting">Report setting</a></li>
-			<li><a href="">Date</a></li>
-			<li><a href="?view">Dictionary</a></li>
+			<li><a href="#">dates</a></li>
+			<li><a href="#">print reports</a></li>
+			<li><a href="?view=dictionnaire">Dictionary</a></li>
 		</ul>
 	</li>
 </ul>

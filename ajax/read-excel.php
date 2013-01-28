@@ -140,6 +140,15 @@ $sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 		<option value="exploitations">Exploitation</option>
 	</select>
 </div>
+<div class="overviewselect2 hidden" style="float:right;clear:right">
+	Select the period of document to load
+	<select id="period" name="period">
+		<option value="">Type</option>
+		<option value="6">6 months</option>
+		<option value="9">9 months</option>
+		<option value="18">18 months</option>
+	</select>
+</div>
 <br />
 <p id="response" style="display:none"><img src="./images/loadingAnimation.gif" id="loading" /></p>
 <br />
@@ -192,3 +201,14 @@ $sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 </table>
 
 <br />
+<script type="text/javascript">
+jQuery('#type').change(function(){
+	//alert(jQuery('#type').val());
+	if(jQuery('#type').val() == 'conditions') {
+		jQuery('.overviewselect2').show();
+	} else {
+		jQuery('#overviewselect2').hide();
+	}
+});
+
+</script>

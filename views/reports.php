@@ -27,11 +27,11 @@
     <td width="20%">&nbsp;</td>
   </tr>
   <tr>
-    <th rowspan="2" scope="row" style="background-color: #718430;color: white;font-size: 20px;line-height: 50px;padding: 0;text-align: center;">Convention Signing: 29/11/2012</th>
-    <td rowspan="2" style="background-color: #718430;color: white;font-size: 20px;line-height: 50px;padding: 0;text-align: center;">&nbsp;</td>
-    <td rowspan="2">Conditions Precedent  / Obligation</td>
-    <td colspan="3">Status</td>
-    <td rowspan="2">Comments</td>
+    <th rowspan="2" scope="row" style="font-size: 15px;line-height: 25px;padding: 0;text-align: center;">Convention Signing: 29/11/2012</th>
+    <td rowspan="2" >&nbsp;</td>
+    <td rowspan="2"  style="background-color: #718430;color: white;font-size: 20px;line-height: 25px;padding: 0;text-align: center;">Conditions Precedent  / Obligation</td>
+    <td colspan="3"  style="background-color: #718430;color: white;font-size: 20px;line-height: 25px;padding: 0;text-align: center;">Status</td>
+    <td rowspan="2"  style="background-color: #718430;color: white;font-size: 20px;line-height: 25px;padding: 0;text-align: center;">Comments</td>
   </tr>
   <tr>
     <td>&nbsp;</td>

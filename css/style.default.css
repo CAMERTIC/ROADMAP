@@ -285,7 +285,7 @@ body { background: #eee !important; }
 
 .userinfodrop .avatar { float: left; }
 
-.userdata { /* margin-left: 105px; */ }
+.userdata { margin-left: 105px; }
 .userdata h4 { color: #2d3c54; display: inline-block; }
 .userdata .email { color: #999; font-size: 11px; display: inline-block; }
 .userdata ul { list-style: none; margin-top: 10px; }

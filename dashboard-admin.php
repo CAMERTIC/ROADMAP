@@ -119,6 +119,29 @@ a.dic {
 	text-decoration : underline;
 }
 </style>
+<script>
+function startTime()
+{
+var today=new Date();
+var h=today.getHours();
+var m=today.getMinutes();
+var s=today.getSeconds();
+// add a zero in front of numbers<10
+m=checkTime(m);
+s=checkTime(s);
+document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+t=setTimeout(function(){startTime()},500);
+}
+
+function checkTime(i)
+{
+if (i<10)
+  {
+  i="0" + i;
+  }
+return i;
+}
+</script>
 </head>
 
 <body class="withvernav">
@@ -165,11 +188,11 @@ a.dic {
         	<div class="earnings">
             	<div class="one_half">
                 	<h4>Today's Date</h4>
-                    <h2>15/01/2013</h2>
+                   <h2><?php echo date("d/m/Y"); ?></h2>
                 </div><!--one_half-->
                 <div class="one_half last alignright">
                 	<h4>Time</h4>
-                    <h2>03:35</h2>
+                     <h2 id="txt"></h2>
                 </div><!--one_half last-->
             </div><!--earnings-->
         </div><!--headerwidget-->

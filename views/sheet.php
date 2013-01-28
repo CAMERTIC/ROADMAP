@@ -62,13 +62,21 @@ function loadSheet(file) {
 	
 	jQuery("#response").show();
 	var type = jQuery("#type").val();
+	var period = jQuery("#period").val();
+	
 	if(type=='') {
 		alert('Please select the type of document to load!'); 
 	 return false;
 	 }
+	 if(type=='conditions'){
+		if(period=='') {
+			alert('Please select the period of document to load!'); 
+			return false;
+		}
+	 }
 	jQuery.ajax({
 		type: "POST",
-		data: "file="+file+"&type="+type,
+		data: "file="+file+"&type="+type+"&sector="+period,
 		url: ajax+"load-excel.php",
 		cache: false,
 		success: function(html){

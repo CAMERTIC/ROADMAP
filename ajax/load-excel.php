@@ -101,8 +101,8 @@ for($i = 6; $i <= count($sheetData)+5; $i++) {
 		if($k == 'L') $task['risk_sanction'] = addslashes($valeur);
 		if($k == 'L') $task['risk_sanction_c'] = addslashes($valeur_c);
 		$task['type'] = $_POST['type'];
-		// if($task['type']=='contructions')
-			// $task['sector'] == $cond_cat_title;
+		if($task['type']=='conditions')
+			$task['sector'] == $_REQUEST['sector'];
 	} 
 	//var_dump($task);
 	try {

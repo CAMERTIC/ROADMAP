@@ -114,7 +114,7 @@ class tasks extends entity {
 					case 'all' : $req = "SELECT * FROM $this->table WHERE type = 'conditions' AND deadline BETWEEN '$date_convention' AND '$date' ORDER BY due_date"; break;
 				}
 			} else 
-				$req = "SELECT * FROM $this->table WHERE type = 'conditions' AND deadline BETWEEN '$date_convention' AND '$date' ORDER BY due_date";
+				$req = "SELECT * FROM $this->table WHERE type = 'conditions' AND sector = '$filter' ORDER BY due_date";
 		} else {
 			$req = "SELECT * FROM $this->table WHERE type = 'conditions' ORDER BY due_date";
 		}
@@ -161,7 +161,8 @@ class tasks extends entity {
 			} else {
 				if(isset($filter['view'])) unset($filter['view']);
 				//$req .= ' WHERE ';
-				if($_SESSION['u']['idgroupe'] ==3) $req .= ' WHERE 1=1 ';
+				if($_SESSION['u']['idgroupe'] ==3) 
+				$req .= ' WHERE 1=1 ';
 				foreach($filter as $f => $cond) {
 					$req .= ' AND ' . $f . " = '" . $cond . "' ";
 				}
