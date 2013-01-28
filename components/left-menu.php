@@ -1,3 +1,4 @@
+<?php @session_start(); ?>
 <ul>
 	<li <?php if(isset($_GET['view'])) if($_GET['view']=='my-tasks' || $_GET['view']=='team-tasks' || $_GET['view']=='all-tasks') { echo 'class="current"'; } ?>><a href="#formsub" class="editor">TASKS</a>
 		<span class="arrow"></span>
@@ -53,6 +54,9 @@
 		</ul>
 	</li>
 	<li><a href="?view=dictionnaire" class="tables">Dictionary</a></li>
+	<?php if($_SESSION['u']['idgroupe'] == 2) { ?>
+	<li><a href="?view=reports" class="tables">Reports</a></li>
+	<?php } ?>
 </ul>
 <a class="togglemenu"></a>
 <br /><br />

@@ -151,8 +151,8 @@ return i;
             <div class="userinfodrop">
             	
                 <div class="userdata">
-                	<h4><?php echo ucfirst($_SESSION['u']['utilisateur']); ?></h4>
-                    <span class="email">juan@camiron.com</span>
+                	<h4><?php echo ucfirst($_SESSION['u']['nom']); ?></h4>
+                    <span class="email">email@camiron.com</span>
                     <ul>
                     	<li><a href="?view=">Account Settings</a></li>
                         <li><a href="?view=support">Support</a></li>

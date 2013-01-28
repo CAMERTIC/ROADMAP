@@ -69,7 +69,7 @@
 			<li><a href="?view">Dictionary</a></li>
 		</ul>
 	</li>
-	<li><a href="#set" class="editor">Settings reports</a>
+	<li><a href="#set" class="editor">Reports Settings </a>
 		<span class="arrow"></span>
 		<ul id="set">
 			<li><a href="#">Contructions settings</a></li>
