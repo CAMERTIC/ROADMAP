@@ -50,7 +50,7 @@ class camiron extends bd {
 		global $definitions;
 		 // echo "<pre>"; var_dump($mots); 
 		// echo "<pre>"; var_dump($definitions); die;
-		return preg_replace($mots, $definitions, $phrase, 1);
+		return @preg_replace($mots, $definitions, $phrase, 1);
 	}
 	
 	public function getGroup() {
