@@ -3,11 +3,11 @@
 // SERVER CONFIGURATIONS
 class CamerticConfig {
 	var $user = 'root';
-	var $pass = '17decembre';
+	var $pass = 'Camiron25';
 
 	//var $library = 'C:\wamp\www\pagify\lib\library.php';
 	var $dbtype = 'mysql';
-	var $host = '';
+	var $host = '127.0.0.1';
 	var $dbname = 'camiron';
 	var $port = 3306;
 	var $ldap = true; // Member connection method for Active Directory

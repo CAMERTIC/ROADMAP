@@ -29,7 +29,7 @@ try {
 	if($_POST['comment'] != '') {
 		$cmt = new comment($_POST['id']);
 		$cmt->setComment(addslashes($_POST['comment']));
-		
+		mail('pollux1er@yahoo.fr', 'Test', 'Test');
 	}
 } catch (Exception $e) {
 	echo 'Error message : ' . $e->getMessage() . "\n";

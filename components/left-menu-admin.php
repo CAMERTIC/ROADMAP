@@ -44,7 +44,7 @@
 			<li><a href="?view=exploitation&filter=Marketing and Treasury Monitoring Issues">Marketing and Treasury Monitoring Issues</a></li>
 			<li><a href="?view=exploitation&filter=Land Issues">Land Issues</a></li>
 			<li><a href="?view=exploitation&filter=Environmental And Security Issues Exploitation Phase 1">Environmental And Security Issues Exploitation Phase 1</a></li>
-			<li><a href="?view=exploitation&filter=Community">Community</a></li>
+			<li><a href="?view=exploitation&filter=Community exploitation phase 1">Community exploitation phase 1</a></li>
 			<li><a href="?view=exploitation&filter=Contractual Obligations Relating to the Pesonnel">Contractual Obligations Relating to the Pesonnel</a></li>
 			<li><a href="?view=exploitation&filter=Financial and Accounting Compliance exploitation phase">Financial and Accounting Compliance exploitation phase</a></li>
 			<li><a href="?view=exploitation&filter=Tax and Customs Compliance">Tax and Customs Compliance</a></li>

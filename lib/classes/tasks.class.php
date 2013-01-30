@@ -134,7 +134,7 @@ class tasks extends entity {
 					case 'all' : $req = "SELECT * FROM $this->table WHERE type = 'constructions' AND sector = '".$filter."' ORDER BY due_date"; break;
 				}
 			} else 
-				$req = "SELECT * FROM $this->table WHERE type = 'constructions' AND sector = '".$filter."' ORDER BY due_date";
+				$req = "SELECT * FROM $this->table WHERE type = 'constructions' AND sector = '".$filter."' ORDER BY id ASC";
 		} else {
 			$req = "SELECT * FROM $this->table WHERE type = 'constructions' ORDER BY due_date";
 		}
@@ -142,6 +142,29 @@ class tasks extends entity {
 		$res = $this->select($req);
 		return $res;
 	}
+	
+	// fonction qui renvoie les tasks dont le type est exploitions ajouter par thalex
+	public function getAllExploitations($filter = null, $person = null) {
+		global $date_convention;
+		//var_dump($date_convention);
+		if(!is_null($filter)) {
+			if(!is_null($person)) {
+				switch($person) {
+					case 'me' : $req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND person_in_charge = '".$_SESSION['u']['utilisateur']."' AND sector = '".$filter."' ORDER BY due_date"; break;
+					case 'team' : $req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND sector = '".$filter."' ORDER BY due_date"; break;
+					case 'all' : $req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND sector = '".$filter."' ORDER BY due_date"; break;
+				}
+			} else 
+				$req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND sector = '".$filter."' ORDER BY id ASC";
+		} else {
+			$req = "SELECT * FROM $this->table WHERE type = 'exploitations' ORDER BY due_date";
+		}
+		//var_dump($req); die;
+		$res = $this->select($req);
+		return $res;
+	}
+	//fin fonction renvoie les tasks************************************************ 
+	
 	public function getAllTasks($filter = null) {
 		if($_SESSION['u']['idgroupe'] == 2)
 			$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'];
