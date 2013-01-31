@@ -36,10 +36,10 @@
                         <tr>
                           <th class="head0 nosort"></th>
                             <th class="head0">Login</th>
-                            <th class="head1">Last login</th>
+                            <th class="head1">Names</th>
                             <th class="head0">User group</th>
                             <th class="head1">Team</th>
-                            <th class="head0">Manager</th>
+                            <th class="head0">Email</th>
                             <th class="head1"></th>
                         </tr>
                     </thead>
@@ -51,11 +51,11 @@
                           <td align="center"><span class="center">
                             <input type="checkbox" />
                           </span></td>
-                            <td><?php echo $u->login ?></td>
-                            <td><?php echo $u->last_login ?></td>
-                            <td><?php echo $u->gp ?></td>
-                            <td class="center"><?php echo $u->team ?></td>
-                            <td class="center"><?php  ?></td>
+                            <td><a href="?view=users&layout=edit&login=<?php echo $u->login ?>"><?php echo $u->login ?></a></td>
+                            <td><?php echo $u->noms ?></td>
+                            <td><?php if($u->gp == 1) echo "User"; else "Manager"; ?></td>
+                            <td class="center"><?php echo $user_ldap->getTeamName($u->team); ?></td>
+                            <td class="center"><?php echo $u->email  ?></td>
                             <td class="center"></td>
                         </tr>
 					<?php } ?>

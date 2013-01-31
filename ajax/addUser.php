@@ -9,7 +9,11 @@ require_once '../lib/classes/rc_users.class.php';
 $C = new CamerticConfig;
 $p = new rc_users; 
 try {
-	$p->newRecord($_POST);
+	if(isset($_POST['action'])) {
+		unset($_POST['action']);
+		$p->saveRecord($_POST);
+	} else
+		$p->newRecord($_POST);
 } catch (Exception $e) {
 	echo 'Error message : ' . $e->getMessage() . "\n";
 }

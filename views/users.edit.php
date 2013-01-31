@@ -1,6 +1,6 @@
 <?php
-	$user_ldap = new ldap_user();
-	$users = $user_ldap->getAllRecords();
+	$user = new rc_users();
+	$user = $user->getRecord($_GET['login']);
 	
 	$team = new team();
 	$teams = $team->getAllRecords();
@@ -11,7 +11,7 @@
 		<div id="basicform" class="subcontent">
                                 
                     <div class="contenttitle2">
-                        <h3>Create a new user</h3>
+                        <h3>Update a user</h3>
                     </div><!--contenttitle-->
                     <div class="notibar msgsuccess hidden">
                         <a class="close"></a>
@@ -20,21 +20,21 @@
 					<form class="stdform stdform2" id="userform" method="post" action="">
                     	<p>
                         	<label>Names</label>
-                            <span class="field"><input type="text" name="noms" id="noms" class="smallinput" /></span>
+                            <span class="field"><input type="text" name="noms" id="noms" class="smallinput" value="<?php echo $user->noms ?>" /></span>
                         </p>
 						<p>
                         	<label>Login</label>
-                            <span class="field"><input type="text" name="login" id="login" class="smallinput" /></span>
+                            <span class="field"><input type="text" name="login" id="login" class="smallinput" value="<?php echo $user->login ?>" /></span>
                         </p>
                         
                         <p>
                         	<label>password</label>
-                            <span class="field"><input type="password" name="pw" id="pw" class="smallinput" /></span>
+                            <span class="field"><input type="password" name="pw" id="pw" class="smallinput" value="<?php echo $user->pw ?>" /></span>
                         </p>
                         
 						<p>
                         	<label>Email</label>
-                            <span class="field"><input type="text" name="email" id="email" class="smallinput" /></span>
+                            <span class="field"><input type="text" name="email" id="email" class="smallinput" value="<?php echo $user->email ?>" /></span>
                         </p>
 						
                         <p>
@@ -42,8 +42,8 @@
                             <span class="field">
 								<select name="gp" id="gp">
 									<option value="">Choose One</option>
-									<option value="2">Manager</option>
-									<option value="1">User</option>
+									<option <?php if($user->gp == 2) echo "SELECTED"; ?> value="2">Manager</option>
+									<option <?php if($user->gp == 1) echo "SELECTED"; ?> value="1">User</option>
 								</select>
 							</span>
                         </p>
@@ -53,16 +53,17 @@
                             <span class="field">
 								<select name="team" id="team">
 									<option value="">Choose One</option>
-								<?php foreach($teams as $u) { ?>
-									<option value="<?php echo $u->id ?>"><?php echo $u->name; ?></option>
-								<?php } ?>
+									<?php foreach($teams as $u) { ?>
+									<option <?php if($user->team == $u->id) echo "SELECTED"; ?> value="<?php echo $u->id ?>"><?php echo $u->name; ?></option>
+									<?php } ?>
 								</select>
 							</span>
                         </p>
                         
                         <p class="stdformbutton">
-                        	<button type="button" class="submit radius2" onclick="addUser()">Create</button>
+                        	<button type="button" class="submit radius2" onclick="updateUser()">Update</button>
                             <input type="reset" class="reset radius2" value="Cancel" />
+                            <input type="hidden" name="action" value="edit" />
                         </p>
                     </form>
 					

@@ -101,6 +101,15 @@ class rc_users extends entity {
 		}
 	}
 	
+	public function getTeamName($id) {
+		$req = "SELECT * FROM team WHERE id = '" . $id . "' LIMIT 1";
+		$res = $this->select($req);
+		if(isset($res[0]->name))
+			return $res[0]->name;
+		else
+			return '';
+	}
+	
 	public function __destruct() {
 		parent::__destruct();
 	}
