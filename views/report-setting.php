@@ -38,12 +38,7 @@
 							<label>Comment</label>
 							<textarea id="9monthscomment" name="9monthscomment"  cols="20" rows="3"></textarea>
 						</p>
-                        <p class="stdformbutton">
-                        	<button type="button" class="submit radius2" onclick="addUser()">Create</button>
-                            <input type="reset" class="reset radius2" value="Cancel" />
-                        </p>
-						
-						 <p>
+                        <p>
                         	<label>Complete the Project Financing %</label>
                             <span class="field"><input type="text" name="6months" id="6months" class="smallinput" /></span>
                         </p>
@@ -69,7 +64,7 @@
                         </p>
 						
 						<p style="padding:10px 0;">
-							<label>Comment</label>
+							<label>Update</label>
 							<textarea id="" name=""  cols="20" rows="3"></textarea>
 						</p>
 						

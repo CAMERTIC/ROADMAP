@@ -152,7 +152,7 @@ return i;
             	
                 <div class="userdata">
                 	<h4><?php echo ucfirst($_SESSION['u']['nom']); ?></h4>
-                    <span class="email">email@camiron.com</span>
+                    <span class="email"><?php echo $_SESSION['u']['email']; ?></span>
                     <ul>
                     	<li><a href="?view=">Account Settings</a></li>
                         <li><a href="?view=support">Support</a></li>

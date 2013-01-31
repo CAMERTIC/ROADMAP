@@ -65,6 +65,7 @@ class rc_users extends entity {
 			$_SESSION['u']['statut'] = 1;
 			$_SESSION['u']['idgroupe'] = $this->userDatas->gp;
 			$_SESSION['u']['utilisateur'] = $this->userDatas->login;
+			$_SESSION['u']['email'] = $this->userDatas->email;
 			$_SESSION['u']['nom'] = $this->userDatas->noms;
 			$_SESSION['u']['team'] = $this->userDatas->team;
 			$_SESSION['u']['derniere_con']= $this->userDatas->last_login;

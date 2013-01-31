@@ -63,10 +63,8 @@
 	<li><a href="#set" class="editor">Settings</a>
 		<span class="arrow"></span>
 		<ul id="set">
-			<li><a href="#">Mail</a></li>
-			<li><a href="#">parameters</a></li>
-			<li><a href="#">dates</a></li>
-			<li><a href="#">print reports</a></li>
+			<li><a href="?view=report-setting">Report settings</a></li>
+			<li><a href="?view=reports1">Display Precontratual Phase</a></li>
 			<li><a href="?view=dictionnaire">Dictionary</a></li>
 		</ul>
 	</li>
