@@ -6,26 +6,26 @@
             
             <ul class="hornav">
                 <li class="current"><a href="#updates">Overview</a></li>
-                <li><a href="#activities">Activities</a></li>
+                <!--<li><a href="#activities">Activities</a></li>-->
             </ul>
         </div><!--pageheader-->
         
         <div id="contentwrapper" class="contentwrapper">
         
         	<div id="updates" class="subcontent">
-                    <div class="notibar announcement">
+                   <!-- <div class="notibar announcement">
                         <a class="close"></a>
                         <h3>Notifications</h3>
                         <p>Your manager has a reply on the alert concerning the task 23.</p>
                     </div><!-- notification announcement -->
                     
                     <div class="two_third dashboard_left">
-						<ul class="shortcuts">
+						<!-- <ul class="shortcuts">
                         	<li><a href="" class="settings"><span>Settings</span></a></li>
                             <li><a href="" class="users"><span>Users</span></a></li>
                             <li><a href="" class="events"><span>upload Sheets</span></a></li>
                             <li><a href="" class="analytics"><span>Logs</span></a></li>
-                        </ul>
+                        </ul>-->
                         
                         <br clear="all" />
                         

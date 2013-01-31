@@ -157,9 +157,9 @@ return i;
         </div><!--left-->
         
         <div class="right">
-        	<div class="notification">
+        	 <div class="notification">
                <!-- <a class="count" href="ajax/notifications.html"><span>0</span></a>-->
-        	</div>
+        	</div> 
             <div class="userinfo">
             	
                 <span><?php echo ucfirst($_SESSION['u']['utilisateur']); ?></span>
