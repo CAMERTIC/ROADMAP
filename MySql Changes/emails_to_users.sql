@@ -1,0 +1,1 @@
+ALTER TABLE `rc_users` ADD `email` VARCHAR( 200 ) NULL 
