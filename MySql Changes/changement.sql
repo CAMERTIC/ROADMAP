@@ -1,1 +1,1 @@
-ALTER TABLE `rc_users` ADD `noms` VARCHAR( 300 ) NULL ;
+ALTER TABLE rc_users DROP manager;
