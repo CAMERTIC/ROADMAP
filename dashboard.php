@@ -154,7 +154,7 @@ return i;
                 	<h4><?php echo ucfirst($_SESSION['u']['nom']); ?></h4>
                     <span class="email"><?php echo $_SESSION['u']['email']; ?></span>
                     <ul>
-                    	<li><a href="?view=">Account Settings</a></li>
+                    	<li><a href="?view=user-settings">Account Settings</a></li>
                         <li><a href="?view=support">Support</a></li>
                         <li><a href="#" onclick="logout();">Sign Out</a></li>
                     </ul>
