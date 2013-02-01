@@ -97,12 +97,12 @@ abstract class entity extends bd {
 		if($this->insert($query)) {
 			
 		} else {
-			throw new Exception('Error while saving the record!');
+			throw new Exception('Error while saving the new record!');
 		}
 	}
 	
 	/** Methode de mise a jour d'un enregistrement */
-	protected function updateRecord($post) {
+	public function updateRecord($post) {
 		foreach($post as $index => $valeur) {
 			$this->$index = $valeur;
 			$this->data[$index] = $valeur;
@@ -110,7 +110,12 @@ abstract class entity extends bd {
 		//
 		$query = $this->buildUpdateQuery($this->data, $this->table, $post["$this->primaryKey"], $this->primaryKey);
 		//var_dump($query); die;
-		$this->update($query);
+		if($this->update($query)) {
+			
+		} else {
+			throw new Exception('Error while updating the record!');
+		}
+		
 	}
 	
 	public function getRecord($id){
