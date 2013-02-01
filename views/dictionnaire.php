@@ -30,11 +30,18 @@
 			
 			echo nl2br(utf8_encode($dic[$word]));
 		 ?><br />
-		 <input type="button" value="Back" onclick="window.history.back()">
+		 <input type="button" value="Back" onclick="window.history.back()" id="seek">
 		 </div>
 		<?php
 		} else {
 		 ?>
+		 <div>
+			<form action="dashboard.php?view=dictionnaire" name="rech" method="GET" >
+				<input type="text" name="word" placeholder="Type your search here" />
+				<a href="dashboard.php?view=dictionnaire" class="btn btn2 btn_blue btn_search radius50" onclick="document.rech.submit(); return false;"><span>Search</span></a>
+			</form>
+		 </div>
+		 <br /><br />
 		<table cellpadding="0" cellspacing="0" border="0" class="stdtable" id="dyntable">
                     <colgroup>
                         <col class="con0" />
