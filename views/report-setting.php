@@ -64,7 +64,7 @@
                         </p>
 						
 						<p style="padding:10px 0;">
-							<label>Comment</label>
+							<label>Update</label>
 							<textarea id="" name=""  cols="20" rows="3"></textarea>
 						</p>
 						
@@ -88,7 +88,7 @@
 							<textarea id="" name=""  cols="20" rows="3"></textarea>
 						</p>
 						
-						<input type="submit" value="Update" />
+						<input type="submit" value="Mettre a jour" />
 						
                     </form>
 					
