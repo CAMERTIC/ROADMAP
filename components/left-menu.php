@@ -52,6 +52,7 @@
 			<li><a href="?view=exploitation&filter=Rehabilitation exploitation phase stage 1">Rehabilitation exploitation phase stage 1</a></li>
 		</ul>
 	</li>
+	<li><a href="?view=dictionnaire" class="calendar">Dictionary</a></li>
 </ul>
 <a class="togglemenu"></a>
 <br /><br />
