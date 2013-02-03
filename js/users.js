@@ -97,27 +97,38 @@ function resetForm(ele) {
     });
 
 }
-function deleteEn(id) {
-	if (confirm("You want to delete energy?")) {
+function deleteUser(id) {
+	
+	if (confirm("You want to delete the user?")) {
 		
 		jQuery.ajax({
 		  type: "POST",
-		  url: ajax+"delEn.php",
-		  data: "identificador="+id,
+		  url: ajax+"delUser.php",
+		  data: "login="+id,
 		  cache: false,
 		  success: function(html){
 			//alert('succesfully');
 			if(html==""){
-				jQuery('#response').html('<span></span>Energy succesfully deleted.');
-				jQuery('#message').fadeIn("slow");
+				jQuery('.notibar').html('<a class="close"></a><p>User succesfully deleted.</p>');
+				jQuery('.notibar').fadeIn("slow");
 				jQuery('#'+id).fadeOut("slow");
 				setTimeout(function() {
-					$('#'+id).remove();
+					jQuery('#'+id).remove();
 				}, 1000);
+				jQuery('.notibar').fadeOut("slow");
+			} else {
+				jQuery('.notibar').removeClass('green');
+				jQuery('.notibar').addClass('red');
+				jQuery('.notibar').html('<span></span>'+html);
+				jQuery('.notibar').fadeIn("slow");
+				setTimeout(function() {
+					jQuery('.notibar').fadeOut("slow");
+				}, 5000);	
 			}
 		  }
 		});	
 	} else {
 			//alert('Non je supprime pas');
 	}
+	return false;
 }

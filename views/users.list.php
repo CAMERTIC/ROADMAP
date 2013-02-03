@@ -15,15 +15,19 @@
 		 <div class="contenttitle2">
                 	<h3>Manage users</h3>
                 </div><!--contenttitle-->
+				 <div class="notibar msgsuccess hidden">
+                        <a class="close"></a>
+                        <p>This is a success message.</p>
+                    </div><!-- notification msgsuccess -->
 				 <div class="tableoptions">
-                	<button class="deletebutton radius3" title="table2">Delete Selected</button> &nbsp;
-                    <select class="radius3">
+                	<select class="radius3">
                         <option value="">Show All</option>
                     	<option value="">Managers</option>
                         <option value="">Users</option>
                     </select> &nbsp;
                     <button class="radius3">Apply Filter</button>
                 </div><!--tableoptions-->	
+				<form id="users"  name="users" >
                 <table cellpadding="0" cellspacing="0" border="0" class="stdtable" id="dyntable">
                     <colgroup>
                         <col class="con0" style="width: 4%" />
@@ -34,8 +38,7 @@
                     </colgroup>
                     <thead>
                         <tr>
-                          <th class="head0 nosort"></th>
-                            <th class="head0">Login</th>
+                          <th class="head0">Login</th>
                             <th class="head1">Names</th>
                             <th class="head0">User group</th>
                             <th class="head1">Team</th>
@@ -47,21 +50,19 @@
                     <tbody>
                       <?php foreach($users as $u) { ?>
                     
-                        <tr class="gradeA">
-                          <td align="center"><span class="center">
-                            <input type="checkbox" />
-                          </span></td>
-                            <td><a href="?view=users&layout=edit&login=<?php echo $u->login ?>"><?php echo $u->login ?></a></td>
+                        <tr class="gradeA" id="<?php echo $u->login ?>">
+							<td><a href="?view=users&layout=edit&login=<?php echo $u->login ?>"><?php echo $u->login ?></a></td>
                             <td><?php echo $u->noms ?></td>
                             <td><?php if($u->gp == 1) echo "User"; else "Manager"; ?></td>
                             <td class="center"><?php echo $user_ldap->getTeamName($u->team); ?></td>
                             <td class="center"><?php echo $u->email  ?></td>
-                            <td class="center"></td>
+                            <td class="center"><button style="margin-right:-40px" class="stdbtn btn_trash"type="button" onclick="deleteUser('<?php echo $u->login ?>');">Delete user</button></td>
                         </tr>
 					<?php } ?>
                         
                     </tbody>
                 </table>
+				</form>
            <br /><br />
 	</div>
 </div>
