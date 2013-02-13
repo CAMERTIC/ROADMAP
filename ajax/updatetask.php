@@ -14,26 +14,19 @@ $task = $p->getRecord($_GET['id']);
 
 $u = new rc_users;
 $users = $u->getAllRecords();
-// deadline
 if(strlen($task->deadline) == 10) {
 	$tab = explode('-', $task->deadline);
 	$deadD = $tab[2];
 	$deadM = $tab[1];
 	$deadY = $tab[0];
-	
-} else {
-	$deadD = "01";
-	$deadM = "01";
-	$deadY = "2013";
-	
-}
-// duedate
-if(strlen($task->due_date) == 10) {
 	$tab = explode('-', $task->due_date);
 	$dudD = $tab[2];
 	$dudM = $tab[1];
 	$dudY = $tab[0];
 } else {
+	$deadD = "01";
+	$deadM = "01";
+	$deadY = "2013";
 	$dudD = "01";
 	$dudM = "01";
 	$dudY = "2013";
@@ -160,7 +153,6 @@ if(strlen($task->due_date) == 10) {
     <div class="quickformbutton">
 		<?php  ?>
 		<input type="hidden" name="id" id="id" value="<?php echo $task->id; ?>" />
-		<input type="hidden" name="cpc" id="cpc" value="0" />
     	<button id="update" class="update" type="button">Update</button>
         <button class="cancel">Close task</button>
         <span class="loading hidden"><img src="./images/loaders/loader3.gif" alt="" />Updating changes...</span>
@@ -173,12 +165,6 @@ if(strlen($task->due_date) == 10) {
 		// return false;
 	// });
 jQuery('#update').click(function(){
-	var comment = jQuery('#comment').val();
-	var changes = jQuery('#cpc').val();
-	if(changes == '1' && comment == '') {
-		alert('By assigning a task, you should also add a comment \n which will be sent to the new person in charge');
-		return false;
-	}
 		jQuery('.loading').html('<img src="./images/loaders/loader3.gif" alt="" />Updating changes...');
 		jQuery('.loading').show();
 		var data = jQuery('#task').serialize();
@@ -206,7 +192,7 @@ jQuery('#update').click(function(){
 	return false;
 });
 
-jQuery('#person_in_charge').change(function(){
-	jQuery('#cpc').val('1');
+jQuery('#type').change(function(){
+	
 });
 </script>	
