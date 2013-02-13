@@ -41,13 +41,13 @@
   <tr style="line-height: 50px;" border="1">
     <th scope="row">6 months</th>
     <td rowspan="7" style="border: 1px solid #000000;text-align: center;vertical-align: middle;"><img src="images/fleche.png" width="60px" /></td>
-    <td style="vertical-align: middle;border: 1px solid #000000;">Delivery of an update Feasibility Study</td>
+    <td style="vertical-align: middle; border: 1px solid #000000; padding: 5px;">Delivery of an update Feasibility Study</td>
     <td colspan="3" style="vertical-align: middle;border: 1px solid #000000;padding: 5px;">&nbsp;</td>
     <td style="vertical-align: middle;border: 1px solid #000000;padding: 5px;">&nbsp;</td>
   </tr>
   <tr>
     <th scope="row"  style="-moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; border-color: #000000 #000000 #000000 -moz-use-text-color;  border-image: none; border-style: solid solid solid none; border-width: 1px 1px 1px medium; height: 122px; vertical-align: bottom; ">9 months</th>
-    <td  style="vertical-align: middle; border: 1px solid #000000;">Submit to the State the Commitment Letter for the Debt required by the Project</td>
+    <td  style="vertical-align: middle; border: 1px solid #000000; padding: 5px;">Submit to the State the Commitment Letter for the Debt required by the Project</td>
     <td style="vertical-align: middle;border: 1px solid #000000;padding: 5px;" colspan="3">&nbsp;</td>
     <td style="vertical-align: middle;border: 1px solid #000000;padding: 5px;">&nbsp;</td>
   </tr>
@@ -68,7 +68,7 @@
     <td style="vertical-align: middle;border: 1px solid #000000;padding: 5px;">&nbsp;</td>
   </tr>
   <tr>
-    <td style="vertical-align: middle;border: 1px solid #000000;">Agree with the Government on a list of pre-approved Qualified Contractors</td>
+    <td style="vertical-align: middle; border: 1px solid #000000; padding: 5px;">Agree with the Government on a list of pre-approved Qualified Contractors</td>
     <td style="vertical-align: middle;border: 1px solid #000000;padding: 5px;" colspan="3">&nbsp;</td>
     <td style="vertical-align: middle;border: 1px solid #000000;padding: 5px;">&nbsp;</td>
   </tr>
@@ -78,6 +78,7 @@
     <td style="vertical-align: middle;border: 1px solid #000000;padding: 5px;">&nbsp;</td>
   </tr>
 </table>
+
 					
                     <br />
 
