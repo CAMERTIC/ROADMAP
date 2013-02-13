@@ -50,9 +50,6 @@
 			<li><a href="?view=exploitation&filter=Tax and Customs Compliance">Tax and Customs Compliance</a></li>
 			<li><a href="?view=exploitation&filter=Foreign Exchange Monitoring Issues">Foreign Exchange Monitoring Issues</a></li>
 			<li><a href="?view=exploitation&filter=Rehabilitation exploitation phase stage 1">Rehabilitation exploitation phase stage 1</a></li>
-			<li><a href="?view=exploitation&filter=Services Applications stage 2">Services Applications stage 2</a></li>
-			<li><a href="?view=exploitation&filter=Services Feasibility Study stage 2">Services Feasibility Study stage 2</a></li>
-			<li><a href="?view=exploitation&filter=Compliance Relating to Construction and Expansion Capacity stage 2">Compliance Relating to Construction and Expansion Capacity stage 2</a></li>
 		</ul>
 	</li>
 	<li <?php if(isset($_GET['view'])) if($_GET['view']=='users') { echo 'class="current"'; } ?>><a href="#users" class="editor">Users</a>

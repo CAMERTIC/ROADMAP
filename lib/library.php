@@ -264,7 +264,7 @@ function getMysqlToCamironDate($date1) {
 	$tab = array();
 	$date2 = '';
 	$tab = explode('-', $date1);
-	if(!empty($tab)) {
+	if(!empty($tab) && isset($tab[1]) && isset($tab[2])) {
 		$date2 = date('F', strtotime("$tab[0]-$tab[1]-$tab[2]")) . ' ' . $tab[2] . ', ' . $tab[0];
 		return $date2;
 	} else {

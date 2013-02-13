@@ -102,6 +102,12 @@ class rc_users extends entity {
 		}
 	}
 	
+	public function getUserDetails($login) {
+		$req = "SELECT * FROM $this->table WHERE login = '". $login ."' LIMIT 1";
+		$res = $this->select($req);
+		return $res[0];
+	}
+	
 	public function getTeamName($id) {
 		$req = "SELECT * FROM team WHERE id = '" . $id . "' LIMIT 1";
 		$res = $this->select($req);
