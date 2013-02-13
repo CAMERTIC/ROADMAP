@@ -64,7 +64,10 @@
 		<span class="arrow"></span>
 		<ul id="set">
 			<li><a href="?view=report-setting">Report settings</a></li>
-			<li><a href="?view=reports1">Display Precontratual Phase</a></li>
+			<li><a href="?view=reports1">Report Precontratual Phase</a></li>
+			<li><a href="?view=reports2">Report Construction Phase</a></li>
+			<li><a href="?view=reports3">Report BF Construction Phase</a></li>
+			<li><a href="?view=reports4">Report Exploitation Phase</a></li>
 			<li><a href="?view=dictionnaire">Dictionary</a></li>
 		</ul>
 	</li>
