@@ -184,8 +184,7 @@ return i;
     
     <div class="vernav2 iconmenu">
     	<?php getComponent('left-menu'); ?>
-    </div><!--leftmenu-->
-        
+    </div><!--leftmenu-->	 
     <?php getView(); ?>
     
     

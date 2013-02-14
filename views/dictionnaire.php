@@ -16,8 +16,8 @@
 		</div><!--pageheader-->
 <div id="contentwrapper" class="contentwrapper">
 		 <div class="contenttitle2">
-			<h3> <?php if(isset($_GET['word'])) {
-			$word = $_GET['word'];
+			<h3> <?php if(isset($_POST['word'])) {
+			$word = $_POST['word'];
 			echo "Definition of '<b><u>$word</u></b>' : ";
 		 
 			} else {
@@ -26,7 +26,7 @@
 		 ?></h3>
 		</div><!--contenttitle-->
 		<div>	
-         <?php if(isset($_GET['word'])) {
+         <?php if(isset($_POST["word"])) {
 			
 			echo nl2br(utf8_encode($dic[$word]));
 		 ?><br />
@@ -36,7 +36,7 @@
 		} else {
 		 ?>
 		 <div>
-			<form action="dashboard.php?view=dictionnaire" name="rech" method="GET" >
+			<form action="dashboard.php?view=dictionnaire" name="rech" method="POST" >
 				<input type="text" name="word" placeholder="Type your search here" />
 				<a href="dashboard.php?view=dictionnaire" class="btn btn2 btn_blue btn_search radius50" onclick="document.rech.submit(); return false;"><span>Search</span></a>
 			</form>
