@@ -6,14 +6,19 @@
 	$cmt = new comment();
 	if(isset($_GET['type']) || isset($_GET['person_in_charge']) || isset($_GET['status'])) {
 		$tasks = $t->getAllTasks($_GET);
-	} else 
-		$tasks = $t->getAllRecords();
+	} else {
+		if(isset($_GET['page'])) {
+			$tasks = $t->getAllRecords(null, $t->step, $_GET['page']);
+		} else 
+			$tasks = $t->getAllRecords();
+	}
 	
 	$u = new rc_users;
 	$users = $u->getAllRecords();
 	global $app;
 	// echo "<pre>";
 	// var_dump($tasks);
+	// die;
 ?>
 <div class="centercontent tables">
     
@@ -136,7 +141,22 @@
 						<?php } ?>
                     </tbody>
                 </table>
-              
+               <br /><br />
+			   <?php $pages = $t->getPagesNb(); ?>
+				<ul class="pagination">
+					<?php for($i = 1; $i <= $pages; $i++) { ?>
+                    	<?php if($i == 1) { ?><li class="first"><a class="disable" href="?view=tasks&page=1">«</a></li><?php } ?>
+                       <!-- <li class="previous"><a class="disable" href="">‹</a></li>-->
+                    	
+                        <?php if(isset($_GET['page'])) { 
+								if($_GET['page'] == $i) { ?><li><a class="current" href="?view=tasks&page=<?php echo $i; ?>"><?php echo $i; ?></a></li><?php }
+								else {?><li><a href="?view=tasks&page=<?php echo $i; ?>"><?php echo $i; ?></a></li><?php } 
+							} ?>
+                       
+                        <!--<li class="next"><a href="">›</a></li>-->
+                        <?php if($i == $pages) { ?><li class="last"><a href="?view=tasks&page=<?php echo $pages; ?>">»</a></li><?php } ?>
+					<?php } ?>
+                    </ul>
                 <br /><br />
         
         </div><!--contentwrapper-->

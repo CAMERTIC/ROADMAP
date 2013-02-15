@@ -16,7 +16,7 @@ class dico extends entity {
 		parent::__construct(__CLASS__);
 	}
 	
-	public function getAllRecords($filter = null, $limit = null) {
+	public function getAllRecords($filter = null, $limit = null, $start = null, $page = null) {
 		$req = "SELECT * FROM $this->table ORDER BY expression ASC";
 		$res = $this->select($req);
 		return $res;

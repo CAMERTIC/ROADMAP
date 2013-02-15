@@ -14,6 +14,9 @@ abstract class entity extends bd {
 	protected $table;
 	public $id;
 	protected $primaryKey;
+	public $start;
+	public $step;
+	public $page;
 	/**  Variable pour les données surchargées.  */
     private $data = array();
 
@@ -151,8 +154,9 @@ abstract class entity extends bd {
 		$req = "INSERT INTO ";
 	}
 	
-	public function getAllRecords($filter = null, $limit = null) {
+	public function getAllRecords($filter = null, $limit = null, $page = null) {
 		$req = "SELECT * FROM $this->table";
+		
 		if(!is_null($filter)) {
 			if(!empty($filter)) {
 				$req .= " WHERE ";
@@ -161,8 +165,31 @@ abstract class entity extends bd {
 				}
 			}
 		}
+		if(!is_null($this->step) || !is_null($limit)) {
+			if(!is_null($page)) {
+				$this->start = ($page - 1) * $this->step;
+			} else {
+				$page = 1;
+				$this->start = ($page - 1) * $this->step;
+			}
+			$req .= " LIMIT $this->start, $this->step";
+		}
+		//var_dump($req); die;
 		$res = $this->select($req);
 		return $res;
+	}
+	
+	public function getPagesNb() {
+		// on compte le nombre denregistrement de la table
+		$nbRecords = $this->count($this->table);
+		// on check si le pas de la pagination existe sinon on le definit
+		$this->step = is_null($this->step) ? 10 : $this->step;
+		// on determine le nombre de pages pour nos enregistrements
+		$nbPages = $nbRecords / $this->step;
+		if(is_int($nbPages))
+			return $nbPages;
+		else
+			return $nbPages + 1;
 	}
 	
 	protected function buildUpdateQueryWhere($data, $keys, $table = null) {

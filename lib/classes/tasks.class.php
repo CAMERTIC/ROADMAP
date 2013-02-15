@@ -13,6 +13,8 @@
 class tasks extends entity {
 	
 	public function __construct() {
+		
+		$this->step = 10;
 		parent::__construct(__CLASS__);
 	}
 	
