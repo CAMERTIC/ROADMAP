@@ -1,4 +1,4 @@
-<?php
+érieu<?php
 @session_start();
 /**
  * Classe de gestion des provinces
@@ -17,79 +17,79 @@ class tasks extends entity {
 	}
 	
 	public function getMyTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' ORDER BY due_date";
+		$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' ORDER BY id";
 		$res = $this->select($req);
 		return $res;
 	}
 	
 	public function getMyConditionsTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'conditions' ORDER BY due_date";
+		$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'conditions' ORDER BY id";
 		if(!is_null($filter))
-			$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'conditions' AND status = '".$filter."' ORDER BY due_date";
+			$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'conditions' AND status = '".$filter."' ORDER BY id";
 		$res = $this->select($req);
 		return $res;
 	}
 	
 	public function getConditionsTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE type = 'conditions' ORDER BY due_date";
+		$req = "SELECT * FROM $this->table WHERE type = 'conditions' ORDER BY id";
 		if(!is_null($filter))
-			$req = "SELECT * FROM $this->table WHERE type = 'conditions' AND status = '".$filter."' ORDER BY due_date";
+			$req = "SELECT * FROM $this->table WHERE type = 'conditions' AND status = '".$filter."' ORDER BY id";
 		$res = $this->select($req);
 		return $res;
 	}
 	
 	public function getMyConstructionsTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'constructions' ORDER BY due_date";
+		$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'constructions' ORDER BY id";
 		if(!is_null($filter))
-			$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'constructions' AND status = '".$filter."' ORDER BY due_date";
+			$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'constructions' AND status = '".$filter."' ORDER BY id";
 		$res = $this->select($req);
 		return $res;
 	}
 	
 	public function getConstructionsTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE type = 'constructions' ORDER BY due_date";
+		$req = "SELECT * FROM $this->table WHERE type = 'constructions' ORDER BY id";
 		if(!is_null($filter))
-			$req = "SELECT * FROM $this->table WHERE type = 'constructions' AND status = '".$filter."' ORDER BY due_date";
+			$req = "SELECT * FROM $this->table WHERE type = 'constructions' AND status = '".$filter."' ORDER BY id";
 		$res = $this->select($req);
 		return $res;
 	}
 	
 	public function getMyExploitationsTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'exploitations' ORDER BY due_date";
+		$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'exploitations' ORDER BY id";
 		if(!is_null($filter))
-			$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'exploitations' AND status = '".$filter."' ORDER BY due_date";
+			$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'exploitations' AND status = '".$filter."' ORDER BY id";
 		$res = $this->select($req);
 		return $res;
 	}
 	
 	public function getExploitationsTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE type = 'exploitations' ORDER BY due_date";
+		$req = "SELECT * FROM $this->table WHERE type = 'exploitations' ORDER BY id";
 		if(!is_null($filter))
-			$req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND status = '".$filter."' ORDER BY due_date";
+			$req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND status = '".$filter."' ORDER BY id";
 		$res = $this->select($req);
 		return $res;
 	}
 	
 	public function getMyTeamConditionsTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND type = 'conditions' ORDER BY due_date";
+		$req = "SELECT * FROM $this->table WHERE person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND type = 'conditions' ORDER BY id";
 		if(!is_null($filter))
-			$req = "SELECT * FROM $this->table WHERE person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND status = '".$filter."' AND type = 'conditions' ORDER BY due_date";
+			$req = "SELECT * FROM $this->table WHERE person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND status = '".$filter."' AND type = 'conditions' ORDER BY id";
 		$res = $this->select($req);
 		return $res;
 	}
 	
 	public function getMyTeamConstructionsTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND type = 'constructions' ORDER BY due_date";
+		$req = "SELECT * FROM $this->table WHERE person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND type = 'constructions' ORDER BY id";
 		if(!is_null($filter))
-			$req = "SELECT * FROM $this->table WHERE person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND type = 'constructions' AND status = '".$filter."' ORDER BY due_date";
+			$req = "SELECT * FROM $this->table WHERE person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND type = 'constructions' AND status = '".$filter."' ORDER BY id";
 		$res = $this->select($req);
 		return $res;
 	}
 	
 	public function getMyTeamExploitationsTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND type = 'exploitations' ORDER BY due_date";
+		$req = "SELECT * FROM $this->table WHERE person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND type = 'exploitations' ORDER BY id";
 		if(!is_null($filter))
-			$req = "SELECT * FROM $this->table WHERE person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND status = '".$filter."' AND type = 'exploitations' ORDER BY due_date";
+			$req = "SELECT * FROM $this->table WHERE person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND status = '".$filter."' AND type = 'exploitations' ORDER BY id";
 		$res = $this->select($req);
 		return $res;
 	}
@@ -97,7 +97,7 @@ class tasks extends entity {
 	
 	
 	public function getMyTeamTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE  = '" . $_SESSION['u']['utilisateur'] . "' ORDER BY due_date";
+		$req = "SELECT * FROM $this->table WHERE  = '" . $_SESSION['u']['utilisateur'] . "' ORDER BY id";
 		$res = $this->select($req);
 		return $res;
 	}
@@ -109,14 +109,14 @@ class tasks extends entity {
 			$date = date("Y-m-d", strtotime(date("Y-m-d", strtotime($date_convention)) . " +$filter month"));
 			if(!is_null($person)) {
 				switch($person) {
-					case 'me' : $req = "SELECT * FROM $this->table WHERE type = 'conditions' AND person_in_charge = '".$_SESSION['u']['utilisateur']."' AND deadline BETWEEN '$date_convention' AND '$date' ORDER BY due_date"; break;
-					case 'team' : $req = "SELECT * FROM $this->table WHERE type = 'conditions' AND person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND deadline BETWEEN '$date_convention' AND '$date' ORDER BY due_date"; break;
-					case 'all' : $req = "SELECT * FROM $this->table WHERE type = 'conditions' AND deadline BETWEEN '$date_convention' AND '$date' ORDER BY due_date"; break;
+					case 'me' : $req = "SELECT * FROM $this->table WHERE type = 'conditions' AND person_in_charge = '".$_SESSION['u']['utilisateur']."' AND deadline BETWEEN '$date_convention' AND '$date' ORDER BY id"; break;
+					case 'team' : $req = "SELECT * FROM $this->table WHERE type = 'conditions' AND person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND deadline BETWEEN '$date_convention' AND '$date' ORDER BY id"; break;
+					case 'all' : $req = "SELECT * FROM $this->table WHERE type = 'conditions' AND deadline BETWEEN '$date_convention' AND '$date' ORDER BY id"; break;
 				}
 			} else 
-				$req = "SELECT * FROM $this->table WHERE type = 'conditions' AND sector = '$filter' ORDER BY due_date";
+				$req = "SELECT * FROM $this->table WHERE type = 'conditions' AND sector = '$filter' ORDER BY id";
 		} else {
-			$req = "SELECT * FROM $this->table WHERE type = 'conditions' ORDER BY due_date";
+			$req = "SELECT * FROM $this->table WHERE type = 'conditions' ORDER BY id";
 		}
 		//var_dump($req); die;
 		$res = $this->select($req);
@@ -129,14 +129,14 @@ class tasks extends entity {
 		if(!is_null($filter)) {
 			if(!is_null($person)) {
 				switch($person) {
-					case 'me' : $req = "SELECT * FROM $this->table WHERE type = 'constructions' AND person_in_charge = '".$_SESSION['u']['utilisateur']."' AND sector = '".$filter."' ORDER BY due_date"; break;
-					case 'team' : $req = "SELECT * FROM $this->table WHERE type = 'constructions' AND person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND sector = '".$filter."' ORDER BY due_date"; break;
-					case 'all' : $req = "SELECT * FROM $this->table WHERE type = 'constructions' AND sector = '".$filter."' ORDER BY due_date"; break;
+					case 'me' : $req = "SELECT * FROM $this->table WHERE type = 'constructions' AND person_in_charge = '".$_SESSION['u']['utilisateur']."' AND sector = '".$filter."' ORDER BY id"; break;
+					case 'team' : $req = "SELECT * FROM $this->table WHERE type = 'constructions' AND person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND sector = '".$filter."' ORDER BY id"; break;
+					case 'all' : $req = "SELECT * FROM $this->table WHERE type = 'constructions' AND sector = '".$filter."' ORDER BY id"; break;
 				}
 			} else 
 				$req = "SELECT * FROM $this->table WHERE type = 'constructions' AND sector = '".$filter."' ORDER BY id ASC";
 		} else {
-			$req = "SELECT * FROM $this->table WHERE type = 'constructions' ORDER BY due_date";
+			$req = "SELECT * FROM $this->table WHERE type = 'constructions' ORDER BY id";
 		}
 		//var_dump($req); die;
 		$res = $this->select($req);
@@ -150,14 +150,14 @@ class tasks extends entity {
 		if(!is_null($filter)) {
 			if(!is_null($person)) {
 				switch($person) {
-					case 'me' : $req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND person_in_charge = '".$_SESSION['u']['utilisateur']."' AND sector = '".$filter."' ORDER BY due_date"; break;
-					case 'team' : $req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND sector = '".$filter."' ORDER BY due_date"; break;
-					case 'all' : $req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND sector = '".$filter."' ORDER BY due_date"; break;
+					case 'me' : $req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND person_in_charge = '".$_SESSION['u']['utilisateur']."' AND sector = '".$filter."' ORDER BY id"; break;
+					case 'team' : $req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND sector = '".$filter."' ORDER BY id"; break;
+					case 'all' : $req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND sector = '".$filter."' ORDER BY id"; break;
 				}
 			} else 
 				$req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND sector = '".$filter."' ORDER BY id ASC";
 		} else {
-			$req = "SELECT * FROM $this->table WHERE type = 'exploitations' ORDER BY due_date";
+			$req = "SELECT * FROM $this->table WHERE type = 'exploitations' ORDER BY id";
 		}
 		//var_dump($req); die;
 		$res = $this->select($req);
