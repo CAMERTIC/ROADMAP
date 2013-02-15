@@ -22,6 +22,13 @@ class dico extends entity {
 		return $res;
 	}
 	
+	public function getAllDefinitions($word) {
+		$word = strtolower($word);
+		$req = "SELECT * FROM $this->table WHERE LOWER(`expression`) LIKE '%$word%' ORDER BY expression ASC";
+		$res = $this->select($req);
+		return $res;
+	}
+	
 	public function __destruct() {
 		parent::__destruct();
 	}

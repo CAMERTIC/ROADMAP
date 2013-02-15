@@ -16,8 +16,8 @@
 		</div><!--pageheader-->
 <div id="contentwrapper" class="contentwrapper">
 		 <div class="contenttitle2">
-			<h3> <?php if(isset($_POST['word'])) {
-			$word = $_POST['word'];
+			<h3> <?php if(isset($_POST['word']) || isset($_GET['word'])) {
+			$word = isset($_POST['word']) ? $_POST['word'] : $_GET['word'];
 			echo "Definition of '<b><u>$word</u></b>' : ";
 		 
 			} else {
@@ -26,17 +26,21 @@
 		 ?></h3>
 		</div><!--contenttitle-->
 		<div>	
-         <?php if(isset($_POST["word"])) {
+         <?php if(isset($_POST["word"]) || isset($_GET['word'])) {
 			
 			echo nl2br(utf8_encode($dic[$word]));
 		 ?><br />
+		 <?php if(isset($_GET['word'])) { ?>
+			<a class="btn    " href="dashboard.php?view=dictionnaire">Return</a><br />
+		<?php } else { ?>
 		 <input type="button" value="Back" onclick="window.history.back()" id="seek">
+		 <?php } ?>
 		 </div>
 		<?php
 		} else {
 		 ?>
 		 <div>
-			<form action="dashboard.php?view=dictionnaire" name="rech" method="POST" >
+			<form action="dashboard.php?view=dico-search" name="rech" method="POST" >
 				<input type="text" name="word" placeholder="Type your search here" />
 				<a href="dashboard.php?view=dictionnaire" class="btn btn2 btn_blue btn_search radius50" onclick="document.rech.submit(); return false;"><span>Search</span></a>
 			</form>
