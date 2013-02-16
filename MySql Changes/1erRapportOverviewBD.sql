@@ -11,4 +11,5 @@ ADD `r1_p5_cmt` TEXT NULL ,
 ADD `r1_p6_status` VARCHAR( 200 ) NULL ,
 ADD `r1_p6_cmt` TEXT NULL ,
 ADD `r1_p7_status` VARCHAR( 200 ) NULL ,
-ADD `r1_p7_cmt` TEXT NULL 
+ADD `r1_p7_cmt` TEXT NULL ;
+ALTER TABLE `settings` ADD `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST ;
