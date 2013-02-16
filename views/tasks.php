@@ -142,22 +142,32 @@
                     </tbody>
                 </table>
                <br /><br />
-			   <?php $pages = $t->getPagesNb(); ?>
+			   <?php $pages = $t->getPagesNb(); 
+					$maxPag = 5;
+			   ?>
 				<ul class="pagination">
-					<li class="first"><a class="disable" href="?view=tasks&page=1">«</a></li>
+					<li class="first"><a class="" href="?view=tasks&page=1">« First</a></li>
+					<?php if(isset($_GET['page'])) { if($_GET['page'] > 1) { ?>
+                       <li class="previous"><a class="" href="?view=tasks&page=<?php echo $_GET['page'] - 1; ?>">‹ Previous</a></li>
+                    	<?php } } ?>
 					<?php for($i = 1; $i <= $pages; $i++) {
-							$min = $i - 2;
-							$max = $i + 2;
+							if(isset($_GET['page'])) {
+								if($_GET['page'] > ($maxPag/2)) {
+									$min = $_GET['page'] - 2;
+									$max = $_GET['page'] + 2;
+								} else {
+									$min = $_GET['page'] - 1;
+									$max = $_GET['page'] + 4;
+								}
+							}
 					?>
-                    	
-                       <!-- <li class="previous"><a class="disable" href="">‹</a></li>-->
                     	
                         <?php 
 						if($i <= $max  && $i >= $min) {
 							if(isset($_GET['page']) && $i ) { 
 								if($_GET['page'] == $i) { ?>
 								<li><a class="current" href="?view=tasks&page=<?php echo $i; ?>"><?php echo $i; ?></a></li><?php }
-								else {?><li><a href="?view=tasks&page=<?php echo $i; ?>"><?php echo $i; ?></a></li><?php } 
+								else { ?><li><a href="?view=tasks&page=<?php echo $i; ?>"><?php echo $i; ?></a></li><?php } 
 							} else { 
 							?>
 								<li><a href="?view=tasks&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
@@ -166,10 +176,13 @@
 							} else {}
 						?>
                        
-                        <!--<li class="next"><a href="">›</a></li>-->
+                        
                         
 					<?php } ?>
-					<li class="last"><a href="?view=tasks&page=<?php echo $pages; ?>">»</a></li>
+					<?php if(isset($_GET['page'])) { ?>
+						<li class="next"><a href="?view=tasks&page=<?php echo $_GET['page'] + 1; ?>">Next ›</a></li>
+					<?php } ?>
+					<li class="last"><a href="?view=tasks&page=<?php echo $pages; ?>">Last »</a></li>
                     </ul>
                 <br /><br />
         
