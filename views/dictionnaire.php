@@ -31,7 +31,7 @@
 			echo nl2br(utf8_encode($dic[$word]));
 		 ?><br />
 		 <?php if(isset($_GET['word']) && !isset($_GET['from'])) { ?>
-			<a class="btn    " href="dashboard.php?view=dictionnaire">Return</a><br />
+			<a class="btn    " href="?view=dictionnaire">Return</a><br />
 		<?php } else { ?>
 		 <input type="button" value="Back" onclick="window.history.back()" id="seek">
 		 <?php } ?>
@@ -40,9 +40,9 @@
 		} else {
 		 ?>
 		 <div>
-			<form action="dashboard.php?view=dico-search" name="rech" method="POST" >
+			<form action="?view=dico-search" name="rech" method="POST" >
 				<input type="text" name="word" placeholder="Type your search here" />
-				<a href="dashboard.php?view=dictionnaire" class="btn btn2 btn_blue btn_search radius50" onclick="document.rech.submit(); return false;"><span>Search</span></a>
+				<a href="?view=dictionnaire" class="btn btn2 btn_blue btn_search radius50" onclick="document.rech.submit(); return false;"><span>Search</span></a>
 			</form>
 		 </div>
 		 <br /><br />
