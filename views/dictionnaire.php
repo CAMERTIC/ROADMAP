@@ -30,7 +30,7 @@
 			
 			echo nl2br(utf8_encode($dic[$word]));
 		 ?><br />
-		 <?php if(isset($_GET['word'])) { ?>
+		 <?php if(isset($_GET['word']) && !isset($_GET['from'])) { ?>
 			<a class="btn    " href="dashboard.php?view=dictionnaire">Return</a><br />
 		<?php } else { ?>
 		 <input type="button" value="Back" onclick="window.history.back()" id="seek">

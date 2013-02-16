@@ -144,18 +144,32 @@
                <br /><br />
 			   <?php $pages = $t->getPagesNb(); ?>
 				<ul class="pagination">
-					<?php for($i = 1; $i <= $pages; $i++) { ?>
-                    	<?php if($i == 1) { ?><li class="first"><a class="disable" href="?view=tasks&page=1">«</a></li><?php } ?>
+					<li class="first"><a class="disable" href="?view=tasks&page=1">«</a></li>
+					<?php for($i = 1; $i <= $pages; $i++) {
+							$min = $i - 2;
+							$max = $i + 2;
+					?>
+                    	
                        <!-- <li class="previous"><a class="disable" href="">‹</a></li>-->
                     	
-                        <?php if(isset($_GET['page'])) { 
-								if($_GET['page'] == $i) { ?><li><a class="current" href="?view=tasks&page=<?php echo $i; ?>"><?php echo $i; ?></a></li><?php }
+                        <?php 
+						if($i <= $max  && $i >= $min) {
+							if(isset($_GET['page']) && $i ) { 
+								if($_GET['page'] == $i) { ?>
+								<li><a class="current" href="?view=tasks&page=<?php echo $i; ?>"><?php echo $i; ?></a></li><?php }
 								else {?><li><a href="?view=tasks&page=<?php echo $i; ?>"><?php echo $i; ?></a></li><?php } 
-							} ?>
+							} else { 
+							?>
+								<li><a href="?view=tasks&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+							<?php }
+
+							} else {}
+						?>
                        
                         <!--<li class="next"><a href="">›</a></li>-->
-                        <?php if($i == $pages) { ?><li class="last"><a href="?view=tasks&page=<?php echo $pages; ?>">»</a></li><?php } ?>
+                        
 					<?php } ?>
+					<li class="last"><a href="?view=tasks&page=<?php echo $pages; ?>">»</a></li>
                     </ul>
                 <br /><br />
         

@@ -189,7 +189,7 @@ abstract class entity extends bd {
 		if(is_int($nbPages))
 			return $nbPages;
 		else
-			return $nbPages + 1;
+			return (int) $nbPages + 1;
 	}
 	
 	protected function buildUpdateQueryWhere($data, $keys, $table = null) {

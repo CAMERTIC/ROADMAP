@@ -37,7 +37,7 @@ class camiron extends bd {
 		foreach($dic as $word => $definition) {
 			$patterns[] = "/".addslashes($word)."/i";
 			//$definition  = str_replace("'", " ", $definition);
-			$replacements[] = '<a href="?view=dictionnaire&word='.$word.'" rel="prettyPhoto[ajax]" title="Click to see definition of '.$word.'" class="dic">'.$word.'</a>';
+			$replacements[] = '<a href="?view=dictionnaire&word='.$word.'&from=task" rel="prettyPhoto[ajax]" title="Click to see definition of '.$word.'" class="dic">'.$word.'</a>';
 			//$replacements[] = '<a href="" title="Click to see definition of '.$word.'" onClick="jQuery.colorbox({html : \'<div class=camironbox><br />&nbsp;<b><u>Dictionary Definition</u>'. str_replace("'", " ", $definition)	.'<br /></div>\'}); return false" class="dic">'.$word.'</a>';
 			//$replacements[] = '<a href="#" title="Click to see definition" onClick="jQuery.colorbox({html : \'<div class=camironbox><br />&nbsp;<b><u>Dictionary Definition</u></b> : <br />'. str_replace("'", " ", $definition)	.'<br /><br /></div>\'}); return false" class="dic">'.$word.'</a>';
 		}
