@@ -146,10 +146,12 @@
 					$maxPag = 5;
 			   ?>
 				<ul class="pagination">
-					<li class="first"><a class="" href="?view=tasks&page=1">« First</a></li>
+					<?php if(isset($_GET['page'])) { if($_GET['page'] > 1) { ?>
+					<li class="first"><a class="" href="?view=tasks">« First</a></li>
+					<?php } } ?>
 					<?php if(isset($_GET['page'])) { if($_GET['page'] > 1) { ?>
                        <li class="previous"><a class="" href="?view=tasks&page=<?php echo $_GET['page'] - 1; ?>">‹ Previous</a></li>
-                    	<?php } } ?>
+                    	<?php } }  ?>
 					<?php for($i = 1; $i <= $pages; $i++) {
 							if(isset($_GET['page'])) {
 								if($_GET['page'] > ($maxPag/2)) {
@@ -159,18 +161,22 @@
 									$min = $_GET['page'] - 1;
 									$max = $_GET['page'] + 4;
 								}
+							} else {
+								$min = 1;
+								$max = 5;
 							}
 					?>
                     	
                         <?php 
 						if($i <= $max  && $i >= $min) {
-							if(isset($_GET['page']) && $i ) { 
+							if(isset($_GET['page'])) { 
 								if($_GET['page'] == $i) { ?>
 								<li><a class="current" href="?view=tasks&page=<?php echo $i; ?>"><?php echo $i; ?></a></li><?php }
 								else { ?><li><a href="?view=tasks&page=<?php echo $i; ?>"><?php echo $i; ?></a></li><?php } 
 							} else { 
+								
 							?>
-								<li><a href="?view=tasks&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+								<li><a <?php if($i==1) echo 'class="current"'; ?> href="?view=tasks&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 							<?php }
 
 							} else {}
@@ -179,10 +185,12 @@
                         
                         
 					<?php } ?>
-					<?php if(isset($_GET['page'])) { ?>
-						<li class="next"><a href="?view=tasks&page=<?php echo $_GET['page'] + 1; ?>">Next ›</a></li>
+					<?php if($pages > $maxPag) { ?>
+						<li class="next"><a href="?view=tasks&page=<?php if(isset($_GET['page'])) { echo $_GET['page'] + 1; } else { echo $maxPag+1; } ?>">Next ›</a></li>
 					<?php } ?>
+					<?php if($pages > $maxPag) { ?>
 					<li class="last"><a href="?view=tasks&page=<?php echo $pages; ?>">Last »</a></li>
+					<?php }  ?>
                     </ul>
                 <br /><br />
         
