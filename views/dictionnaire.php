@@ -31,7 +31,8 @@
 			echo nl2br(utf8_encode($dic[$word]));
 		 ?><br />
 		 <?php if(isset($_GET['word']) && !isset($_GET['from'])) { ?>
-			<a class="btn    " href="?view=dictionnaire">Return</a><br />
+			<a  style='color:white; padding:4px; border:1px solid #ccc; background-color:#777;' href="?view=dictionnaire">Return</a><br />
+			<!--<a class="btn    " href="?view=dictionnaire">Return</a><br /> -->
 		<?php } else { ?>
 		 <input type="button" value="Back" onclick="window.history.back()" id="seek">
 		 <?php } ?>
