@@ -36,17 +36,17 @@ try {
 }
 if($_POST['comment'] != '') {
 $u = new rc_users;
-$pc = $u->getUserDetails($_POST['person_in_charge'])
+$pc = $u->getUserDetails($_POST['person_in_charge']);
 	$cmt = new comment($_POST['id']);
 	$msg = 'ROADMAP CONVENTION MESSAGE \n';
 	$msg .= "Hi $pc->noms, \n";
-	$msg .= $_SESSION['u']['noms'] . " has assigned you a task to deliver on the " . $_POST['due_date'] . ", \n";
+	$msg .= $_SESSION['u']['nom'] . " has assigned you a task to deliver on the " . $_POST['due_date'] . ", \n";
 	$msg .= "Below his/her comment : \n";
 	$msg .= $_POST['comment'] . "\n";
 	$msg .= "Thanks";
 	@mail($pc->email, '[ROADMAP] You have been assigned a task', $msg);
 	$msg = 'ROADMAP CONVENTION TASK ASSIGNMENT \n';
-	$msg .= "Hi ".$_SESSION['u']['noms'].", \n";
+	$msg .= "Hi ".$_SESSION['u']['nom'].", \n";
 	$msg .= $pc->noms . " has been assigned the last task you updated. \n";
 	$msg .= "This is your comment : \n";
 	$msg .= $_POST['comment'] . "\n";
