@@ -28,7 +28,7 @@
 		
 		
             <div class="contenttitle2">
-				<h3>All My Tasks in Conditions</h3>
+				<h3>All My Tasks in Conditions &nbsp;&nbsp;<a title="Export to excel" href="cmd.php?view=my-tasks&action=export&data=my-conditions"><img src="images/page_excel.png" /></a></h3>
 			</div>
 			<?php
 				if(isset($_GET['status']))
@@ -102,7 +102,7 @@
               
                 <br /><br />
 			<div class="contenttitle2">
-				<h3>All My Tasks in Construction phase</h3>
+				<h3>All My Tasks in Construction phase&nbsp;&nbsp;<a title="Export to excel" href="cmd.php?view=my-tasks&action=export&data=my-construction"><img src="images/page_excel.png" /></a></h3>
 			</div>
 			<?php
 				if(isset($_GET['status']))
@@ -176,7 +176,7 @@
 				<br /><br />
 			
 			<div class="contenttitle2">
-				<h3>All My Tasks in Exploitation phase</h3>
+				<h3>All My Tasks in Exploitation phase&nbsp;&nbsp;<a title="Export to excel" href="cmd.php?view=my-tasks&action=export&data=my-exploitations"><img src="images/page_excel.png" /></a></h3>
 			</div>
 			<?php
 				if(isset($_GET['status']))

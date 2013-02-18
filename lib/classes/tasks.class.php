@@ -1,4 +1,4 @@
-érieu<?php
+<?php
 @session_start();
 /**
  * Classe de gestion des provinces
