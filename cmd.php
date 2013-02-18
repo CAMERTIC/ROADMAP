@@ -1,6 +1,7 @@
 <?php
 include 'ajax/Classes/PHPExcel.php';
 
+
 //$objWriter = new PHPExcel_Writer_Excel2007();
 
 $objPHPExcel = new PHPExcel;
@@ -22,38 +23,65 @@ $numberFormat = '#,#0.##;[Red]-#,#0.##';
 // writer already created the first sheet for us, let's get it
 $objSheet = $objPHPExcel->getActiveSheet();
 // rename the sheet
-//$objSheet->setTitle('My sales report');
+require_once 'config.php';
+require_once 'lib/library.php';
+require_once 'camertic/classes/bd.class.php';
+require_once 'lib/classes/entity.class.php';
+require_once 'lib/classes/tasks.class.php';
+switch($_GET['data']) {
+	case 'my-conditions' : $title = 'My tasks on Conditions'; $t = new tasks(); $datum = $t->getMyConditionsTasks(); break;
+
+}
+// echo "<pre>";
+// var_dump($datum); die;
+$objSheet->setTitle($title);
 
 // let's bold and size the header font and write the header
-// as you can see, we can specify a range of cells, like here: cells from A1 to A4
-//$objSheet->getStyle('A1:D1')->getFont()->setBold(true)->setSize(12);
+// as you can see, we can specify a range of cells, like here
+$objSheet->getStyle('A4:N4')->getFont()->setBold(true)->setSize(12);
+
+$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(50);
+$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(40);
+$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(40);
+$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(50);
 
 // write header
-// $objSheet->getCell('A1')->setValue('Product');
-// $objSheet->getCell('B1')->setValue('Quanity');
-// $objSheet->getCell('C1')->setValue('Price');
-// $objSheet->getCell('D1')->setValue('Total Price');
-
+$objSheet->getCell('A4')->setValue('Conditions Precedents to be satisfied');
+$objSheet->getCell('B4')->setValue('Required actions or operation');
+$objSheet->getCell('C4')->setValue('Date for compliance (time frame, deadline)');
+$objSheet->getCell('D4')->setValue('Party accountable for compliance');
+$objSheet->getCell('E4')->setValue('Party accountable for compliance');
+$objSheet->getCell('F4')->setValue('Person in charge of action (CamIron/Sundance)');
+$objSheet->getCell('G4')->setValue('Due date for action');
+$objSheet->getCell('H4')->setValue('Authority accountable for compliance (State)');
+$objSheet->getCell('I4')->setValue('Status');
+$objSheet->getCell('J4')->setValue('CamIron Input (information and documents required for compliance)');
+$objSheet->getCell('K4')->setValue('CamIron Input (information and documents required for compliance)');
+$objSheet->getCell('L4')->setValue('Output (deliverable resulting from compliance)');
+$objSheet->getCell('M4')->setValue('Output (deliverable resulting from compliance)');
+$objSheet->getCell('N4')->setValue('Risk/sanction');
+$objSheet->getCell('O4')->setValue('Risk/sanction');
+$i = 5;
+foreach($datum as $d) {
+	$objSheet->getCell("A$i")->setValue($d->cond_cat_title);
+	// $objSheet->getCell('B4')->setValue('Required actions or operation');
+	// $objSheet->getCell('C4')->setValue('Date for compliance (time frame, deadline)');
+	// $objSheet->getCell('D4')->setValue('Party accountable for compliance');
+	// $objSheet->getCell('E4')->setValue('Party accountable for compliance');
+	// $objSheet->getCell('F4')->setValue('Person in charge of action (CamIron/Sundance)');
+	// $objSheet->getCell('G4')->setValue('Due date for action');
+	// $objSheet->getCell('H4')->setValue('Authority accountable for compliance (State)');
+	// $objSheet->getCell('I4')->setValue('Status');
+	// $objSheet->getCell('J4')->setValue('CamIron Input (information and documents required for compliance)');
+	// $objSheet->getCell('K4')->setValue('CamIron Input (information and documents required for compliance)');
+	// $objSheet->getCell('L4')->setValue('Output (deliverable resulting from compliance)');
+	// $objSheet->getCell('M4')->setValue('Output (deliverable resulting from compliance)');
+	// $objSheet->getCell('N4')->setValue('Risk/sanction');
+	// $objSheet->getCell('O4')->setValue('Risk/sanction');
+	$i++;
+}
 // we could get this data from database, but for simplicty, let's just write it
-// $objSheet->getCell('A2')->setValue('Motherboard');
-// $objSheet->getCell('B2')->setValue(10);
-// $objSheet->getCell('C2')->setValue(5);
-// $objSheet->getCell('D2')->setValue('=B2*C2');
 
-// $objSheet->getCell('A3')->setValue('Processor');
-// $objSheet->getCell('B3')->setValue(6);
-// $objSheet->getCell('C3')->setValue(3);
-// $objSheet->getCell('D3')->setValue('=B3*C3');
-
-// $objSheet->getCell('A4')->setValue('Memory');
-// $objSheet->getCell('B4')->setValue(10);
-// $objSheet->getCell('C4')->setValue(2.5);
-// $objSheet->getCell('D4')->setValue('=B4*C4');
-
-// $objSheet->getCell('A5')->setValue('TOTAL');
-// $objSheet->getCell('B5')->setValue('=SUM(B2:B4)');
-// $objSheet->getCell('C5')->setValue('-');
-// $objSheet->getCell('D5')->setValue('=SUM(D2:D4)');
 
 // bold and resize the font of the last row
 // $objSheet->getStyle('A5:D5')->getFont()->setBold(true)->setSize(12);
@@ -83,24 +111,15 @@ $objSheet = $objPHPExcel->getActiveSheet();
 // $objSheet->getColumnDimension('D')->setAutoSize(true);
 
 // write the file
-//$objWriter->save('test.xlsx');
+$filetitle = str_replace(" ", "-", $title) . '.xlsx';
+$fichier = "exports" . DIRECTORY_SEPARATOR . $filetitle;
+$objWriter->save($fichier);
+include("downloadfileclass.inc.php");
 
-// instanciation de lobjet
-	//$workbook = new PHPExcel;
-	
-	// activation sur la feuille de travail
-	//$sheet = $workbook->getActiveSheet();
-	
-	//$sheet->setCellValue('A1','MaitrePylos');
-	//$sheet->setCellValueByColumnAndRow(1, 4, 'MaitrePylos');
-	
-	// instanciation d'un objet decriture
-	//$writer = new PHPExcel_Writer_Excel2007($workbook);
-	
-	
-	// nommage et enregistrement du fichier
-	//$records = './exports/fichier.xlsx';
-	//$writer->save($records);
-	
-	//var_dump($data); die;
+$downloadfile = new DOWNLOADFILE($fichier, "application/xlsx");
+// var_dump($fichier);
+// die;
+if (!$downloadfile->df_download()) 
+	echo "Sorry, we are experiencing technical difficulties downloading this file. Please report this error to Technical Support.";
+
 ?>

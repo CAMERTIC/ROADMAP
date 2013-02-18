@@ -5,7 +5,7 @@
 @session_start();
 include("downloadfileclass.inc.php");
 
-$fichier = "sitemaps" . DIRECTORY_SEPARATOR . $_SESSION['file'] . ".xml";
+$fichier = "exports" . DIRECTORY_SEPARATOR . $_SESSION['file'] . ".xml";
 
 $downloadfile = new DOWNLOADFILE($fichier, "application/xml");
 // var_dump($fichier);
