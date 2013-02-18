@@ -8,7 +8,7 @@ $objPHPExcel = new PHPExcel;
 // set default font
 $objPHPExcel->getDefaultStyle()->getFont()->setName('Calibri');
 // set default font size
-$objPHPExcel->getDefaultStyle()->getFont()->setSize(8);
+$objPHPExcel->getDefaultStyle()->getFont()->setSize(10);
 // create the writer
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, "Excel2007");
 
@@ -42,6 +42,7 @@ $objSheet->getStyle('A4:N4')->getFont()->setBold(true)->setSize(12);
 
 $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(50);
 $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(40);
+
 $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(40);
 $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(50);
 
@@ -63,9 +64,11 @@ $objSheet->getCell('N4')->setValue('Risk/sanction');
 $objSheet->getCell('O4')->setValue('Risk/sanction');
 $i = 5;
 foreach($datum as $d) {
+	$objPHPExcel->getActiveSheet()->getRowDimension($i)->setRowHeight(-1);
 	$objSheet->getCell("A$i")->setValue($d->cond_cat_title);
-	// $objSheet->getCell('B4')->setValue('Required actions or operation');
-	// $objSheet->getCell('C4')->setValue('Date for compliance (time frame, deadline)');
+	$objPHPExcel->getActiveSheet()->getStyle("A$i")->getAlignment()->setWrapText(true);
+	$objSheet->getCell("B$i")->setValue($d->required_action);
+	$objSheet->getCell("C$i")->setValue($d->deadline);
 	// $objSheet->getCell('D4')->setValue('Party accountable for compliance');
 	// $objSheet->getCell('E4')->setValue('Party accountable for compliance');
 	// $objSheet->getCell('F4')->setValue('Person in charge of action (CamIron/Sundance)');
