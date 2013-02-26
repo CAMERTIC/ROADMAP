@@ -13,6 +13,11 @@ $C = new CamerticConfig;
 $p = new tasks; 
 if(isset($_POST['cpc']))
 	unset($_POST['cpc']);
+	
+	if(isset($_POST['rate']))
+	unset($_POST['rate']);
+	
+	
 if(isset($_POST['deadline_a'])) {
 	$_POST['deadline'] = $_POST['deadline_a'] . '-' . $_POST['deadline_m'] . '-' . $_POST['deadline_j'];
 	unset($_POST['deadline_a']); 

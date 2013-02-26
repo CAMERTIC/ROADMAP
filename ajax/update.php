@@ -1,5 +1,8 @@
 <?php 
 
+// Tout début du code PHP. Situé en haut de la page web
+ini_set("display_errors",0);error_reporting(0);
+
 require_once '../config.php';
 require_once '../lib/library.php';
 require_once '../camertic/classes/bd.class.php';
@@ -10,83 +13,113 @@ require_once '../lib/classes/rc_users.class.php';
 $C = new CamerticConfig;
 $p = new tasks;
 
-
 $task = $p->getRecord($_GET['id']);
 
 $u = new rc_users;
-//$users = $u->getAllRecords();
-$users = $u->getUsers();
-// deadline
-if(strlen($task->deadline) == 10) {
-	$tab = explode('-', $task->deadline);
-	$deadD = $tab[2];
-	$deadM = $tab[1];
-	$deadY = $tab[0];
-	
-} else {
-	$deadD = "01";
-	$deadM = "01";
-	$deadY = "2013";
-	
-}
-// duedate
-if(strlen($task->due_date) == 10) {
-	$tab = explode('-', $task->due_date);
-	$dudD = $tab[2];
-	$dudM = $tab[1];
-	$dudY = $tab[0];
-} else {
-	$dudD = "01";
-	$dudM = "01";
-	$dudY = "2013";
-}
+	$users = $u->getUsers();
+
+$tab = explode('-', $task->deadline);
+$deadD = $tab[2];
+$deadM = $tab[1];
+$deadY = $tab[0];
+$tab = explode('-', $task->due_date);
+$dudD = $tab[2];
+$dudM = $tab[1];
+$dudY = $tab[0];
+
+
+
+
 ?>
 <style>
+<?php if($_SESSION['u']['idgroupe'] == 2) { ?>
+.quickform p label {
+	line-height: 30px;
+    width: 80px;
+}
+.formwrapper div.selector {
+	display : none;
+}
+.stdform .formwrapper {
+	margin-left : 100px;
+}
+.quickform input.xsmall {
+  height: 12px;
+}
+<?php } else { ?>
 .quickform p label {
 	line-height: 30px;
     width: 150px;
 }
+
+<?php } ?>
 </style>
-
-
-
 <h4>Updating the task : <?php echo tronque($task->required_action, 50); ?></h4>
 <br />
-    <!--<form action="" method="post" class="quickform" id="task">-->
-	<!--<div class="one_half" style="width:30.5%">-->
-        	<?php /*?><!--<label>Person in charge</label>
-        	<?php ?><select id="person_in_charge" name="person_in_charge">
-				<?php foreach($users as $us) { ?>
-				<option value="<?php echo $us->login; ?>" <?php if($task->person_in_charge == $us->login) echo "SELECTED"; ?>><?php echo $us->login ?></option>
-				<?php } ?>--><?php */?>
-			</select> 
-            
- 
- 
  <form action="" method="post" class="quickform <?php if($_SESSION['u']['idgroupe'] == 2) { ?> stdform<?php } ?>" id="task">
 	<div class="<?php if($_SESSION['u']['idgroupe'] == 2) { ?>basicform<?php } ?> one_half" >
 	                   
-	<?php if($_SESSION['u']['idgroupe'] == 2) { ?>
-    	<p>
-        	<label>Assign to</label>
-			<div >
+	<p>
+	  <?php if($_SESSION['u']['idgroupe'] == 2) { ?>
+</p>
+	
+    
+    
+       	<label>Acountable Person</label>
+<div >
             <select id="is_assigned_to" name="is_assigned_to" data-placeholder="Choose a user..." class="chzn-select" size="2" multiple="multiple" style="width:300px;" tabindex="3">
 				<option value=""></option> 
 				<?php foreach($users as $us) { ?>
 				<option value="<?php echo $us->login; ?>" <?php if($task->is_assigned_to == $us->login) echo "SELECTED"; ?>><?php echo $us->login ?></option>
 				<?php } ?>
 			</select>
-			</div>
+            
+            
+            
+             </p>
+     	<p id="sector-construction" class="<?php if($task->type != 'constructions') ?>">
+   	    <label>Sector</label>
+			<select id="sector" name="sector">
+				<option value="">Give a sector</option>
+				<option <?php if($task->type=='Mining Facilities') echo "SELECTED"; ?> value="Mining Facilities">Mining Facilities</option>
+				<option <?php if($task->type=='Railway Facilities') echo "SELECTED"; ?> value="Railway Facilities">Railway Facilities</option>
+				<option <?php if($task->type=='Mineral Terminal Facilities') echo "SELECTED"; ?> value="Mineral Terminal Facilities">Mineral Terminal Facilities</option>
+				<option <?php if($task->type=='Beneficiation Facilities') echo "SELECTED"; ?> value="Beneficiation Facilities">Beneficiation Facilities</option>
+				<option <?php if($task->type=='Other Project Facilities') echo "SELECTED"; ?> value="Other Project Facilities">Other Project Facilities</option>
+				<option <?php if($task->type=='Land Issues') echo "SELECTED"; ?> value="Land Issues">Land Issues</option>
+				<option <?php if($task->type=='Environemental and Security Issues') echo "SELECTED"; ?> value="Environemental and Security Issues">Environemental and Security Issues</option>
+				<option <?php if($task->type=='Community') echo "SELECTED"; ?> value="Community">Community</option>
+				<option <?php if($task->type=='Financial and Accounting Compliance') echo "SELECTED"; ?> value="Financial and Accounting Compliance">Financial and Accounting Compliance</option>
+				<option <?php if($task->type=='Tax and customs Compliance') echo "SELECTED"; ?> value="Tax and customs Compliance">Tax and customs Compliance</option>
+				<option <?php if($task->type=='Foreign Compliance') echo "SELECTED"; ?> value="Foreign Compliance">Foreign Compliance</option>
+				<option <?php if($task->type=='Contractual Obligations Relating to the Personnel') echo "SELECTED"; ?> value="Contractual Obligations Relating to the Personnel">Contractual Obligations Relating to the Personnel</option>
+				<option <?php if($task->type=='Global Reporting') echo "SELECTED"; ?> value="Global Reporting">Global Reporting</option>
+			</select>
         </p>
- 
- 
-			<br />
-      </p>
-    
-      
-       
+  
+	
+  <div class="one_half last" style="width:500px; ">
 		<p>
-            <label for="date">Due Date</label>
+        	<?php /*?><!--<label>Type</label>
+			<select id="type" name="type">
+				<option value="">Give a type</option>
+				<option value="conditions" <?php if($task->type=='conditions') echo "SELECTED"; ?>>Conditions</option>
+				<option value="constructions" <?php if($task->type=='constructions') echo "SELECTED"; ?>>Constructions</option>
+				<option value="exploitations" <?php if($task->type=='exploitations') echo "SELECTED"; ?>>Exploitation</option>
+			</select>--><?php */?>
+        </p>
+		
+		<p id="sector-exploitation" class="hidden">
+        	<label>Sector</label>
+			<select id="" name="">
+				<option value="">Give a sector</option>
+				<option value="conditions" <?php if($task->sector=='conditions') echo "SELECTED"; ?>>Conditions</option>
+				<option value="constructions" <?php if($task->sector=='constructions') echo "SELECTED"; ?>>Constructions</option>
+				<option value="exploitations" <?php if($task->sector=='exploitations') echo "SELECTED"; ?>>Exploitation</option>
+			</select>
+		</p>
+		<p>
+        <label for="date">Due Date</label>
             <span class="monthselect">
                 <select name="due_date_m" id="due_date_m" class="quickedit-date">
                   <option <?php if($dudM == 1) echo "SELECTED"; ?> value="01">Jan</option>
@@ -101,10 +134,14 @@ if(strlen($task->due_date) == 10) {
                   <option <?php if($dudM == 10) echo "SELECTED"; ?> value="10">Oct</option>
                   <option <?php if($dudM == 11) echo "SELECTED"; ?> value="11">Nov</option>
                   <option <?php if($dudM == 12) echo "SELECTED"; ?> value="12">Dec</option>
+                  </select>
                   </span><!--monthselect-->
                   <input type="text" name="due_date_j" id="due_date_j" value="<?php echo $dudD; ?>" class="xsmall" />&nbsp;
                   <input type="text" name="due_date_a" id="due_date_a" value="<?php echo $dudY; ?>" class="small" />
+                  
                   </p>
+                  
+                  
                   <p>
                   <label for="date">Date of compliance</label>
                   <span class="monthselect">
@@ -128,47 +165,34 @@ if(strlen($task->due_date) == 10) {
         </p>
         <?php } ?>
         </p>
-    	<p id="sector-construction" class="<?php if($task->type != 'constructions') echo "hidden"; ?>">
-   	    <label>Sector</label>
-			<select id="sector" name="sector">
-				<option value="">Give a sector</option>
-				<option <?php if($task->type=='Mining Facilities') echo "SELECTED"; ?> value="Mining Facilities">Mining Facilities</option>
-				<option <?php if($task->type=='Railway Facilities') echo "SELECTED"; ?> value="Railway Facilities">Railway Facilities</option>
-				<option <?php if($task->type=='Mineral Terminal Facilities') echo "SELECTED"; ?> value="Mineral Terminal Facilities">Mineral Terminal Facilities</option>
-				<option <?php if($task->type=='Beneficiation Facilities') echo "SELECTED"; ?> value="Beneficiation Facilities">Beneficiation Facilities</option>
-				<option <?php if($task->type=='Other Project Facilities') echo "SELECTED"; ?> value="Other Project Facilities">Other Project Facilities</option>
-				<option <?php if($task->type=='Land Issues') echo "SELECTED"; ?> value="Land Issues">Land Issues</option>
-				<option <?php if($task->type=='Environemental and Security Issues') echo "SELECTED"; ?> value="Environemental and Security Issues">Environemental and Security Issues</option>
-				<option <?php if($task->type=='Community') echo "SELECTED"; ?> value="Community">Community</option>
-				<option <?php if($task->type=='Financial and Accounting Compliance') echo "SELECTED"; ?> value="Financial and Accounting Compliance">Financial and Accounting Compliance</option>
-				<option <?php if($task->type=='Tax and customs Compliance') echo "SELECTED"; ?> value="Tax and customs Compliance">Tax and customs Compliance</option>
-				<option <?php if($task->type=='Foreign Compliance') echo "SELECTED"; ?> value="Foreign Compliance">Foreign Compliance</option>
-				<option <?php if($task->type=='Contractual Obligations Relating to the Personnel') echo "SELECTED"; ?> value="Contractual Obligations Relating to the Personnel">Contractual Obligations Relating to the Personnel</option>
-				<option <?php if($task->type=='Global Reporting') echo "SELECTED"; ?> value="Global Reporting">Global Reporting</option>
+
+     	<p id="sector-construction" class="<?php if($task->type != 'constructions') ?>">
+
+
+<label>Rate(%)<br>
+</label>
+<?php /*?><input type="text"  name="rate" value=" <?php  echo $task->rate ?>"  size="30" /><?php */?>
+
+
+<select id="rate" name="rate">
+				<option value="">Give a rate</option>
+				<option <?php if($task->rate=='10') echo "SELECTED"; ?> value="10">10</option>
+                <option <?php if($task->rate=='20') echo "SELECTED"; ?> value="20">20</option>
+                <option <?php if($task->rate=='30') echo "SELECTED"; ?> value="30">30</option>
+                <option <?php if($task->rate=='40') echo "SELECTED"; ?> value="40">40</option>
+                <option <?php if($task->rate=='50') echo "SELECTED"; ?> value="50">50</option>
+                <option <?php if($task->rate=='60') echo "SELECTED"; ?> value="60">60</option>
+                <option <?php if($task->rate=='70') echo "SELECTED"; ?> value="70">70</option>
+                <option <?php if($task->rate=='80') echo "SELECTED"; ?> value="80">80</option>
+                <option <?php if($task->rate=='90') echo "SELECTED"; ?> value="90">90</option>
+                <option <?php if($task->rate=='100') echo "SELECTED"; ?> value="100">100</option>
+				
 			</select>
-        </p>
-  
-	
-	<div class="one_half last" style="width:40.5%">
-		<p>
-        	<?php /*?><!--<label>Type</label>
-			<select id="type" name="type">
-				<option value="">Give a type</option>
-				<option value="conditions" <?php if($task->type=='conditions') echo "SELECTED"; ?>>Conditions</option>
-				<option value="constructions" <?php if($task->type=='constructions') echo "SELECTED"; ?>>Constructions</option>
-				<option value="exploitations" <?php if($task->type=='exploitations') echo "SELECTED"; ?>>Exploitation</option>
-			</select>--><?php */?>
-        </p>
-		
-		<p id="sector-exploitation" class="hidden">
-        	<label>Sector</label>
-			<select id="" name="">
-				<option value="">Give a sector</option>
-				<option value="conditions" <?php if($task->sector=='conditions') echo "SELECTED"; ?>>Conditions</option>
-				<option value="constructions" <?php if($task->sector=='constructions') echo "SELECTED"; ?>>Constructions</option>
-				<option value="exploitations" <?php if($task->sector=='exploitations') echo "SELECTED"; ?>>Exploitation</option>
-			</select>
-        </p>
+</p>
+
+</p>
+
+
     	<p>
         	<label style="width:500px">Add a comment (If updated, updates will be sent by email to the person in charge selected)</label>
             <textarea id="comment" name="comment"  cols="" rows=""></textarea>
@@ -184,14 +208,17 @@ if(strlen($task->due_date) == 10) {
             </span>
         </p>
 		<?php } ?>
-    </div><!-- one_half last -->
-      </div><!-- one_half last -->
+		
+			</div>
+       
+        
+        </div><!-- one_half last -->
+    
     <br clear="all" />
     
     <div class="quickformbutton">
 		<?php  ?>
 		<input type="hidden" name="id" id="id" value="<?php echo $task->id; ?>" />
-		<input type="hidden" name="cpc" id="cpc" value="0" />
     	<button id="update" class="update" type="button">Update</button>
         <button class="cancel">Close task</button>
         <span class="loading hidden"><img src="./images/loaders/loader3.gif" alt="" />Updating changes...</span>
@@ -203,17 +230,24 @@ if(strlen($task->due_date) == 10) {
 		// jQuery(this).parents('tr.togglerow').remove();
 		// return false;
 	// });
+<?php if($_SESSION['u']['idgroupe'] == 2) { ?>
+jQuery(".chzn-select").chosen();
+<?php } ?>
 jQuery('#update').click(function(){
-	var comment = jQuery('#comment').val();
-	var changes = jQuery('#cpc').val();
-	if(changes == '1' && comment == '') {
-		alert('By assigning a task, you should also add a comment \n which will be sent to the new person in charge');
-		return false;
-	}
+	//alert(jQuery("#is_assigned_to").val());
+	//return false;
+		//var status  = jQuery('#status_3').val();
+		var status  = jQuery('#status_4:checked').val();
+		if(status == 'closed'){
+			//setTimeout(function() {
+				jQuery.colorbox({html :"<?php echo ""; ?>"});
+			//}, 2000);
+			//return false;
+		}
 		jQuery('.loading').html('<img src="./images/loaders/loader3.gif" alt="" />Updating changes...');
 		jQuery('.loading').show();
 		var data = jQuery('#task').serialize();
-		//alert(data); 
+		
 		  jQuery.ajax({
 			  type: "POST",
 			  url: "./ajax/updatestatustodb.php",
@@ -235,9 +269,5 @@ jQuery('#update').click(function(){
 			});
 	
 	return false;
-});
-
-jQuery('#person_in_charge').change(function(){
-	jQuery('#cpc').val('1');
 });
 </script>	

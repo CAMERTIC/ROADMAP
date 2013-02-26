@@ -545,7 +545,8 @@ body { background: #eee !important; }
 /***********************************/
 
 
-.contentwrapper { padding: 20px; }
+.contentwrapper { padding: 20px;
+}
 .contentwrapper p { margin: 20px 0; }
 .withrightpanel { margin-right: 260px; }
 .subcontent { position: relative; }
@@ -863,8 +864,8 @@ input.hasDatepicker {
 .stdtable tfoot th, .stdtable tfoot td { padding: 7px 10px; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; text-align: left; }
 .stdtable thead th:first-child, .stdtable tfoot th:first-child,
 .stdtable thead td:first-child, .stdtable tfoot td:first-child { border-left: 1px solid #ddd; }
-.stdtable thead th.head0, .stdtable tfoot th.head0, .stdtable thead td.head0, .stdtable tfoot td.head0 { background-color: #fcfcfc; }
-.stdtable thead th.head1, .stdtable tfoot th.head1, .stdtable thead td.head1, .stdtable tfoot td.head1 { background-color: #f7f7f7; }
+.stdtable thead th.head0, .stdtable tfoot th.head0, .stdtable thead td.head0, .stdtable tfoot td.head0 { background-color: #818F16; }
+.stdtable thead th.head1, .stdtable tfoot th.head1, .stdtable thead td.head1, .stdtable tfoot td.head1 { background-color: #818F16; }
 .stdtable thead th.sorting, .stdtable thead td.sorting { 
 	background-image: url(../images/sort_both.png); background-repeat: no-repeat; background-position: right center; }
 .stdtable thead th.sorting_asc, .stdtable thead td.sorting_asc { 

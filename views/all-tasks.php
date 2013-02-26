@@ -4,9 +4,9 @@
 	global $app;
 	
 ?>
-<div class="centercontent tables">
+<div class="centercontent tables" style=" width:360px ; height:800px" >
     
-        <div class="pageheader notab">
+        <div class="pageheader notab" >
             <h1 class="pagetitle">All Tasks</h1>
             <span class="pagedesc">There are all tasks</span>
             
@@ -44,22 +44,17 @@
                         <col class="con0" />
                         <col class="con0" />
                         <col class="con1" />
-                        <col class="con0" />
                     </colgroup>
                     <thead>
                         <tr>
-                            <th class="head0">Conditions or Category</th>
-                            <th class="head1">Required actions or operations</th>
-                            <th class="head0">Date for compliance</th>
-                            <th class="head1">Party accountable for compliance</th>
-                            <th class="head0">Person in charge of action</th>
-                            <th class="head1">Due date</th>
-                            <th class="head1">Status</th>
-                            <th class="head0">Authority accountable for compliance</th>
-                            <th colspan="2" class="head0">Input<br />Camiron / State</th>
-                            <th class="head1">Output</th>
-                            <th class="head0">Risk/Sanction</th>
-                            <th class="head1">Last comment</th>
+                            <th class="head0">Main Conditions </th>
+                            <th class="head1">Sector of the task </th>
+                            <th class="head0">Date of compliance</th>
+                            <th class="head1">Acountable Person</th>
+                            <th class="head1">Due date of the main task</th>
+                            <th class="head1">Realisation rate </th>
+                            <th class="head0">Comments</th>
+                            <th class="head1">View details</th>
                             <th class="head0">&nbsp;</th>
                         </tr>
                     </thead><!--
@@ -76,21 +71,33 @@
                     <tbody>
                         <?php foreach($tasks as $ts) { ?>
                         <tr id="<?php echo $ts->id; ?>">
-                             <td class="con0"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . utf8_encode($app->replaceDefinitions($ts->cond_cat_title)) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo utf8_encode($app->replaceDefinitions($ts->cond_cat_title)); ?> </td>
-                            <td class="center"><?php if($ts->required_action_c != '') echo '<span class="task">' . utf8_encode($ts->required_action) . "<span>$ts->required_action_c</span></span>" ; else echo utf8_encode($app->replaceDefinitions($ts->required_action)); ?></td>
-                            <td class="con1" width="5%"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline . "<span>$ts->deadline_c</span></span>" ; else echo getMysqlToCamironDate($ts->deadline); ?></td>
-                            <td class="con1"><?php if($ts->party_accountable_c != '') echo '<span class="task">' . $ts->party_accountable . "<span>$ts->party_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->party_accountable); ?></td>
-                            <td class="con0"><?php if($ts->person_in_charge_c != '') echo '<span class="task">' . $ts->person_in_charge . "<span>$ts->person_in_charge_c</span></span>" ; else echo $ts->person_in_charge; ?></td>
-                            <td class="con0"><?php if($ts->due_date_c != '') echo '<span class="task">' . $ts->due_date . "<span>$ts->due_date_c</span></span>" ; else echo getMysqlToCamironDate($ts->due_date); ?></td>
-                            <td class="con0"><?php if($ts->status_c != '') echo '<span class="task">' . $ts->status . "<span>$ts->status_c</span></span>" ; else echo $ts->status; ?></td>
-                            <td class="center"><?php if($ts->authority_accountable_c != '') echo '<span class="task">' . $ts->authority_accountable . "<span>$ts->authority_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->authority_accountable); ?></td>
-                            <td class="center"><?php if($ts->input_camiron_c != '') echo '<span class="task">' . $ts->input_camiron . "<span>$ts->input_camiron_c</span></span>" ; else echo $app->replaceDefinitions($ts->input_camiron); ?></td>
-                            <td class="center"><?php if($ts->input_state_c != '') echo '<span class="task">' . $ts->input_state . "<span>$ts->input_state_c</span></span>" ; else echo $app->replaceDefinitions($ts->input_state); ?></td>
-                            <td class="center"><?php if($ts->output_c != '') echo '<span class="task">' . $ts->output . "<span>$ts->output_c</span></span>" ; else echo $app->replaceDefinitions($ts->output); ?></td>
-                            <td class="center"><?php if($ts->risk_sanction_c != '') echo '<span class="task">' . $ts->risk_sanction . "<span>$ts->risk_sanction_c</span></span>" ; else echo $app->replaceDefinitions($ts->risk_sanction); ?></td>
-                            <td class="center"><?php echo utf8_encode($cmt->getLastComment($ts->id)); ?></td>
-                            <td class="center">
-								<a href="ajax/updatetaskbyuser.php?id=<?php echo $ts->id; ?>" class="toggle">Update</a>
+                             <td class="con0" height="3" width="75"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . utf8_encode($app->replaceDefinitions($ts->cond_cat_title)) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo utf8_encode($app->replaceDefinitions($ts->cond_cat_title)); ?> </td>
+                             
+                            <td class="center" height="3" width="57"><?php /*?><?php if($ts->sector_c != '') echo '<span class="task">' . utf8_encode($ts->sector) . "<span>$ts->sector_c</span></span>" ; else echo utf8_encode($app->replaceDefinitions($ts->sector)); ?><?php */?></td>
+                            
+                            
+                            <td class="con1" height="3" width="74"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline . "<span>$ts->deadline_c</span></span>" ; else echo getMysqlToCamironDate($ts->deadline); ?></td>
+                            
+                            
+                            <td class="center" height="3" width="87"><?php if($ts->authority_accountable_c != '') echo '<span class="task">' . $ts->authority_accountable . "<span>$ts->authority_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->authority_accountable); ?></td>
+                            
+                       
+                            
+                            <td class="con0" height="3" width="65"><?php if($ts->due_date_c != '') echo '<span class="task">' . $ts->due_date . "<span>$ts->due_date_c</span></span>" ; else echo getMysqlToCamironDate($ts->due_date); ?></td>
+                            
+                            
+                            <td class="con0" height="3" width="80"> <?php if($ts->rate != '') echo '<span class="task">' . $ts->rate . "<span>$ts->rate</span></span>" ; else echo $ts->rate; ?> </td>
+                                         
+                            
+                            
+                            <td class="center" height="3" width="74"><?php echo utf8_encode($cmt->getLastComment($ts->id)); ?></td>
+                            
+                            <td class="center" height="3" width="95">
+								<a href="?view=all-tasks1"> MORE DETAILS</a>
+							</td>
+                            
+                            <td class="center" height="3" width="113">
+								<a href="ajax/update.php?id=<?php echo $ts->id; ?>" class="toggle">Update</a>
 							</td>
                         </tr> 
 						<?php } ?>                 
@@ -108,8 +115,8 @@
 					$tasks = $t->getConstructionsTasks();
 			?>
                 <table style="width:200%" cellpadding="0" cellspacing="0" border="0" class="stdtable stdtablequick">
-                    <colgroup>
-                        <col class="con0" />
+                    <colgroup >
+                        <col class="con0"  />
                         <col class="con1" />
                         <col class="con0" />
                         <col class="con1" />
@@ -118,23 +125,18 @@
                         <col class="con0" />
                         <col class="con0" />
                         <col class="con1" />
-                        <col class="con0" />
                     </colgroup>
                     <thead>
-                        <tr>
-                            <th class="head0">Conditions or Category</th>
-                            <th class="head1">Required actions or operations</th>
-                            <th class="head0">Date for compliance</th>
-                            <th class="head1">Party accountable for compliance</th>
-                            <th class="head0">Person in charge of action</th>
-                            <th class="head1">Due date</th>
-                            <th class="head1">Status</th>
-                            <th class="head0">Authority accountable for compliance</th>
-                            <th colspan="2" class="head0">Input<br />Camiron / State</th>
-                            <th class="head1">Output</th>
-                            <th class="head0">Risk/Sanction</th>
-                            <th class="head1">Last comment</th>
-                            <th class="head0">&nbsp;</th>
+                        <tr >
+                            <th width="67" class="head0">Main conditions</th>
+                            <th width="51" class="head1">Sector of the task</th>
+                            <th class="head0">Date of compliance</th>
+                            <th width="79" class="head1">Acountable Person</th>
+                            <th width="49" class="head1">Due date of main task</th>
+                            <th class="head1">Realisation rate </th>
+                            <th class="head1"> Comments</th>
+                            <th width="44" class="head1">View details</th>
+                            <th width="17" class="head0">&nbsp;</th>
                         </tr>
                     </thead><!--
                     <tfoot>
@@ -150,21 +152,37 @@
                     <tbody>
                         <?php foreach($tasks as $ts) { ?>
                         <tr id="<?php echo $ts->id; ?>">
-                             <td class="con0"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . utf8_encode($app->replaceDefinitions($ts->cond_cat_title)) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo $app->replaceDefinitions($ts->cond_cat_title); ?> </td>
-                            <td class="center"><?php if($ts->required_action_c != '') echo '<span class="task">' . utf8_encode($ts->required_action) . "<span>$ts->required_action_c</span></span>" ; else echo utf8_encode($app->replaceDefinitions($ts->required_action)); ?></td>
-                            <td class="con1" width="5%"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline . "<span>$ts->deadline_c</span></span>" ; else echo $ts->deadline; ?></td>
-                            <td class="con1"><?php if($ts->party_accountable_c != '') echo '<span class="task">' . $ts->party_accountable . "<span>$ts->party_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->party_accountable); ?></td>
-                            <td class="con0"><?php if($ts->person_in_charge_c != '') echo '<span class="task">' . $ts->person_in_charge . "<span>$ts->person_in_charge_c</span></span>" ; else echo $ts->person_in_charge; ?></td>
-                            <td class="con0"><?php if($ts->due_date_c != '') echo '<span class="task">' . $ts->due_date . "<span>$ts->due_date_c</span></span>" ; else echo getMysqlToCamironDate($ts->due_date); ?></td>
-                            <td class="con0"><?php if($ts->status_c != '') echo '<span class="task">' . $ts->status . "<span>$ts->status_c</span></span>" ; else echo $ts->status; ?></td>
-                            <td class="center"><?php if($ts->authority_accountable_c != '') echo '<span class="task">' . $ts->authority_accountable . "<span>$ts->authority_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->authority_accountable); ?></td>
-                            <td class="center"><?php if($ts->input_camiron_c != '') echo '<span class="task">' . $ts->input_camiron . "<span>$ts->input_camiron_c</span></span>" ; else echo $app->replaceDefinitions($ts->input_camiron); ?></td>
-                            <td class="center"><?php if($ts->input_state_c != '') echo '<span class="task">' . $ts->input_state . "<span>$ts->input_state_c</span></span>" ; else echo $app->replaceDefinitions($ts->input_state); ?></td>
-                            <td class="center"><?php if($ts->output_c != '') echo '<span class="task">' . $ts->output . "<span>$ts->output_c</span></span>" ; else echo $app->replaceDefinitions($ts->output); ?></td>
-                            <td class="center"><?php if($ts->risk_sanction_c != '') echo '<span class="task">' . $ts->risk_sanction . "<span>$ts->risk_sanction_c</span></span>" ; else echo $app->replaceDefinitions($ts->risk_sanction); ?></td>
-                            <td class="center"><?php echo utf8_encode($cmt->getLastComment($ts->id)); ?></td>
-                            <td class="center">
-								<a href="ajax/updatetaskbyuser.php?id=<?php echo $ts->id; ?>" class="toggle">Update</a>
+                             <td class="con0" height="3" width="67"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . utf8_encode($app->replaceDefinitions($ts->cond_cat_title)) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo $app->replaceDefinitions($ts->cond_cat_title); ?> </td>
+                             <!--sector-->
+                            <td class="center"><?php /*?><?php if($ts->sector_c != '') echo '<span class="task">' . utf8_encode($ts->sector) . "<span>$ts->sector_c</span></span>" ; else echo utf8_encode($app->replaceDefinitions($ts->sector)); ?><?php */?></td>
+                            
+                             <!--date of complaint-->
+                            <td class="con1" height="3" width="89"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline . "<span>$ts->deadline_c</span></span>" ; else echo getMysqlToCamironDate($ts->deadline); ?></td>
+                            
+                            
+                           
+                            <!--<td class="con1"><?php /*?><?php if($ts->party_accountable_c != '') echo '<span class="task">' . $ts->party_accountable . "<span>$ts->party_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->party_accountable); ?><?php */?></td>-->
+                            
+                             <!--acountable personne-->
+                            <td class="center" height="3" width="79"><?php if($ts->authority_accountable_c != '') echo '<span class="task">' . $ts->authority_accountable . "<span>$ts->authority_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->authority_accountable); ?></td>
+                            
+                             <!--due date-->
+                            <td class="con0" height="3" width="49"><?php if($ts->due_date_c != '') echo '<span class="task">' . $ts->due_date . "<span>$ts->due_date_c</span></span>" ; else echo getMysqlToCamironDate($ts->due_date); ?></td>
+                            
+                            
+                            <!--taux de realisation -->
+                             <td class="con0" height="3" width="80"><td class="con0" height="3" width="73"> <td class="con0" height="3" width="80"> <?php if($ts->rate != '') echo '<span class="task">' . $ts->rate . "<span>$ts->rate</span></span>" ; else echo $ts->rate; ?> </td> </td></td>
+                                         
+                            
+                            
+                            <td class="center" height="3" width="17"><?php echo utf8_encode($cmt->getLastComment($ts->id)); ?></td>
+                            
+                            <td class="center" height="3" width="51">
+								<a href="?view=all-tasks1" class="toggle">more details</a>
+							</td>
+                            
+                            <td class="center" height="3" width="120">
+								<a href="ajax/update.php?id=<?php echo $ts->id; ?>" class="toggle">Update</a>
 							</td>
                         </tr> 
 						<?php } ?>                 
@@ -192,23 +210,20 @@
                         <col class="con0" />
                         <col class="con0" />
                         <col class="con1" />
-                        <col class="con0" />
                     </colgroup>
                     <thead>
                         <tr>
-                            <th class="head0">Conditions or Category</th>
-                            <th class="head1">Required actions or operations</th>
+                         
+                             <th width="70" class="head0">Main conditions</th>
+                            <th width="61" class="head1">Sector of the task</th>
                             <th class="head0">Date for compliance</th>
-                            <th class="head1">Party accountable for compliance</th>
-                            <th class="head0">Person in charge of action</th>
-                            <th class="head1">Due date</th>
-                            <th class="head1">Status</th>
-                            <th class="head0">Authority accountable for compliance</th>
-                            <th colspan="2" class="head0">Input<br />Camiron / State</th>
-                            <th class="head1">Output</th>
-                            <th class="head0">Risk/Sanction</th>
-                            <th class="head1">Last comment</th>
-                            <th class="head0">&nbsp;</th>
+                            <th width="79" class="head1">Acountable Person</th>
+                            <th width="65" class="head1">Due date of the main task</th>
+                            <th class="head1">Realisation rate</th>
+                            <th class="head1"> Comments</th>
+                            <th class="head1">View details</th>
+                            <th width="132" class="head0">&nbsp; </th> 
+                         
                         </tr>
                     </thead><!--
                     <tfoot>
@@ -222,26 +237,47 @@
                         </tr>
                     </tfoot>-->
                     <tbody>
-                        <?php foreach($tasks as $ts) { ?>
+                        
+                       <?php foreach($tasks as $ts) { ?>
                         <tr id="<?php echo $ts->id; ?>">
-                            <td class="con0"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . $app->replaceDefinitions($ts->cond_cat_title) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo $app->replaceDefinitions($ts->cond_cat_title); ?> </td>
-                            <td class="center"><?php if($ts->required_action_c != '') echo '<span class="task">' . $ts->required_action . "<span>$ts->required_action_c</span></span>" ; else echo $app->replaceDefinitions($ts->required_action); ?></td>
-                            <td class="con1" width="5%"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline . "<span>$ts->deadline_c</span></span>" ; else echo $ts->deadline; ?></td>
-                            <td class="con1"><?php if($ts->party_accountable_c != '') echo '<span class="task">' . $ts->party_accountable . "<span>$ts->party_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->party_accountable); ?></td>
-                            <td class="con0"><?php if($ts->person_in_charge_c != '') echo '<span class="task">' . $ts->person_in_charge . "<span>$ts->person_in_charge_c</span></span>" ; else echo $ts->person_in_charge; ?></td>
-                            <td class="con0"><?php if($ts->due_date_c != '') echo '<span class="task">' . $ts->due_date . "<span>$ts->due_date_c</span></span>" ; else echo getMysqlToCamironDate($ts->due_date); ?></td>
-                            <td class="con0"><?php if($ts->status_c != '') echo '<span class="task">' . $ts->status . "<span>$ts->status_c</span></span>" ; else echo $ts->status; ?></td>
-                            <td class="center"><?php if($ts->authority_accountable_c != '') echo '<span class="task">' . $ts->authority_accountable . "<span>$ts->authority_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->authority_accountable); ?></td>
-                            <td class="center"><?php if($ts->input_camiron_c != '') echo '<span class="task">' . $ts->input_camiron . "<span>$ts->input_camiron_c</span></span>" ; else echo $app->replaceDefinitions($ts->input_camiron); ?></td>
-                            <td class="center"><?php if($ts->input_state_c != '') echo '<span class="task">' . $ts->input_state . "<span>$ts->input_state_c</span></span>" ; else echo $app->replaceDefinitions($ts->input_state); ?></td>
-                            <td class="center"><?php if($ts->output_c != '') echo '<span class="task">' . $ts->output . "<span>$ts->output_c</span></span>" ; else echo $app->replaceDefinitions($ts->output); ?></td>
-                            <td class="center"><?php if($ts->risk_sanction_c != '') echo '<span class="task">' . $ts->risk_sanction . "<span>$ts->risk_sanction_c</span></span>" ; else echo $app->replaceDefinitions($ts->risk_sanction); ?></td>
-                            <td class="center"><?php echo utf8_encode($cmt->getLastComment($ts->id)); ?></td>
-                            <td class="center">
-								<a href="ajax/updatetaskbyuser.php?id=<?php echo $ts->id; ?>" class="toggle">Update</a>
+                             <td class="con0" height="3" width="70"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . utf8_encode($app->replaceDefinitions($ts->cond_cat_title)) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo $app->replaceDefinitions($ts->cond_cat_title); ?> </td>
+                             <!--sector-->
+                            <td class="center"><?php /*?><?php if($ts->sector_c != '') echo '<span class="task">' . utf8_encode($ts->sector) . "<span>$ts->sector_c</span></span>" ; else echo utf8_encode($app->replaceDefinitions($ts->sector)); ?><?php */?></td>
+                            
+                             <!--date of complaint-->
+                            <td class="con1" height="3" width="74"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline . "<span>$ts->deadline_c</span></span>" ; else echo getMysqlToCamironDate($ts->deadline); ?></td>
+                            
+                            
+                           
+                            <!--<td class="con1"><?php /*?><?php if($ts->party_accountable_c != '') echo '<span class="task">' . $ts->party_accountable . "<span>$ts->party_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->party_accountable); ?><?php */?></td>-->
+                            
+                             <!--acountable personne-->
+                            <td class="center" height="3" width="79"><?php if($ts->authority_accountable_c != '') echo '<span class="task">' . $ts->authority_accountable . "<span>$ts->authority_accountable_c</span></span>" ; else echo $app->replaceDefinitions($ts->authority_accountable); ?></td>
+                            
+                             <!--due date-->
+                            <td class="con0" height="3" width="65"><?php if($ts->due_date_c != '') echo '<span class="task">' . $ts->due_date . "<span>$ts->due_date_c</span></span>" ; else echo getMysqlToCamironDate($ts->due_date); ?></td>
+                            
+                            
+                            <!--taux de realisation -->
+                             <td class="con0" height="3" width="80"><td class="con0" height="3" width="80"> <?php if($ts->rate != '') echo '<span class="task">' . $ts->rate . "<span>$ts->rate</span></span>" ; else echo $ts->rate; ?> </td></td>
+                                         
+                            
+                            
+                            <td class="center" height="3" width="71"><?php echo utf8_encode($cmt->getLastComment($ts->id)); ?></td>
+                            
+                            <td class="center" height="3" width="88">
+								<a href="?view=all-tasks1" class="toggle">more details</a>
+							</td>
+                            
+                            <td class="center" height="3" width="132">
+								<a href="ajax/update.php?id=<?php echo $ts->id; ?>" class="toggle">Update</a>
 							</td>
                         </tr> 
-						<?php } ?>                 
+						<?php } ?>                   
+                        
+                        
+                        
+                        
                     </tbody>
                 </table>
         

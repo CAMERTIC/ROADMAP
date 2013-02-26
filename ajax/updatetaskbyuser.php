@@ -1,5 +1,8 @@
 <?php 
 
+// Tout début du code PHP. Situé en haut de la page web
+ini_set("display_errors",0);error_reporting(0);
+
 require_once '../config.php';
 require_once '../lib/library.php';
 require_once '../camertic/classes/bd.class.php';
@@ -23,6 +26,10 @@ $tab = explode('-', $task->due_date);
 $dudD = $tab[2];
 $dudM = $tab[1];
 $dudY = $tab[0];
+
+
+
+
 ?>
 <style>
 <?php if($_SESSION['u']['idgroupe'] == 2) { ?>
@@ -87,8 +94,8 @@ $dudY = $tab[0];
         </p>
 		<?php  } ?>
     	<p>
-        	<label style="width:500px">Add a comment (If updated, updates will be sent by email to the person in charge selected)</label>
-            <textarea id="comment" name="comment"  cols="" rows=""></textarea>
+        	<label style="width:300px"> Add a comment (If updated, updates will be sent by email to the person in charge selected)</label>
+            <textarea id="comment" name="comment"  cols="10" rows=""></textarea>
         </p>
 		<?php if($task->person_in_charge == $_SESSION['u']['utilisateur']) { ?>
         <p>

@@ -25,12 +25,31 @@ class tasks extends entity {
 	}
 	
 	public function getMyConditionsTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'conditions' ORDER BY id";
+		$req = "SELECT * FROM $this->table WHERE cond_cat_title IN (SELECT DISTINCT cond_cat_title from $this->table group by cond_cat_title) and person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'conditions' ORDER BY id" ;
 		if(!is_null($filter))
-			$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'conditions' AND status = '".$filter."' ORDER BY id";
+			$req = "SELECT * FROM $this->table WHERE cond_cat_title IN (SELECT DISTINCT cond_cat_title from $this->table) and person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'conditions' AND status = '".$filter."' ORDER BY id";
 		$res = $this->select($req);
 		return $res;
+		
+		
+		
+		
+		
 	}
+	
+	public function getCondition($cond_cat_title)
+	
+	{
+	$req = "SELECT DISTINCT cond_cat_title from $this->table group by cond_cat_title " ;
+	
+		if(!is_null($filter))
+			$req = " SELECT DISTINCT cond_cat_title from $this->table group by cond_cat_title";
+		$res = $this->select($req);
+		return $res[0]-> cond_cat_title;	
+		
+		
+		}
+	
 	
 	public function getConditionsTasks($filter = null) {
 		$req = "SELECT * FROM $this->table WHERE type = 'conditions' ORDER BY id";
@@ -124,6 +143,15 @@ class tasks extends entity {
 		$res = $this->select($req);
 		return $res;
 	}
+	
+public function getNamePerson($login) {
+  $req = "SELECT * FROM rc_users WHERE login = '$login' LIMIT 1";
+  $res = $this->select($req);
+  return $res[0]->noms;
+ }
+	
+	
+	
 	
 	public function getAllConstructions($filter = null, $person = null) {
 		global $date_convention;
