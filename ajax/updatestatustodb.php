@@ -14,8 +14,7 @@ $p = new tasks;
 if(isset($_POST['cpc']))
 	unset($_POST['cpc']);
 	
-	if(isset($_POST['rate']))
-	unset($_POST['rate']);
+	
 	
 	
 if(isset($_POST['deadline_a'])) {
@@ -33,12 +32,15 @@ if(isset($_POST['due_date_a'])) {
 //var_dump($_POST);
 try {
 	if(isset($_POST['is_assigned_to']))
-		$_POST['person_in_charge'] = $_POST['is_assigned_to'];
+		$_POST['acountable_pers_task'] = $_POST['is_assigned_to'];
 	$p->saveRecord($_POST);
 	
 } catch (Exception $e) {
 	echo 'Error message : ' . $e->getMessage() . "\n";
 }
+
+
+
 if($_POST['comment'] != '') {
 $u = new rc_users;
 $pc = $u->getUserDetails($_POST['person_in_charge']);

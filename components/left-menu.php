@@ -52,7 +52,22 @@
 			<li><a href="?view=exploitation&filter=Rehabilitation exploitation phase stage 1">Rehabilitation exploitation phase stage 1</a></li>
 		</ul>
 	</li>
+    
+     <li><a href="#set" class="editor">Reports</a>
+		<span class="arrow"></span>
+		<ul id="set">
+            <li><a href="?view=reportall">Report in Conditions phase</a></li>
+			<li><a href="?view=reportall1">Report in Constructions phase</a></li>
+			<li><a href="?view=reportall2">Report in Exploitation Phase</a></li>
+			</ul>
+	</li>
+    
 	<li><a href="?view=dictionnaire" class="calendar">Dictionary</a></li>
-</ul>
+    
+   
+    
+    
+<!--    <li><a href="?view=reportall" >Reports</a></li>
+--></ul>
 <a class="togglemenu"></a>
 <br /><br />

@@ -1,4 +1,6 @@
 <?php
+// Tout début du code PHP. Situé en haut de la page web
+ini_set("display_errors",0);error_reporting(0);
 $s = new settings;
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$_POST['id'] = 1;

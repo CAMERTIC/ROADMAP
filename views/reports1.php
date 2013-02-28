@@ -1,4 +1,7 @@
 <?php
+
+// Tout début du code PHP. Situé en haut de la page web
+ini_set("display_errors",0);error_reporting(0);
 	$user_ldap = new ldap_user();
 	$users = $user_ldap->getAllRecords();
 	

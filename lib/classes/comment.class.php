@@ -30,7 +30,7 @@ class comment extends entity {
 		$by = '';
 		$user = new rc_users();
 		$user->getUserDatas($res[0]->id_user);
-		$comment = $comment . '<br />by ' . $user->userDatas->login;
+		$comment = $comment . '<br />by ' . $user->userDatas->noms;
 		//var_dump($user->userDatas->login); die;
 		}
 		return $comment;

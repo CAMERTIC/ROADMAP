@@ -76,7 +76,7 @@
                         
                         <tr id="<?php echo $ts->id; ?>">
                         
-                             <td class="con0" height="3" width="75"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . utf8_encode($app->replaceDefinitions($ts->cond_cat_title)) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo utf8_encode($app->replaceDefinitions($ts->cond_cat_title)); ?>
+                             <td class="con0" height="3" width="75"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . utf8_encode($app->replaceDefinitions($ts->cond_cat_title)) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo utf8_encode($app->replaceDefinitions($ts->cond_cat_title_c)); ?>
                              
                               <?php /*?>if($ts->cond_cat_title_c != '') { echo '<span class="task">' . $t->getConditions(utf8_encode($app->replaceDefinitions($ts->cond_cat_title))) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo $t->getCconditions(utf8_encode($app->replaceDefinitions($ts->cond_cat_title))); ?><?php */?>
                               </td>
@@ -84,7 +84,7 @@
                              
                              
                              
-                            <td class="center" height="3" width="57"><?php /*?><?php if($ts->sector_c != '') echo '<span class="task">' . utf8_encode($ts->sector) . "<span>$ts->sector_c</span></span>" ; else echo utf8_encode($app->replaceDefinitions($ts->sector)); ?><?php */?></td>
+                            <td class="center" height="3" width="57"><?php if($ts->sector_new != '') echo '<span class="task">' . utf8_encode($ts->sector_new) . "<span>$ts->sector_new</span></span>" ; else echo utf8_encode($app->replaceDefinitions($ts->sector_new)); ?></td>
                             
                             
                             <td class="con1" height="3" width="74"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline . "<span>$ts->deadline_c</span></span>" ; else echo getMysqlToCamironDate($ts->deadline); ?></td>
@@ -163,9 +163,9 @@
                     <tbody>
                         <?php foreach($tasks as $ts) { ?>
                         <tr id="<?php echo $ts->id; ?>">
-                             <td class="con0" height="3" width="71"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . utf8_encode($app->replaceDefinitions($ts->cond_cat_title)) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo $app->replaceDefinitions($ts->cond_cat_title); ?> </td>
+                             <td class="con0" height="3" width="71"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . utf8_encode($app->replaceDefinitions($ts->cond_cat_title)) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo $app->replaceDefinitions($ts->cond_cat_title_c); ?> </td>
                              <!--sector-->
-                            <td class="center"><?php /*?><?php if($ts->sector_c != '') echo '<span class="task">' . utf8_encode($ts->sector) . "<span>$ts->sector_c</span></span>" ; else echo utf8_encode($app->replaceDefinitions($ts->sector)); ?><?php */?></td>
+                            <td class="center"><?php if($ts->sector_new != '') echo '<span class="task">' . utf8_encode($ts->sector_new) . "<span>$ts->sector_new</span></span>" ; else echo utf8_encode($app->replaceDefinitions($ts->sector_new)); ?></td>
                             
                              <!--date of complaint-->
                             <td class="con1" height="3" width="74"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline . "<span>$ts->deadline_c</span></span>" ; else echo getMysqlToCamironDate($ts->deadline); ?></td>
@@ -251,9 +251,9 @@
                         
                        <?php foreach($tasks as $ts) { ?>
                         <tr id="<?php echo $ts->id; ?>">
-                             <td class="con0" height="3" width="168"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . utf8_encode($app->replaceDefinitions($ts->cond_cat_title)) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo $app->replaceDefinitions($ts->cond_cat_title); ?> </td>
+                             <td class="con0" height="3" width="168"> <?php if($ts->cond_cat_title_c != '') { echo '<span class="task">' . utf8_encode($app->replaceDefinitions($ts->cond_cat_title)) . "<span>$ts->cond_cat_title_c</span></span>" ; } else echo $app->replaceDefinitions($ts->cond_cat_title_c); ?> </td>
                              <!--sector-->
-                            <td class="center"><?php /*?><?php if($ts->sector_c != '') echo '<span class="task">' . utf8_encode($ts->sector) . "<span>$ts->sector_c</span></span>" ; else echo utf8_encode($app->replaceDefinitions($ts->sector)); ?><?php */?></td>
+                            <td class="center"><?php if($ts->sector_new != '') echo '<span class="task">' . utf8_encode($ts->sector_new) . "<span>$ts->sector_new</span></span>" ; else echo utf8_encode($app->replaceDefinitions($ts->sector_new)); ?></td>
                             
                              <!--date of complaint-->
                             <td class="con1" height="3" width="155"><?php if($ts->deadline_c != '') echo '<span class="task">' . $ts->deadline . "<span>$ts->deadline_c</span></span>" ; else echo getMysqlToCamironDate($ts->deadline); ?></td>

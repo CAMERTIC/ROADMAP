@@ -70,7 +70,7 @@ $dudY = $tab[0];
             <select id="is_assigned_to" name="is_assigned_to" data-placeholder="Choose a user..." class="chzn-select" size="2" multiple="multiple" style="width:300px;" tabindex="3">
 				<option value=""></option> 
 				<?php foreach($users as $us) { ?>
-				<option value="<?php echo $us->login; ?>" <?php if($task->is_assigned_to == $us->login) echo "SELECTED"; ?>><?php echo $us->login ?></option>
+				<option value="<?php echo $us->login; ?>" <?php if($task->is_assigned_to == $us->noms) echo "SELECTED"; ?>><?php echo $us->noms ?></option>
 				<?php } ?>
 			</select>
             
@@ -81,7 +81,7 @@ $dudY = $tab[0];
    	    <label>Sector</label>
 			<select id="sector" name="sector">
 				<option value="">Give a sector</option>
-				<option <?php if($task->type=='Mining Facilities') echo "SELECTED"; ?> value="Mining Facilities">Mining Facilities</option>
+				<?php /*?><option <?php if($task->type=='Mining Facilities') echo "SELECTED"; ?> value="Mining Facilities">Mining Facilities</option>
 				<option <?php if($task->type=='Railway Facilities') echo "SELECTED"; ?> value="Railway Facilities">Railway Facilities</option>
 				<option <?php if($task->type=='Mineral Terminal Facilities') echo "SELECTED"; ?> value="Mineral Terminal Facilities">Mineral Terminal Facilities</option>
 				<option <?php if($task->type=='Beneficiation Facilities') echo "SELECTED"; ?> value="Beneficiation Facilities">Beneficiation Facilities</option>
@@ -93,7 +93,20 @@ $dudY = $tab[0];
 				<option <?php if($task->type=='Tax and customs Compliance') echo "SELECTED"; ?> value="Tax and customs Compliance">Tax and customs Compliance</option>
 				<option <?php if($task->type=='Foreign Compliance') echo "SELECTED"; ?> value="Foreign Compliance">Foreign Compliance</option>
 				<option <?php if($task->type=='Contractual Obligations Relating to the Personnel') echo "SELECTED"; ?> value="Contractual Obligations Relating to the Personnel">Contractual Obligations Relating to the Personnel</option>
-				<option <?php if($task->type=='Global Reporting') echo "SELECTED"; ?> value="Global Reporting">Global Reporting</option>
+				<option <?php if($task->type=='Global Reporting') echo "SELECTED"; ?> value="Global Reporting">Global Reporting</option><?php */?>
+                
+                
+                <option <?php if($task->sector_new=='Document') echo "SELECTED"; ?> value="document">Document</option>
+                <option <?php if($task->sector_new=='mine') echo "SELECTED"; ?> value="mine">mine</option>
+                <option <?php if($task->sector_new=='Port') echo "SELECTED"; ?> value="port">port</option>
+                <option <?php if($task->sector_new=='rail') echo "SELECTED"; ?> value="rail">rail</option>
+                <option <?php if($task->sector_new=='commercial') echo "SELECTED"; ?> value="commercial">commercial</option>
+                <option <?php if($task->sector_new=='blending agreements ') echo "SELECTED"; ?> value="blending agreements">blending agreements</option>
+                <option <?php if($task->sector_new=='marketing') echo "SELECTED"; ?> value="marketing">marketing</option>
+                <option <?php if($task->sector_new=='treasury') echo "SELECTED"; ?> value="treasury">treasury</option>
+                <option <?php if($task->sector_new=='agreements & specifications') echo "SELECTED"; ?> value="agreements & specifications">agreements & specifications</option>
+                <option <?php if($task->sector_new=='non CP items') echo "SELECTED"; ?> value="non CP items">non CP items</option>
+                
 			</select>
         </p>
   
@@ -109,15 +122,7 @@ $dudY = $tab[0];
 			</select>--><?php */?>
         </p>
 		
-		<p id="sector-exploitation" class="hidden">
-        	<label>Sector</label>
-			<select id="" name="">
-				<option value="">Give a sector</option>
-				<option value="conditions" <?php if($task->sector=='conditions') echo "SELECTED"; ?>>Conditions</option>
-				<option value="constructions" <?php if($task->sector=='constructions') echo "SELECTED"; ?>>Constructions</option>
-				<option value="exploitations" <?php if($task->sector=='exploitations') echo "SELECTED"; ?>>Exploitation</option>
-			</select>
-		</p>
+		
 		<p>
         <label for="date">Due Date</label>
             <span class="monthselect">

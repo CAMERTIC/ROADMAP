@@ -25,36 +25,22 @@ class tasks extends entity {
 	}
 	
 	public function getMyConditionsTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE cond_cat_title IN (SELECT DISTINCT cond_cat_title from $this->table group by cond_cat_title) and person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'conditions' ORDER BY id" ;
+		$req = "SELECT * FROM $this->table WHERE  person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'conditions' ORDER BY id" ;
 		if(!is_null($filter))
-			$req = "SELECT * FROM $this->table WHERE cond_cat_title IN (SELECT DISTINCT cond_cat_title from $this->table) and person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'conditions' AND status = '".$filter."' ORDER BY id";
+			$req = "SELECT * FROM $this->table WHERE person_in_charge = '" . $_SESSION['u']['utilisateur'] . "' AND type = 'conditions' AND status = '".$filter."' ORDER BY id";
 		$res = $this->select($req);
 		return $res;
 		
-		
-		
-		
-		
+	
 	}
 	
-	public function getCondition($cond_cat_title)
 	
-	{
-	$req = "SELECT DISTINCT cond_cat_title from $this->table group by cond_cat_title " ;
-	
-		if(!is_null($filter))
-			$req = " SELECT DISTINCT cond_cat_title from $this->table group by cond_cat_title";
-		$res = $this->select($req);
-		return $res[0]-> cond_cat_title;	
-		
-		
-		}
 	
 	
 	public function getConditionsTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE type = 'conditions' ORDER BY id";
+		$req = "SELECT * FROM $this->table WHERE type = 'conditions' ORDER BY deadline  DESC";
 		if(!is_null($filter))
-			$req = "SELECT * FROM $this->table WHERE type = 'conditions' AND status = '".$filter."' ORDER BY id";
+			$req = "SELECT * FROM $this->table WHERE type = 'conditions' AND status = '".$filter."' ORDER BY deadline  DESC";
 		$res = $this->select($req);
 		return $res;
 	}
@@ -68,9 +54,9 @@ class tasks extends entity {
 	}
 	
 	public function getConstructionsTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE type = 'constructions' ORDER BY id";
+		$req = "SELECT * FROM $this->table WHERE type = 'constructions' ORDER BY deadline  DESC";
 		if(!is_null($filter))
-			$req = "SELECT * FROM $this->table WHERE type = 'constructions' AND status = '".$filter."' ORDER BY id";
+			$req = "SELECT * FROM $this->table WHERE type = 'constructions' AND status = '".$filter."' ORDER BY deadline  DESC";
 		$res = $this->select($req);
 		return $res;
 	}
@@ -84,9 +70,9 @@ class tasks extends entity {
 	}
 	
 	public function getExploitationsTasks($filter = null) {
-		$req = "SELECT * FROM $this->table WHERE type = 'exploitations' ORDER BY id";
+		$req = "SELECT * FROM $this->table WHERE type = 'exploitations' ORDER BY deaDline DESC";
 		if(!is_null($filter))
-			$req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND status = '".$filter."' ORDER BY id";
+			$req = "SELECT * FROM $this->table WHERE type = 'exploitations' AND status = '".$filter."' ORDER BY deaDline DESC";
 		$res = $this->select($req);
 		return $res;
 	}
@@ -98,6 +84,67 @@ class tasks extends entity {
 		$res = $this->select($req);
 		return $res;
 	}
+	
+	
+		public function getReportsTasksConditionsDocument($filter = null) {
+		$req = "SELECT * FROM $this->table WHERE type = 'conditions' AND sector_new ='Document' ORDER BY due_date_main_task";
+		if(!is_null($filter))
+			$req = "SELECT * FROM $this->table WHERE sector_new = '".$filter."' AND type = 'conditions'  AND sector_new ='Document' ORDER BY due_date_main_task";
+		$res = $this->select($req);
+		return $res;
+	}
+	
+	public function getReportsTasksConditionsRail($filter = null) {
+		$req = "SELECT * FROM $this->table WHERE type = 'conditions' AND sector_new ='rail' ORDER BY due_date_main_task";
+		if(!is_null($filter))
+			$req = "SELECT * FROM $this->table WHERE sector_new = '".$filter."' AND type = 'conditions'  AND sector_new ='rail' ORDER BY due_date_main_task";
+		$res = $this->select($req);
+		return $res;
+	}
+	
+	
+	public function getReportsTasksConditionsMine($filter = null) {
+		$req = "SELECT * FROM $this->table WHERE type = 'conditions' AND sector_new ='mine' ORDER BY due_date_main_task";
+		if(!is_null($filter))
+			$req = "SELECT * FROM $this->table WHERE sector_new = '".$filter."' AND type = 'conditions'  AND sector_new ='mine' ORDER BY due_date_main_task";
+		$res = $this->select($req);
+		return $res;
+	}
+	
+	
+	
+		public function getReportsTasksConditionsPort($filter = null) {
+		$req = "SELECT * FROM $this->table WHERE type = 'conditions' AND sector_new ='port' ORDER BY due_date_main_task";
+		if(!is_null($filter))
+			$req = "SELECT * FROM $this->table WHERE sector_new = '".$filter."' AND type = 'conditions'  AND sector_new ='port' ORDER BY due_date_main_task";
+		$res = $this->select($req);
+		return $res;
+	}
+	
+	
+	public function getReportsConstructions($filter = null) {
+		$req = "SELECT * FROM $this->table WHERE type = 'constructions' ORDER BY due_date_main_task";
+		if(!is_null($filter))
+			$req = "SELECT * FROM $this->table  WHERE type = 'constructions' AND sector_new = '".$filter."' ORDER BY due_date_main_task";
+		$res = $this->select($req);
+		return $res;
+	}
+	
+	
+	
+		public function getReportsExploitations($filter = null) {
+		$req = "SELECT * FROM $this->table WHERE type = 'exploitations' ORDER BY due_date_main_task";
+		if(!is_null($filter))
+			$req = "SELECT * FROM $this->table  WHERE type = 'exploitations' AND sector_new = '".$filter."' ORDER BY due_date_main_task";
+		$res = $this->select($req);
+		return $res;
+	}
+	
+	
+	
+	
+	
+	
 	
 	public function getMyTeamConstructionsTasks($filter = null) {
 		$req = "SELECT * FROM $this->table WHERE person_in_charge IN (SELECT `login` FROM `rc_users` WHERE `team` = ".$_SESSION['u']['team'].") AND type = 'constructions' ORDER BY id";
@@ -149,6 +196,9 @@ public function getNamePerson($login) {
   $res = $this->select($req);
   return $res[0]->noms;
  }
+	
+	
+	
 	
 	
 	

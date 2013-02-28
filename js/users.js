@@ -7,6 +7,13 @@ function updateUser() {
 		alert('Please give the password');
 		return false;
 	}
+	
+	
+	if(jQuery('#pw').val() == jQuery('#pw').val()){
+		alert('Please enter a another password!!!');
+		return false;
+	}
+	
 	if(jQuery('#login').val() == ''){
 		alert('Please add the user name or login before');
 		return false;

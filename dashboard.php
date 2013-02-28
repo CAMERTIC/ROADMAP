@@ -126,7 +126,7 @@ return i;
 <div class="bodywrapper">
     <div class="topheader">
         <div class="left">
-            <div class="logo" style="float:left; margin-left:29px"><img src="images/logo.png" height="45" alt="CAMIRON" /></div>
+            <div class="logo" style="float:left; margin-left:50px"><img src="images/logo.png" height="45" alt="CAMIRON" /></div>
             <span class="slogan">Roadmap Convention</span>
             
             <!--<div class="search">

@@ -66,14 +66,27 @@
 	<li><a href="#set" class="editor">Settings</a>
 		<span class="arrow"></span>
 		<ul id="set">
-			<li><a href="?view=report-setting">Report settings</a></li>
+			<li><a href="?view=report-setting">Add a Report</a></li>
 			<li><a href="?view=reports1">Report Precontratual Phase</a></li>
 			<li><a href="?view=reports2">Report Construction Phase</a></li>
 			<li><a href="?view=reports3">Report BF Construction Phase</a></li>
 			<li><a href="?view=reports4">Report Exploitation Phase</a></li>
 			<li><a href="?view=dictionnaire">Dictionary</a></li>
+            
 		</ul>
+        
+        
+        
+    <li><a href="?view=reportall">Report in Conditions phase</a></li>
+			<li><a href="?view=reportall1">Report in Constructions phase</a></li>
+			<li><a href="?view=reportall2">Report in Exploitation Phase</a></li>
+            
+            </ul>
+    </li>
 	</li>
+    
+    
+    
+  
 </ul>
-<a class="togglemenu"></a>
 <br /><br />

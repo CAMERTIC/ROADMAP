@@ -1,5 +1,8 @@
 <?php 
 
+// Tout début du code PHP. Situé en haut de la page web
+ini_set("display_errors",0);error_reporting(0);
+
 require_once '../config.php';
 require_once '../lib/library.php';
 require_once '../camertic/classes/bd.class.php';
@@ -7,37 +10,22 @@ require_once '../lib/classes/entity.class.php';
 require_once '../lib/classes/tasks.class.php';
 require_once '../lib/classes/rc_users.class.php';
 
-$tasks = new tasks();
-	
-	
+$C = new CamerticConfig;
+$p = new tasks;
 
-$ts = $p->getRecord($_GET['id']);
+$t = $p->getRecord($_GET['id']);
 
 $u = new rc_users;
 	$users = $u->getUsers();
-	
-	
-	?>
-    
-    
-    
-<div class="centercontent tables">
-    
-        
-         
-		
-        <div id="contentwrapper" class="contentwrapper">                                
-		
-	
-         
- 
- <?php
-			$ide=$_GET["id"];
-$req=mysql_query("select * from $this->table where id= ".$ide);
- if($res = mysql_fetch_array($req))
-  {
-			
-			?>  
+
+
+
+
+?>
+
+</style>
+
+       
                     <p>
                     <form action="" method="post">
                    <fieldset><legend><strong>Informations of Tasks in Conditions</strong></legend>
@@ -48,24 +36,24 @@ $req=mysql_query("select * from $this->table where id= ".$ide);
                       
                   <tr> 
                   <td> <strong>Conditions or Category : </strong></td> 
-                  <td> <?php echo $res['cond_cat_title']; ?></td>
+                  <td> </td>
                   
                   </tr>
                    <tr> 
                   <td> <strong>Required actions or operations :</strong></td> 
-                  <td> <?php echo $res['required_action']; ?></td>
+                  <td> </td>
                   
                   </tr>
                    <tr> 
                   <td>  <strong> Date for compliance: </strong></td> 
-                  <td> <?php echo $res['deadline']; ?></td>
+                  <td> </td>
                   
                   </tr>
                   
                    
                    <tr> 
                   <td><strong> Party accountable for compliance: </strong></td> 
-                  <td> <?php echo $res['party_accountable']; ?></td>
+                  <td> </td>
                   
                  
                   
@@ -73,33 +61,19 @@ $req=mysql_query("select * from $this->table where id= ".$ide);
            
                  <tr> 
                  <td> <strong>  Person in charge of action: </strong></td> 
-                    <td><?php 
-					
-					
-		
-		echo $rep['person_in_charge'];
-		
-					
-					?></td>
+                    <td></td>
                     
                   </tr> 
                     
                     <tr> 
                  <td><strong> Due date:</strong></td> 
-                    <td><?php 
-					
-					
-		
-		echo $rep['due_date'];
-		
-					
-					?></td>
+                    <td></td>
                   </tr>  
                 
                 
                   <tr> 
                   <td><strong>Status : </strong></td> 
-                  <td> <?php echo $res['status']; ?></td>
+                  <td></td>
                   
                  
                   
@@ -107,21 +81,21 @@ $req=mysql_query("select * from $this->table where id= ".$ide);
          
           <tr> 
                   <td><strong> Authority accountable for compliance : </strong></td> 
-                  <td> <?php echo $res['authority_accountable']; ?></td>
+                  <td> </td>
                   
                  
                   
          </tr>
           <tr> 
   <td><strong>Input Camiron / State : </strong></td> 
-                  <td> <?php echo $res['input_camiron']; ?></td>
+                  <td></td>
                   
                  
                   
          </tr>
           <tr> 
                   <td><strong>Output : </strong></td> 
-                  <td> <?php echo $res['input_state']; ?></td>
+                  <td> </td>
                   
                  
                   
@@ -130,7 +104,7 @@ $req=mysql_query("select * from $this->table where id= ".$ide);
          
            <tr> 
                   <td><strong>Risk/Sanction : </strong></td> 
-                  <td> <?php echo $res['risk_sanction']; ?></td>
+                  <td> </td>
                   
                  
                   
@@ -138,29 +112,21 @@ $req=mysql_query("select * from $this->table where id= ".$ide);
          
            <tr> 
                   <td><strong>Last comment : </strong></td> 
-                  <td> <?php echo $res['comment']; ?></td>
+                  <td> </td>
                   
-                 <?php /*?><?php echo utf8_encode($cmt->getLastComment($ts->id)); ?><?php */?>
                   
-         </tr>
-         
-         
-         
-         
-         
-         
-         
-         
-         
+         </tr>         
                     </table>
                     </form>
                     </fieldset>
                  
 			
                     <p>
-                      <?php
-  }
-				?> 
-                  
-                      </form>
-                      
+              
+        
+        
+    <div class="quickformbutton">
+		
+        <button class="cancel">Close task</button>
+    </div><!-- button -->
+</form>
